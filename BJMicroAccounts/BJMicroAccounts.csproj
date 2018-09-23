@@ -1,0 +1,613 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9950683A-F0FD-48E6-8CA8-D96565CA1C98}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BJMicroAccounts</RootNamespace>
+    <AssemblyName>BJMicroAccounts</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Emgu.CV">
+      <HintPath>C:\Users\Sonih\Downloads\CameraCapture\CameraCapture\CameraCapture\Emgu.CV.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.GPU">
+      <HintPath>C:\Users\Sonih\Downloads\CameraCapture\CameraCapture\CameraCapture\Emgu.CV.GPU.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.ML">
+      <HintPath>C:\Users\Sonih\Downloads\CameraCapture\CameraCapture\CameraCapture\Emgu.CV.ML.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.UI">
+      <HintPath>C:\Users\Sonih\Downloads\CameraCapture\CameraCapture\CameraCapture\Emgu.CV.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.Util">
+      <HintPath>C:\Users\Sonih\Downloads\CameraCapture\CameraCapture\CameraCapture\Emgu.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Gmail">
+      <HintPath>C:\Users\Sonih\Downloads\SendEmailUsingGmail\SendEmailUsingGmail\SendEmailUsingGmail\Gmail.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountsModuleClasses\AmtFormatting.cs" />
+    <Compile Include="AccountsModuleClasses\CrDrDifference.cs" />
+    <Compile Include="AccountsModuleClasses\DbBackup.cs" />
+    <Compile Include="AccountsModuleClasses\TransactionEntryClass.cs" />
+    <Compile Include="App_Code\Acc_list.cs" />
+    <Compile Include="App_Code\closing_balance.cs" />
+    <Compile Include="App_Code\ConvertNoToWord.cs" />
+    <Compile Include="App_Code\DummyList.cs" />
+    <Compile Include="App_Code\EncryptionDecription.cs" />
+    <Compile Include="App_Code\GenerateXmlFileOfDb.cs" />
+    <Compile Include="App_Code\TextBoxValidation.cs" />
+    <Compile Include="App_Code\toCurrency.cs" />
+    <Compile Include="Data\DailyRate.cs">
+      <DependentUpon>MicroAccounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MicroAccounts.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MicroAccounts.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MicroAccounts.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MicroAccounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MicroAccounts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MicroAccounts.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tbl_AccGroup.cs">
+      <DependentUpon>MicroAccounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tbl_AccLedger.cs">
+      <DependentUpon>MicroAccounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tbl_CategoryMaster.cs">
+      <DependentUpon>MicroAccounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tbl_Entry.cs">
+      <DependentUpon>MicroAccounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tbl_EntryDetails.cs">
+      <DependentUpon>MicroAccounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tbl_ItemMaster.cs">
+      <DependentUpon>MicroAccounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tbl_LedgerDetails.cs">
+      <DependentUpon>MicroAccounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tbl_PurchaseDetail.cs">
+      <DependentUpon>MicroAccounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tbl_PurchaseMaster.cs">
+      <DependentUpon>MicroAccounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tbl_SalesDetails.cs">
+      <DependentUpon>MicroAccounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tbl_SalesMaster.cs">
+      <DependentUpon>MicroAccounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tbl_StockItemDetails.cs">
+      <DependentUpon>MicroAccounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tbl_TaxDetail.cs">
+      <DependentUpon>MicroAccounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tbl_TaxMaster.cs">
+      <DependentUpon>MicroAccounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tbl_TransactionMaster.cs">
+      <DependentUpon>MicroAccounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tbl_UserLogiln.cs">
+      <DependentUpon>MicroAccounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\tbl_UserProfile.cs">
+      <DependentUpon>MicroAccounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AccountLedger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AccountLedger.Designer.cs">
+      <DependentUpon>AccountLedger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\BackUpDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BackUpDB.Designer.cs">
+      <DependentUpon>BackUpDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DailyGoldRates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DailyGoldRates.Designer.cs">
+      <DependentUpon>DailyGoldRates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Group.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Group.Designer.cs">
+      <DependentUpon>Group.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Item.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Item.Designer.cs">
+      <DependentUpon>Item.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ItemCategoryMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ItemCategoryMaster.Designer.cs">
+      <DependentUpon>ItemCategoryMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainDashboard.Designer.cs">
+      <DependentUpon>MainDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PaymentReceiptBillReference.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PaymentReceiptBillReference.Designer.cs">
+      <DependentUpon>PaymentReceiptBillReference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PurchaseMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PurchaseMaster.Designer.cs">
+      <DependentUpon>PurchaseMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SalesMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SalesMaster.Designer.cs">
+      <DependentUpon>SalesMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Reports\ReportPurchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportPurchase.Designer.cs">
+      <DependentUpon>ReportPurchase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportSales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportSales.Designer.cs">
+      <DependentUpon>ReportSales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportTrialBal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportTrialBal.Designer.cs">
+      <DependentUpon>ReportTrialBal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RptPurchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\RptPurchase.Designer.cs">
+      <DependentUpon>RptPurchase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\BalanceSheet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\BalanceSheet.Designer.cs">
+      <DependentUpon>BalanceSheet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CustomerDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\CustomerDetails.Designer.cs">
+      <DependentUpon>CustomerDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DashBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DashBoard.Designer.cs">
+      <DependentUpon>DashBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\FirstCustomControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\FirstCustomControl.Designer.cs">
+      <DependentUpon>FirstCustomControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\LedgerDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\LedgerDetails.Designer.cs">
+      <DependentUpon>LedgerDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MySecondCustomControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MySecondCustomControl.Designer.cs">
+      <DependentUpon>MySecondCustomControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NewUserRegistration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\NewUserRegistration.Designer.cs">
+      <DependentUpon>NewUserRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PayableAmt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PayableAmt.Designer.cs">
+      <DependentUpon>PayableAmt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Payment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Payment.Designer.cs">
+      <DependentUpon>Payment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PurchaseDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PurchaseDetails.Designer.cs">
+      <DependentUpon>PurchaseDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PurchaseSalesReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PurchaseSalesReport.Designer.cs">
+      <DependentUpon>PurchaseSalesReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RecievableAmt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\RecievableAmt.Designer.cs">
+      <DependentUpon>RecievableAmt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SalesDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SalesDetails.Designer.cs">
+      <DependentUpon>SalesDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\StockInventoryDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\StockInventoryDetails.Designer.cs">
+      <DependentUpon>StockInventoryDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SupplierDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SupplierDetails.Designer.cs">
+      <DependentUpon>SupplierDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TrailBalance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TrailBalance.Designer.cs">
+      <DependentUpon>TrailBalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\AccGroupVM.cs" />
+    <Compile Include="ViewModel\AccLedgerVm.cs" />
+    <Compile Include="ViewModel\CategoryMasterVM.cs" />
+    <Compile Include="ViewModel\DailyRateVM.cs" />
+    <Compile Include="ViewModel\EntryDetailsVM.cs" />
+    <Compile Include="ViewModel\EntryVM.cs" />
+    <Compile Include="ViewModel\ItemMasterVM.cs" />
+    <Compile Include="ViewModel\LedgerAutoCompleteClass.cs" />
+    <Compile Include="ViewModel\LedgerDetailsVM.cs" />
+    <Compile Include="ViewModel\PurchaseDetailsVM.cs" />
+    <Compile Include="ViewModel\PurchaseMasterVM.cs" />
+    <Compile Include="ViewModel\SalesDetailsVM.cs" />
+    <Compile Include="ViewModel\SalesMasterVM.cs" />
+    <Compile Include="ViewModel\StockItemDetailsVM.cs" />
+    <Compile Include="ViewModel\TaxDetailsVM.cs" />
+    <Compile Include="ViewModel\TaxMasterVM.cs" />
+    <Compile Include="ViewModel\TransactionVM.cs" />
+    <Compile Include="ViewModel\UserLoginVM.cs" />
+    <Compile Include="ViewModel\UserProfileVM.cs" />
+    <EmbeddedResource Include="Forms\AccountLedger.resx">
+      <DependentUpon>AccountLedger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BackUpDB.resx">
+      <DependentUpon>BackUpDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DailyGoldRates.resx">
+      <DependentUpon>DailyGoldRates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Group.resx">
+      <DependentUpon>Group.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Item.resx">
+      <DependentUpon>Item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ItemCategoryMaster.resx">
+      <DependentUpon>ItemCategoryMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainDashboard.resx">
+      <DependentUpon>MainDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PaymentReceiptBillReference.resx">
+      <DependentUpon>PaymentReceiptBillReference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PurchaseMaster.resx">
+      <DependentUpon>PurchaseMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SalesMaster.resx">
+      <DependentUpon>SalesMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Reports\PurchaseReport.rdlc" />
+    <EmbeddedResource Include="Reports\ReportPurchase.resx">
+      <DependentUpon>ReportPurchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportSales.resx">
+      <DependentUpon>ReportSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportTrialBal.resx">
+      <DependentUpon>ReportTrialBal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptPurchase.resx">
+      <DependentUpon>RptPurchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SalesReport.rdlc" />
+    <EmbeddedResource Include="Reports\TrialBalReport.rdlc" />
+    <EmbeddedResource Include="SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\BalanceSheet.resx">
+      <DependentUpon>BalanceSheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\CustomerDetails.resx">
+      <DependentUpon>CustomerDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\DashBoard.resx">
+      <DependentUpon>DashBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\FirstCustomControl.resx">
+      <DependentUpon>FirstCustomControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\LedgerDetails.resx">
+      <DependentUpon>LedgerDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MySecondCustomControl.resx">
+      <DependentUpon>MySecondCustomControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\NewUserRegistration.resx">
+      <DependentUpon>NewUserRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PayableAmt.resx">
+      <DependentUpon>PayableAmt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Payment.resx">
+      <DependentUpon>Payment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PurchaseDetails.resx">
+      <DependentUpon>PurchaseDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PurchaseSalesReport.resx">
+      <DependentUpon>PurchaseSalesReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\RecievableAmt.resx">
+      <DependentUpon>RecievableAmt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SalesDetails.resx">
+      <DependentUpon>SalesDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\StockInventoryDetails.resx">
+      <DependentUpon>StockInventoryDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SupplierDetails.resx">
+      <DependentUpon>SupplierDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TrailBalance.resx">
+      <DependentUpon>TrailBalance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Data\MicroAccounts.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MicroAccounts.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Data\MicroAccounts.edmx.diagram">
+      <DependentUpon>MicroAccounts.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\MicroAccounts.App_Code.DummyList.datasource" />
+    <None Include="Properties\DataSources\MicroAccounts.ViewModel.LedgerDetailsVM.datasource" />
+    <None Include="Properties\DataSources\MicroAccounts.ViewModel.PurchaseDetailsVM.datasource" />
+    <None Include="Properties\DataSources\MicroAccounts.ViewModel.PurchaseMasterVM.datasource" />
+    <None Include="Properties\DataSources\MicroAccounts.ViewModel.SalesDetailsVM.datasource" />
+    <None Include="Properties\DataSources\MicroAccounts.ViewModel.SalesMasterVM.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\MicroAccounts.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MicroAccounts.edmx</DependentUpon>
+      <LastGenOutput>MicroAccounts.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\MicroAccounts.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MicroAccounts.edmx</DependentUpon>
+      <LastGenOutput>MicroAccounts.cs</LastGenOutput>
+    </Content>
+    <Content Include="opencv_calib3d220.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="opencv_contrib220.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="opencv_core220.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="opencv_features2d220.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="opencv_ffmpeg220.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="opencv_flann220.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="opencv_gpu220.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="opencv_highgui220.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="opencv_imgproc220.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="opencv_legacy220.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="opencv_ml220.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="opencv_objdetect220.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="opencv_video220.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Close.png" />
+    <Content Include="Resources\delete.png" />
+    <Content Include="Resources\delete1.png" />
+    <Content Include="Resources\download %281%29.png" />
+    <Content Include="Resources\il_570xN.1441337834_mvp3.jpg" />
+    <Content Include="Resources\loader-1.gif" />
+    <Content Include="Resources\lock-512.png" />
+    <None Include="Resources\LogosBJ.png" />
+    <Content Include="Resources\search.png" />
+    <Content Include="Resources\search_small_search_659160.png" />
+    <Content Include="Resources\_username_login_1172579.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataSetss\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

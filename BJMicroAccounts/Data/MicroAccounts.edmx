@@ -1,0 +1,1290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MicroAccountsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DailyRates">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fineGold" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="hallmark" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="hallmarkBuyBack" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="twentyTwoC" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="twentyThreeC" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="eighteenC" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="silver" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_AccGroup">
+          <Key>
+            <PropertyRef Name="groupId" />
+          </Key>
+          <Property Name="groupId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="bigint" />
+          <Property Name="parentId" Type="bigint" />
+          <Property Name="groupName" Type="varchar" MaxLength="80" />
+          <Property Name="affects_gross" Type="int" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_AccLedger">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="groupId" Type="bigint" Nullable="false" />
+          <Property Name="ledgerName" Type="varchar" MaxLength="50" />
+          <Property Name="opBalance" Type="decimal" Precision="25" Scale="2" />
+          <Property Name="opBalanceDC" Type="char" MaxLength="2" />
+          <Property Name="type" Type="int" />
+          <Property Name="notes" Type="varchar" MaxLength="550" />
+          <Property Name="drId" Type="int" />
+          <Property Name="crId" Type="int" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_CategoryMaster">
+          <Key>
+            <PropertyRef Name="cId" />
+          </Key>
+          <Property Name="cId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cName" Type="varchar" MaxLength="50" />
+          <Property Name="prefix" Type="varchar" MaxLength="50" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_Entry">
+          <Key>
+            <PropertyRef Name="voucherRefNo" />
+          </Key>
+          <Property Name="voucherRefNo" Type="bigint" Nullable="false" />
+          <Property Name="entryType" Type="int" />
+          <Property Name="crId" Type="bigint" />
+          <Property Name="drId" Type="bigint" />
+          <Property Name="amt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="date" Type="date" />
+          <Property Name="stringDate" Type="varchar" MaxLength="50" />
+          <Property Name="remarks" Type="varchar" MaxLength="150" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_EntryDetails">
+          <Key>
+            <PropertyRef Name="pDetailsId" />
+          </Key>
+          <Property Name="pDetailsId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="voucherRefNo" Type="bigint" />
+          <Property Name="purchaseSalesIds" Type="bigint" />
+          <Property Name="amtPaid" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_ItemMaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="itemCode" Type="varchar" MaxLength="50" />
+          <Property Name="categoryId" Type="bigint" />
+          <Property Name="photo" Type="image" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_LedgerDetails">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ledgerId" Type="bigint" />
+          <Property Name="address" Type="nchar" MaxLength="150" />
+          <Property Name="contact" Type="numeric" Precision="13" Scale="0" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_PurchaseDetail">
+          <Key>
+            <PropertyRef Name="pdetailsId" />
+          </Key>
+          <Property Name="pdetailsId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="purchaseID" Type="bigint" />
+          <Property Name="productID" Type="bigint" />
+          <Property Name="qty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="weight" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="unit" Type="varchar" MaxLength="50" />
+          <Property Name="karat" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="kRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="melting" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="purchaseMelting" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="making" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="fine" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="rate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_PurchaseMaster">
+          <Key>
+            <PropertyRef Name="pId" />
+          </Key>
+          <Property Name="pId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="refNo" Type="varchar" MaxLength="50" />
+          <Property Name="ledgerId" Type="bigint" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="totalWeight" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="unit" Type="char" MaxLength="10" />
+          <Property Name="totalMelting" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="totalPurchaseMelting" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="totalMaking" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="totalFine" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="totalAmt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="remarks" Type="varchar" MaxLength="150" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_SalesDetails">
+          <Key>
+            <PropertyRef Name="sDetailsId" />
+          </Key>
+          <Property Name="sDetailsId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="salesId" Type="bigint" />
+          <Property Name="productId" Type="bigint" />
+          <Property Name="qty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="weight" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="unit" Type="varchar" MaxLength="50" />
+          <Property Name="karat" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="kRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="making" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="rate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_SalesMaster">
+          <Key>
+            <PropertyRef Name="sId" />
+          </Key>
+          <Property Name="sId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="billNo" Type="varchar" MaxLength="50" />
+          <Property Name="ledgerId" Type="bigint" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="totalWeight" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="unit" Type="char" MaxLength="10" />
+          <Property Name="totalKarat" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="totalMaking" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="totalAmt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="remarks" Type="varchar" MaxLength="150" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_StockItemDetails">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="itemId" Type="bigint" />
+          <Property Name="qty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="weight" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="unit" Type="char" MaxLength="10" />
+          <Property Name="melting" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="carret" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="remarks" Type="varchar" MaxLength="150" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="upadtedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_TaxDetail">
+          <Key>
+            <PropertyRef Name="taxDetailsId" />
+          </Key>
+          <Property Name="taxDetailsId" Type="bigint" Nullable="false" />
+          <Property Name="tId" Type="bigint" />
+          <Property Name="cgst_per" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="cgst_rate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="sgst_per" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="sgst_rate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="igst_per" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="igst_rate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="cDate" Type="datetime" />
+          <Property Name="uDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_TaxMaster">
+          <Key>
+            <PropertyRef Name="tId" />
+          </Key>
+          <Property Name="tId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="voucherType" Type="varchar" MaxLength="50" />
+          <Property Name="voucherId" Type="bigint" />
+          <Property Name="totalTax" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="cDate" Type="datetime" />
+          <Property Name="uDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_TransactionMaster">
+          <Key>
+            <PropertyRef Name="tId" />
+          </Key>
+          <Property Name="tId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tDate" Type="datetime" Nullable="false" />
+          <Property Name="voucherType" Type="varchar" MaxLength="50" />
+          <Property Name="voucherRefNo" Type="bigint" />
+          <Property Name="crAmt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="drAmt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ledgerId" Type="bigint" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updatedDate" Type="datetime" />
+          <Property Name="loginId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tbl_UserLogiln">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="bigint" />
+          <Property Name="loginId" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="550" />
+          <Property Name="lastLogin" Type="datetime" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_UserProfile">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="firstName" Type="varchar" MaxLength="50" />
+          <Property Name="lastName" Type="varchar" MaxLength="50" />
+          <Property Name="mobile" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="updateDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_ItemMaster_CategoryMaster">
+          <End Role="tbl_CategoryMaster" Type="Self.tbl_CategoryMaster" Multiplicity="0..1" />
+          <End Role="tbl_ItemMaster" Type="Self.tbl_ItemMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CategoryMaster">
+              <PropertyRef Name="cId" />
+            </Principal>
+            <Dependent Role="tbl_ItemMaster">
+              <PropertyRef Name="categoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseDetail_PurchaseDetail">
+          <End Role="tbl_ItemMaster" Type="Self.tbl_ItemMaster" Multiplicity="0..1" />
+          <End Role="tbl_PurchaseDetail" Type="Self.tbl_PurchaseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_PurchaseDetail">
+              <PropertyRef Name="productID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseDetail_PurchaseMaster">
+          <End Role="tbl_PurchaseMaster" Type="Self.tbl_PurchaseMaster" Multiplicity="0..1" />
+          <End Role="tbl_PurchaseDetail" Type="Self.tbl_PurchaseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PurchaseMaster">
+              <PropertyRef Name="pId" />
+            </Principal>
+            <Dependent Role="tbl_PurchaseDetail">
+              <PropertyRef Name="purchaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseMaster_AccLedger">
+          <End Role="tbl_AccLedger" Type="Self.tbl_AccLedger" Multiplicity="0..1" />
+          <End Role="tbl_PurchaseMaster" Type="Self.tbl_PurchaseMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_AccLedger">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_PurchaseMaster">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesDetail_SalesDetail">
+          <End Role="tbl_AccLedger" Type="Self.tbl_AccLedger" Multiplicity="0..1" />
+          <End Role="tbl_SalesMaster" Type="Self.tbl_SalesMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_AccLedger">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_SalesMaster">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesDetails_SalesDetails">
+          <End Role="tbl_SalesMaster" Type="Self.tbl_SalesMaster" Multiplicity="0..1" />
+          <End Role="tbl_SalesDetails" Type="Self.tbl_SalesDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_SalesMaster">
+              <PropertyRef Name="sId" />
+            </Principal>
+            <Dependent Role="tbl_SalesDetails">
+              <PropertyRef Name="salesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesDetails_tbl_ItemMaster">
+          <End Role="tbl_ItemMaster" Type="Self.tbl_ItemMaster" Multiplicity="0..1" />
+          <End Role="tbl_SalesDetails" Type="Self.tbl_SalesDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_SalesDetails">
+              <PropertyRef Name="productId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockItemDetails_ItemMaster">
+          <End Role="tbl_ItemMaster" Type="Self.tbl_ItemMaster" Multiplicity="0..1" />
+          <End Role="tbl_StockItemDetails" Type="Self.tbl_StockItemDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_StockItemDetails">
+              <PropertyRef Name="itemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_LedgerDetails_tbl_AccLedger">
+          <End Role="tbl_AccLedger" Type="Self.tbl_AccLedger" Multiplicity="0..1" />
+          <End Role="tbl_LedgerDetails" Type="Self.tbl_LedgerDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_AccLedger">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_LedgerDetails">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_TaxDetail_tbl_TaxMaster">
+          <End Role="tbl_TaxMaster" Type="Self.tbl_TaxMaster" Multiplicity="0..1" />
+          <End Role="tbl_TaxDetail" Type="Self.tbl_TaxDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_TaxMaster">
+              <PropertyRef Name="tId" />
+            </Principal>
+            <Dependent Role="tbl_TaxDetail">
+              <PropertyRef Name="tId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_TransactionMaster_tbl_UserLogiln">
+          <End Role="tbl_UserLogiln" Type="Self.tbl_UserLogiln" Multiplicity="0..1" />
+          <End Role="tbl_TransactionMaster" Type="Self.tbl_TransactionMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserLogiln">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_TransactionMaster">
+              <PropertyRef Name="loginId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLogin_UserLogin">
+          <End Role="tbl_UserProfile" Type="Self.tbl_UserProfile" Multiplicity="0..1" />
+          <End Role="tbl_UserLogiln" Type="Self.tbl_UserLogiln" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserProfile">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="tbl_UserLogiln">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MicroAccountsModelStoreContainer">
+          <EntitySet Name="DailyRates" EntityType="Self.DailyRates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_AccGroup" EntityType="Self.tbl_AccGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_AccLedger" EntityType="Self.tbl_AccLedger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CategoryMaster" EntityType="Self.tbl_CategoryMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Entry" EntityType="Self.tbl_Entry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_EntryDetails" EntityType="Self.tbl_EntryDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ItemMaster" EntityType="Self.tbl_ItemMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_LedgerDetails" EntityType="Self.tbl_LedgerDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PurchaseDetail" EntityType="Self.tbl_PurchaseDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PurchaseMaster" EntityType="Self.tbl_PurchaseMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_SalesDetails" EntityType="Self.tbl_SalesDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_SalesMaster" EntityType="Self.tbl_SalesMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_StockItemDetails" EntityType="Self.tbl_StockItemDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_TaxDetail" EntityType="Self.tbl_TaxDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_TaxMaster" EntityType="Self.tbl_TaxMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_TransactionMaster" EntityType="Self.tbl_TransactionMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_UserLogiln" EntityType="Self.tbl_UserLogiln" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_UserProfile" EntityType="Self.tbl_UserProfile" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ItemMaster_CategoryMaster" Association="Self.FK_ItemMaster_CategoryMaster">
+            <End Role="tbl_CategoryMaster" EntitySet="tbl_CategoryMaster" />
+            <End Role="tbl_ItemMaster" EntitySet="tbl_ItemMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseDetail_PurchaseDetail" Association="Self.FK_PurchaseDetail_PurchaseDetail">
+            <End Role="tbl_ItemMaster" EntitySet="tbl_ItemMaster" />
+            <End Role="tbl_PurchaseDetail" EntitySet="tbl_PurchaseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseDetail_PurchaseMaster" Association="Self.FK_PurchaseDetail_PurchaseMaster">
+            <End Role="tbl_PurchaseMaster" EntitySet="tbl_PurchaseMaster" />
+            <End Role="tbl_PurchaseDetail" EntitySet="tbl_PurchaseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseMaster_AccLedger" Association="Self.FK_PurchaseMaster_AccLedger">
+            <End Role="tbl_AccLedger" EntitySet="tbl_AccLedger" />
+            <End Role="tbl_PurchaseMaster" EntitySet="tbl_PurchaseMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesDetail_SalesDetail" Association="Self.FK_SalesDetail_SalesDetail">
+            <End Role="tbl_AccLedger" EntitySet="tbl_AccLedger" />
+            <End Role="tbl_SalesMaster" EntitySet="tbl_SalesMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesDetails_SalesDetails" Association="Self.FK_SalesDetails_SalesDetails">
+            <End Role="tbl_SalesMaster" EntitySet="tbl_SalesMaster" />
+            <End Role="tbl_SalesDetails" EntitySet="tbl_SalesDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesDetails_tbl_ItemMaster" Association="Self.FK_SalesDetails_tbl_ItemMaster">
+            <End Role="tbl_ItemMaster" EntitySet="tbl_ItemMaster" />
+            <End Role="tbl_SalesDetails" EntitySet="tbl_SalesDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockItemDetails_ItemMaster" Association="Self.FK_StockItemDetails_ItemMaster">
+            <End Role="tbl_ItemMaster" EntitySet="tbl_ItemMaster" />
+            <End Role="tbl_StockItemDetails" EntitySet="tbl_StockItemDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_LedgerDetails_tbl_AccLedger" Association="Self.FK_tbl_LedgerDetails_tbl_AccLedger">
+            <End Role="tbl_AccLedger" EntitySet="tbl_AccLedger" />
+            <End Role="tbl_LedgerDetails" EntitySet="tbl_LedgerDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_TaxDetail_tbl_TaxMaster" Association="Self.FK_tbl_TaxDetail_tbl_TaxMaster">
+            <End Role="tbl_TaxMaster" EntitySet="tbl_TaxMaster" />
+            <End Role="tbl_TaxDetail" EntitySet="tbl_TaxDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_TransactionMaster_tbl_UserLogiln" Association="Self.FK_tbl_TransactionMaster_tbl_UserLogiln">
+            <End Role="tbl_UserLogiln" EntitySet="tbl_UserLogiln" />
+            <End Role="tbl_TransactionMaster" EntitySet="tbl_TransactionMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLogin_UserLogin" Association="Self.FK_UserLogin_UserLogin">
+            <End Role="tbl_UserProfile" EntitySet="tbl_UserProfile" />
+            <End Role="tbl_UserLogiln" EntitySet="tbl_UserLogiln" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MicroAccountsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DailyRate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fineGold" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="hallmark" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="hallmarkBuyBack" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="twentyTwoC" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="twentyThreeC" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="silver" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="updatedDate" Type="DateTime" Precision="3" />
+          <Property Name="eighteenC" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="tbl_AccGroup">
+          <Key>
+            <PropertyRef Name="groupId" />
+          </Key>
+          <Property Name="groupId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int64" />
+          <Property Name="parentId" Type="Int64" />
+          <Property Name="groupName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="affects_gross" Type="Int32" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="updateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_AccLedger" Relationship="Self.FK_AccLedger_Group" FromRole="tbl_AccGroup" ToRole="tbl_AccLedger" />
+        </EntityType>
+        <EntityType Name="tbl_AccLedger">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="groupId" Type="Int64" Nullable="false" />
+          <Property Name="ledgerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="opBalance" Type="Decimal" Precision="25" Scale="2" />
+          <Property Name="opBalanceDC" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="type" Type="Int32" />
+          <Property Name="notes" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+          <Property Name="drId" Type="Int32" />
+          <Property Name="crId" Type="Int32" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="updatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_AccGroup" Relationship="Self.FK_AccLedger_Group" FromRole="tbl_AccLedger" ToRole="tbl_AccGroup" />
+          <NavigationProperty Name="tbl_SalesMaster" Relationship="Self.FK_SalesDetail_SalesDetail" FromRole="tbl_AccLedger" ToRole="tbl_SalesMaster" />
+          <NavigationProperty Name="tbl_LedgerDetails" Relationship="Self.FK_tbl_LedgerDetails_tbl_AccLedger" FromRole="tbl_AccLedger" ToRole="tbl_LedgerDetails" />
+          <NavigationProperty Name="tbl_PurchaseMaster" Relationship="MicroAccountsModel.FK_PurchaseMaster_AccLedger" FromRole="tbl_AccLedger" ToRole="tbl_PurchaseMaster" />
+        </EntityType>
+        <EntityType Name="tbl_CategoryMaster">
+          <Key>
+            <PropertyRef Name="cId" />
+          </Key>
+          <Property Name="cId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="prefix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="updatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_ItemMaster" Relationship="Self.FK_ItemMaster_CategoryMaster" FromRole="tbl_CategoryMaster" ToRole="tbl_ItemMaster" />
+        </EntityType>
+        <EntityType Name="tbl_Entry">
+          <Key>
+            <PropertyRef Name="voucherRefNo" />
+          </Key>
+          <Property Name="voucherRefNo" Type="Int64" Nullable="false" />
+          <Property Name="entryType" Type="Int32" />
+          <Property Name="crId" Type="Int64" />
+          <Property Name="drId" Type="Int64" />
+          <Property Name="amt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="stringDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="updatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_EntryDetails">
+          <Key>
+            <PropertyRef Name="pDetailsId" />
+          </Key>
+          <Property Name="pDetailsId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="voucherRefNo" Type="Int64" />
+          <Property Name="purchaseSalesIds" Type="Int64" />
+          <Property Name="amtPaid" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="updatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_ItemMaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="itemCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="categoryId" Type="Int64" />
+          <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="updateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_CategoryMaster" Relationship="Self.FK_ItemMaster_CategoryMaster" FromRole="tbl_ItemMaster" ToRole="tbl_CategoryMaster" />
+          <NavigationProperty Name="tbl_SalesDetails" Relationship="Self.FK_SalesDetails_tbl_ItemMaster" FromRole="tbl_ItemMaster" ToRole="tbl_SalesDetails" />
+          <NavigationProperty Name="tbl_StockItemDetails" Relationship="Self.FK_StockItemDetails_ItemMaster" FromRole="tbl_ItemMaster" ToRole="tbl_StockItemDetails" />
+          <NavigationProperty Name="tbl_PurchaseDetail" Relationship="MicroAccountsModel.FK_PurchaseDetail_PurchaseDetail" FromRole="tbl_ItemMaster" ToRole="tbl_PurchaseDetail" />
+        </EntityType>
+        <EntityType Name="tbl_LedgerDetails">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ledgerId" Type="Int64" />
+          <Property Name="address" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+          <Property Name="contact" Type="Decimal" Precision="13" Scale="0" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="updateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_AccLedger" Relationship="Self.FK_tbl_LedgerDetails_tbl_AccLedger" FromRole="tbl_LedgerDetails" ToRole="tbl_AccLedger" />
+        </EntityType>
+        <EntityType Name="tbl_SalesDetails">
+          <Key>
+            <PropertyRef Name="sDetailsId" />
+          </Key>
+          <Property Name="sDetailsId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="salesId" Type="Int64" />
+          <Property Name="productId" Type="Int64" />
+          <Property Name="qty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="weight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="karat" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="making" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="rate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="updateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_ItemMaster" Relationship="Self.FK_SalesDetails_tbl_ItemMaster" FromRole="tbl_SalesDetails" ToRole="tbl_ItemMaster" />
+          <NavigationProperty Name="tbl_SalesMaster" Relationship="Self.FK_SalesDetails_SalesDetails" FromRole="tbl_SalesDetails" ToRole="tbl_SalesMaster" />
+          <Property Name="kRate" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="tbl_SalesMaster">
+          <Key>
+            <PropertyRef Name="sId" />
+          </Key>
+          <Property Name="sId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="billNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ledgerId" Type="Int64" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="totalWeight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="unit" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="totalKarat" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="totalMaking" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="totalAmt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="updateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_AccLedger" Relationship="Self.FK_SalesDetail_SalesDetail" FromRole="tbl_SalesMaster" ToRole="tbl_AccLedger" />
+          <NavigationProperty Name="tbl_SalesDetails" Relationship="Self.FK_SalesDetails_SalesDetails" FromRole="tbl_SalesMaster" ToRole="tbl_SalesDetails" />
+        </EntityType>
+        <EntityType Name="tbl_StockItemDetails">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="itemId" Type="Int64" />
+          <Property Name="qty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="weight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="unit" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="melting" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="carret" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="upadtedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_ItemMaster" Relationship="Self.FK_StockItemDetails_ItemMaster" FromRole="tbl_StockItemDetails" ToRole="tbl_ItemMaster" />
+        </EntityType>
+        <EntityType Name="tbl_TransactionMaster">
+          <Key>
+            <PropertyRef Name="tId" />
+          </Key>
+          <Property Name="tId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="voucherType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="voucherRefNo" Type="Int64" />
+          <Property Name="crAmt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="drAmt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ledgerId" Type="Int64" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="updatedDate" Type="DateTime" Precision="3" />
+          <Property Name="loginId" Type="Int64" />
+          <NavigationProperty Name="tbl_UserLogiln" Relationship="Self.FK_tbl_TransactionMaster_tbl_UserLogiln" FromRole="tbl_TransactionMaster" ToRole="tbl_UserLogiln" />
+        </EntityType>
+        <EntityType Name="tbl_UserLogiln">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int64" />
+          <Property Name="loginId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+          <Property Name="lastLogin" Type="DateTime" Precision="3" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="updateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_TransactionMaster" Relationship="Self.FK_tbl_TransactionMaster_tbl_UserLogiln" FromRole="tbl_UserLogiln" ToRole="tbl_TransactionMaster" />
+          <NavigationProperty Name="tbl_UserProfile" Relationship="Self.FK_UserLogin_UserLogin" FromRole="tbl_UserLogiln" ToRole="tbl_UserProfile" />
+        </EntityType>
+        <EntityType Name="tbl_UserProfile">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mobile" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="updateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_UserLogiln" Relationship="Self.FK_UserLogin_UserLogin" FromRole="tbl_UserProfile" ToRole="tbl_UserLogiln" />
+        </EntityType>
+        <Association Name="FK_AccLedger_Group">
+          <End Role="tbl_AccGroup" Type="Self.tbl_AccGroup" Multiplicity="1" />
+          <End Role="tbl_AccLedger" Type="Self.tbl_AccLedger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_AccGroup">
+              <PropertyRef Name="groupId" />
+            </Principal>
+            <Dependent Role="tbl_AccLedger">
+              <PropertyRef Name="groupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesDetail_SalesDetail">
+          <End Role="tbl_AccLedger" Type="Self.tbl_AccLedger" Multiplicity="0..1" />
+          <End Role="tbl_SalesMaster" Type="Self.tbl_SalesMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_AccLedger">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_SalesMaster">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_LedgerDetails_tbl_AccLedger">
+          <End Role="tbl_AccLedger" Type="Self.tbl_AccLedger" Multiplicity="0..1" />
+          <End Role="tbl_LedgerDetails" Type="Self.tbl_LedgerDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_AccLedger">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_LedgerDetails">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemMaster_CategoryMaster">
+          <End Role="tbl_CategoryMaster" Type="Self.tbl_CategoryMaster" Multiplicity="0..1" />
+          <End Role="tbl_ItemMaster" Type="Self.tbl_ItemMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CategoryMaster">
+              <PropertyRef Name="cId" />
+            </Principal>
+            <Dependent Role="tbl_ItemMaster">
+              <PropertyRef Name="categoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesDetails_tbl_ItemMaster">
+          <End Role="tbl_ItemMaster" Type="Self.tbl_ItemMaster" Multiplicity="0..1" />
+          <End Role="tbl_SalesDetails" Type="Self.tbl_SalesDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_SalesDetails">
+              <PropertyRef Name="productId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockItemDetails_ItemMaster">
+          <End Role="tbl_ItemMaster" Type="Self.tbl_ItemMaster" Multiplicity="0..1" />
+          <End Role="tbl_StockItemDetails" Type="Self.tbl_StockItemDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_StockItemDetails">
+              <PropertyRef Name="itemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesDetails_SalesDetails">
+          <End Role="tbl_SalesMaster" Type="Self.tbl_SalesMaster" Multiplicity="0..1" />
+          <End Role="tbl_SalesDetails" Type="Self.tbl_SalesDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_SalesMaster">
+              <PropertyRef Name="sId" />
+            </Principal>
+            <Dependent Role="tbl_SalesDetails">
+              <PropertyRef Name="salesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_TransactionMaster_tbl_UserLogiln">
+          <End Role="tbl_UserLogiln" Type="Self.tbl_UserLogiln" Multiplicity="0..1" />
+          <End Role="tbl_TransactionMaster" Type="Self.tbl_TransactionMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserLogiln">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_TransactionMaster">
+              <PropertyRef Name="loginId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLogin_UserLogin">
+          <End Role="tbl_UserProfile" Type="Self.tbl_UserProfile" Multiplicity="0..1" />
+          <End Role="tbl_UserLogiln" Type="Self.tbl_UserLogiln" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserProfile">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="tbl_UserLogiln">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MicroAccountsEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DailyRates" EntityType="Self.DailyRate" />
+          <EntitySet Name="tbl_AccGroup" EntityType="Self.tbl_AccGroup" />
+          <EntitySet Name="tbl_AccLedger" EntityType="Self.tbl_AccLedger" />
+          <EntitySet Name="tbl_CategoryMaster" EntityType="Self.tbl_CategoryMaster" />
+          <EntitySet Name="tbl_Entry" EntityType="Self.tbl_Entry" />
+          <EntitySet Name="tbl_EntryDetails" EntityType="Self.tbl_EntryDetails" />
+          <EntitySet Name="tbl_ItemMaster" EntityType="Self.tbl_ItemMaster" />
+          <EntitySet Name="tbl_LedgerDetails" EntityType="Self.tbl_LedgerDetails" />
+          <EntitySet Name="tbl_SalesDetails" EntityType="Self.tbl_SalesDetails" />
+          <EntitySet Name="tbl_SalesMaster" EntityType="Self.tbl_SalesMaster" />
+          <EntitySet Name="tbl_StockItemDetails" EntityType="Self.tbl_StockItemDetails" />
+          <EntitySet Name="tbl_TransactionMaster" EntityType="Self.tbl_TransactionMaster" />
+          <EntitySet Name="tbl_UserLogiln" EntityType="Self.tbl_UserLogiln" />
+          <EntitySet Name="tbl_UserProfile" EntityType="Self.tbl_UserProfile" />
+          <AssociationSet Name="FK_AccLedger_Group" Association="Self.FK_AccLedger_Group">
+            <End Role="tbl_AccGroup" EntitySet="tbl_AccGroup" />
+            <End Role="tbl_AccLedger" EntitySet="tbl_AccLedger" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesDetail_SalesDetail" Association="Self.FK_SalesDetail_SalesDetail">
+            <End Role="tbl_AccLedger" EntitySet="tbl_AccLedger" />
+            <End Role="tbl_SalesMaster" EntitySet="tbl_SalesMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_LedgerDetails_tbl_AccLedger" Association="Self.FK_tbl_LedgerDetails_tbl_AccLedger">
+            <End Role="tbl_AccLedger" EntitySet="tbl_AccLedger" />
+            <End Role="tbl_LedgerDetails" EntitySet="tbl_LedgerDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemMaster_CategoryMaster" Association="Self.FK_ItemMaster_CategoryMaster">
+            <End Role="tbl_CategoryMaster" EntitySet="tbl_CategoryMaster" />
+            <End Role="tbl_ItemMaster" EntitySet="tbl_ItemMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesDetails_tbl_ItemMaster" Association="Self.FK_SalesDetails_tbl_ItemMaster">
+            <End Role="tbl_ItemMaster" EntitySet="tbl_ItemMaster" />
+            <End Role="tbl_SalesDetails" EntitySet="tbl_SalesDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockItemDetails_ItemMaster" Association="Self.FK_StockItemDetails_ItemMaster">
+            <End Role="tbl_ItemMaster" EntitySet="tbl_ItemMaster" />
+            <End Role="tbl_StockItemDetails" EntitySet="tbl_StockItemDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesDetails_SalesDetails" Association="Self.FK_SalesDetails_SalesDetails">
+            <End Role="tbl_SalesMaster" EntitySet="tbl_SalesMaster" />
+            <End Role="tbl_SalesDetails" EntitySet="tbl_SalesDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_TransactionMaster_tbl_UserLogiln" Association="Self.FK_tbl_TransactionMaster_tbl_UserLogiln">
+            <End Role="tbl_UserLogiln" EntitySet="tbl_UserLogiln" />
+            <End Role="tbl_TransactionMaster" EntitySet="tbl_TransactionMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLogin_UserLogin" Association="Self.FK_UserLogin_UserLogin">
+            <End Role="tbl_UserProfile" EntitySet="tbl_UserProfile" />
+            <End Role="tbl_UserLogiln" EntitySet="tbl_UserLogiln" />
+          </AssociationSet>
+          <EntitySet Name="tbl_TaxDetail" EntityType="MicroAccountsModel.tbl_TaxDetail" />
+          <EntitySet Name="tbl_TaxMaster" EntityType="MicroAccountsModel.tbl_TaxMaster" />
+          <AssociationSet Name="FK_tbl_TaxDetail_tbl_TaxMaster" Association="MicroAccountsModel.FK_tbl_TaxDetail_tbl_TaxMaster">
+            <End Role="tbl_TaxMaster" EntitySet="tbl_TaxMaster" />
+            <End Role="tbl_TaxDetail" EntitySet="tbl_TaxDetail" />
+          </AssociationSet>
+          <EntitySet Name="tbl_PurchaseDetail" EntityType="MicroAccountsModel.tbl_PurchaseDetail" />
+          <EntitySet Name="tbl_PurchaseMaster" EntityType="MicroAccountsModel.tbl_PurchaseMaster" />
+          <AssociationSet Name="FK_PurchaseMaster_AccLedger" Association="MicroAccountsModel.FK_PurchaseMaster_AccLedger">
+            <End Role="tbl_AccLedger" EntitySet="tbl_AccLedger" />
+            <End Role="tbl_PurchaseMaster" EntitySet="tbl_PurchaseMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseDetail_PurchaseDetail" Association="MicroAccountsModel.FK_PurchaseDetail_PurchaseDetail">
+            <End Role="tbl_ItemMaster" EntitySet="tbl_ItemMaster" />
+            <End Role="tbl_PurchaseDetail" EntitySet="tbl_PurchaseDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseDetail_PurchaseMaster" Association="MicroAccountsModel.FK_PurchaseDetail_PurchaseMaster">
+            <End Role="tbl_PurchaseMaster" EntitySet="tbl_PurchaseMaster" />
+            <End Role="tbl_PurchaseDetail" EntitySet="tbl_PurchaseDetail" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_TaxDetail">
+          <Key>
+            <PropertyRef Name="taxDetailsId" />
+          </Key>
+          <Property Name="taxDetailsId" Type="Int64" Nullable="false" />
+          <Property Name="tId" Type="Int64" />
+          <Property Name="cgst_per" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="cgst_rate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="sgst_per" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="sgst_rate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="igst_per" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="igst_rate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="cDate" Type="DateTime" Precision="3" />
+          <Property Name="uDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_TaxMaster" Relationship="MicroAccountsModel.FK_tbl_TaxDetail_tbl_TaxMaster" FromRole="tbl_TaxDetail" ToRole="tbl_TaxMaster" />
+        </EntityType>
+        <EntityType Name="tbl_TaxMaster">
+          <Key>
+            <PropertyRef Name="tId" />
+          </Key>
+          <Property Name="tId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="voucherType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="voucherId" Type="Int64" />
+          <Property Name="totalTax" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="cDate" Type="DateTime" Precision="3" />
+          <Property Name="uDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_TaxDetail" Relationship="MicroAccountsModel.FK_tbl_TaxDetail_tbl_TaxMaster" FromRole="tbl_TaxMaster" ToRole="tbl_TaxDetail" />
+        </EntityType>
+        <Association Name="FK_tbl_TaxDetail_tbl_TaxMaster">
+          <End Type="MicroAccountsModel.tbl_TaxMaster" Role="tbl_TaxMaster" Multiplicity="0..1" />
+          <End Type="MicroAccountsModel.tbl_TaxDetail" Role="tbl_TaxDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_TaxMaster">
+              <PropertyRef Name="tId" />
+            </Principal>
+            <Dependent Role="tbl_TaxDetail">
+              <PropertyRef Name="tId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbl_PurchaseDetail">
+          <Key>
+            <PropertyRef Name="pdetailsId" />
+          </Key>
+          <Property Name="pdetailsId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="purchaseID" Type="Int64" />
+          <Property Name="productID" Type="Int64" />
+          <Property Name="qty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="weight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="karat" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="kRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="melting" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="purchaseMelting" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="making" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="fine" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="rate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="updatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_ItemMaster" Relationship="MicroAccountsModel.FK_PurchaseDetail_PurchaseDetail" FromRole="tbl_PurchaseDetail" ToRole="tbl_ItemMaster" />
+          <NavigationProperty Name="tbl_PurchaseMaster" Relationship="MicroAccountsModel.FK_PurchaseDetail_PurchaseMaster" FromRole="tbl_PurchaseDetail" ToRole="tbl_PurchaseMaster" />
+        </EntityType>
+        <EntityType Name="tbl_PurchaseMaster">
+          <Key>
+            <PropertyRef Name="pId" />
+          </Key>
+          <Property Name="pId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="refNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ledgerId" Type="Int64" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="totalWeight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="unit" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="totalMelting" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="totalPurchaseMelting" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="totalMaking" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="totalFine" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="totalAmt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="remarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="updateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_AccLedger" Relationship="MicroAccountsModel.FK_PurchaseMaster_AccLedger" FromRole="tbl_PurchaseMaster" ToRole="tbl_AccLedger" />
+          <NavigationProperty Name="tbl_PurchaseDetail" Relationship="MicroAccountsModel.FK_PurchaseDetail_PurchaseMaster" FromRole="tbl_PurchaseMaster" ToRole="tbl_PurchaseDetail" />
+        </EntityType>
+        <Association Name="FK_PurchaseMaster_AccLedger">
+          <End Type="MicroAccountsModel.tbl_AccLedger" Role="tbl_AccLedger" Multiplicity="0..1" />
+          <End Type="MicroAccountsModel.tbl_PurchaseMaster" Role="tbl_PurchaseMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_AccLedger">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_PurchaseMaster">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseDetail_PurchaseDetail">
+          <End Type="MicroAccountsModel.tbl_ItemMaster" Role="tbl_ItemMaster" Multiplicity="0..1" />
+          <End Type="MicroAccountsModel.tbl_PurchaseDetail" Role="tbl_PurchaseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ItemMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_PurchaseDetail">
+              <PropertyRef Name="productID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseDetail_PurchaseMaster">
+          <End Type="MicroAccountsModel.tbl_PurchaseMaster" Role="tbl_PurchaseMaster" Multiplicity="0..1" />
+          <End Type="MicroAccountsModel.tbl_PurchaseDetail" Role="tbl_PurchaseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PurchaseMaster">
+              <PropertyRef Name="pId" />
+            </Principal>
+            <Dependent Role="tbl_PurchaseDetail">
+              <PropertyRef Name="purchaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MicroAccountsModelStoreContainer" CdmEntityContainer="MicroAccountsEntities1">
+          <EntitySetMapping Name="DailyRates">
+            <EntityTypeMapping TypeName="MicroAccountsModel.DailyRate">
+              <MappingFragment StoreEntitySet="DailyRates">
+                <ScalarProperty Name="eighteenC" ColumnName="eighteenC" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fineGold" ColumnName="fineGold" />
+                <ScalarProperty Name="hallmark" ColumnName="hallmark" />
+                <ScalarProperty Name="hallmarkBuyBack" ColumnName="hallmarkBuyBack" />
+                <ScalarProperty Name="twentyTwoC" ColumnName="twentyTwoC" />
+                <ScalarProperty Name="twentyThreeC" ColumnName="twentyThreeC" />
+                <ScalarProperty Name="silver" ColumnName="silver" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_AccGroup">
+            <EntityTypeMapping TypeName="MicroAccountsModel.tbl_AccGroup">
+              <MappingFragment StoreEntitySet="tbl_AccGroup">
+                <ScalarProperty Name="groupId" ColumnName="groupId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="parentId" ColumnName="parentId" />
+                <ScalarProperty Name="groupName" ColumnName="groupName" />
+                <ScalarProperty Name="affects_gross" ColumnName="affects_gross" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_AccLedger">
+            <EntityTypeMapping TypeName="MicroAccountsModel.tbl_AccLedger">
+              <MappingFragment StoreEntitySet="tbl_AccLedger">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="groupId" ColumnName="groupId" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="opBalance" ColumnName="opBalance" />
+                <ScalarProperty Name="opBalanceDC" ColumnName="opBalanceDC" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="drId" ColumnName="drId" />
+                <ScalarProperty Name="crId" ColumnName="crId" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CategoryMaster">
+            <EntityTypeMapping TypeName="MicroAccountsModel.tbl_CategoryMaster">
+              <MappingFragment StoreEntitySet="tbl_CategoryMaster">
+                <ScalarProperty Name="cId" ColumnName="cId" />
+                <ScalarProperty Name="cName" ColumnName="cName" />
+                <ScalarProperty Name="prefix" ColumnName="prefix" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Entry">
+            <EntityTypeMapping TypeName="MicroAccountsModel.tbl_Entry">
+              <MappingFragment StoreEntitySet="tbl_Entry">
+                <ScalarProperty Name="voucherRefNo" ColumnName="voucherRefNo" />
+                <ScalarProperty Name="entryType" ColumnName="entryType" />
+                <ScalarProperty Name="crId" ColumnName="crId" />
+                <ScalarProperty Name="drId" ColumnName="drId" />
+                <ScalarProperty Name="amt" ColumnName="amt" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="stringDate" ColumnName="stringDate" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_EntryDetails">
+            <EntityTypeMapping TypeName="MicroAccountsModel.tbl_EntryDetails">
+              <MappingFragment StoreEntitySet="tbl_EntryDetails">
+                <ScalarProperty Name="pDetailsId" ColumnName="pDetailsId" />
+                <ScalarProperty Name="voucherRefNo" ColumnName="voucherRefNo" />
+                <ScalarProperty Name="purchaseSalesIds" ColumnName="purchaseSalesIds" />
+                <ScalarProperty Name="amtPaid" ColumnName="amtPaid" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ItemMaster">
+            <EntityTypeMapping TypeName="MicroAccountsModel.tbl_ItemMaster">
+              <MappingFragment StoreEntitySet="tbl_ItemMaster">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="itemCode" ColumnName="itemCode" />
+                <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_LedgerDetails">
+            <EntityTypeMapping TypeName="MicroAccountsModel.tbl_LedgerDetails">
+              <MappingFragment StoreEntitySet="tbl_LedgerDetails">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SalesDetails">
+            <EntityTypeMapping TypeName="MicroAccountsModel.tbl_SalesDetails">
+              <MappingFragment StoreEntitySet="tbl_SalesDetails">
+                <ScalarProperty Name="kRate" ColumnName="kRate" />
+                <ScalarProperty Name="sDetailsId" ColumnName="sDetailsId" />
+                <ScalarProperty Name="salesId" ColumnName="salesId" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="karat" ColumnName="karat" />
+                <ScalarProperty Name="making" ColumnName="making" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SalesMaster">
+            <EntityTypeMapping TypeName="MicroAccountsModel.tbl_SalesMaster">
+              <MappingFragment StoreEntitySet="tbl_SalesMaster">
+                <ScalarProperty Name="sId" ColumnName="sId" />
+                <ScalarProperty Name="billNo" ColumnName="billNo" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="totalWeight" ColumnName="totalWeight" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="totalKarat" ColumnName="totalKarat" />
+                <ScalarProperty Name="totalMaking" ColumnName="totalMaking" />
+                <ScalarProperty Name="totalAmt" ColumnName="totalAmt" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_StockItemDetails">
+            <EntityTypeMapping TypeName="MicroAccountsModel.tbl_StockItemDetails">
+              <MappingFragment StoreEntitySet="tbl_StockItemDetails">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="itemId" ColumnName="itemId" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="melting" ColumnName="melting" />
+                <ScalarProperty Name="carret" ColumnName="carret" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="upadtedDate" ColumnName="upadtedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_TransactionMaster">
+            <EntityTypeMapping TypeName="MicroAccountsModel.tbl_TransactionMaster">
+              <MappingFragment StoreEntitySet="tbl_TransactionMaster">
+                <ScalarProperty Name="tId" ColumnName="tId" />
+                <ScalarProperty Name="tDate" ColumnName="tDate" />
+                <ScalarProperty Name="voucherType" ColumnName="voucherType" />
+                <ScalarProperty Name="voucherRefNo" ColumnName="voucherRefNo" />
+                <ScalarProperty Name="crAmt" ColumnName="crAmt" />
+                <ScalarProperty Name="drAmt" ColumnName="drAmt" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="loginId" ColumnName="loginId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UserLogiln">
+            <EntityTypeMapping TypeName="MicroAccountsModel.tbl_UserLogiln">
+              <MappingFragment StoreEntitySet="tbl_UserLogiln">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="loginId" ColumnName="loginId" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="lastLogin" ColumnName="lastLogin" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UserProfile">
+            <EntityTypeMapping TypeName="MicroAccountsModel.tbl_UserProfile">
+              <MappingFragment StoreEntitySet="tbl_UserProfile">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_TaxDetail">
+            <EntityTypeMapping TypeName="MicroAccountsModel.tbl_TaxDetail">
+              <MappingFragment StoreEntitySet="tbl_TaxDetail">
+                <ScalarProperty Name="uDate" ColumnName="uDate" />
+                <ScalarProperty Name="cDate" ColumnName="cDate" />
+                <ScalarProperty Name="igst_rate" ColumnName="igst_rate" />
+                <ScalarProperty Name="igst_per" ColumnName="igst_per" />
+                <ScalarProperty Name="sgst_rate" ColumnName="sgst_rate" />
+                <ScalarProperty Name="sgst_per" ColumnName="sgst_per" />
+                <ScalarProperty Name="cgst_rate" ColumnName="cgst_rate" />
+                <ScalarProperty Name="cgst_per" ColumnName="cgst_per" />
+                <ScalarProperty Name="tId" ColumnName="tId" />
+                <ScalarProperty Name="taxDetailsId" ColumnName="taxDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_TaxMaster">
+            <EntityTypeMapping TypeName="MicroAccountsModel.tbl_TaxMaster">
+              <MappingFragment StoreEntitySet="tbl_TaxMaster">
+                <ScalarProperty Name="uDate" ColumnName="uDate" />
+                <ScalarProperty Name="cDate" ColumnName="cDate" />
+                <ScalarProperty Name="totalTax" ColumnName="totalTax" />
+                <ScalarProperty Name="voucherId" ColumnName="voucherId" />
+                <ScalarProperty Name="voucherType" ColumnName="voucherType" />
+                <ScalarProperty Name="tId" ColumnName="tId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PurchaseDetail">
+            <EntityTypeMapping TypeName="MicroAccountsModel.tbl_PurchaseDetail">
+              <MappingFragment StoreEntitySet="tbl_PurchaseDetail">
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="fine" ColumnName="fine" />
+                <ScalarProperty Name="making" ColumnName="making" />
+                <ScalarProperty Name="purchaseMelting" ColumnName="purchaseMelting" />
+                <ScalarProperty Name="melting" ColumnName="melting" />
+                <ScalarProperty Name="kRate" ColumnName="kRate" />
+                <ScalarProperty Name="karat" ColumnName="karat" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="productID" ColumnName="productID" />
+                <ScalarProperty Name="purchaseID" ColumnName="purchaseID" />
+                <ScalarProperty Name="pdetailsId" ColumnName="pdetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PurchaseMaster">
+            <EntityTypeMapping TypeName="MicroAccountsModel.tbl_PurchaseMaster">
+              <MappingFragment StoreEntitySet="tbl_PurchaseMaster">
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="totalAmt" ColumnName="totalAmt" />
+                <ScalarProperty Name="totalFine" ColumnName="totalFine" />
+                <ScalarProperty Name="totalMaking" ColumnName="totalMaking" />
+                <ScalarProperty Name="totalPurchaseMelting" ColumnName="totalPurchaseMelting" />
+                <ScalarProperty Name="totalMelting" ColumnName="totalMelting" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="totalWeight" ColumnName="totalWeight" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="refNo" ColumnName="refNo" />
+                <ScalarProperty Name="pId" ColumnName="pId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
