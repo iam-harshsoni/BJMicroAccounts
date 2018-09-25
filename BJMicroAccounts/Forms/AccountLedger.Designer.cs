@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AccountLedger));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
-            this.button13 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.addressPanel = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
@@ -69,9 +67,7 @@
             // 
             // panel1
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.button13);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.addressPanel);
             this.panel1.Controls.Add(this.label15);
@@ -108,30 +104,12 @@
             this.label10.TabIndex = 117;
             this.label10.Text = "Account Ledger";
             // 
-            // button13
-            // 
-            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button13.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button13.FlatAppearance.BorderSize = 0;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.ForeColor = System.Drawing.Color.White;
-            this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
-            this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button13.Location = new System.Drawing.Point(694, 3);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(32, 35);
-            this.button13.TabIndex = 115;
-            this.button13.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
-            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Goldenrod;
             this.panel4.Location = new System.Drawing.Point(11, 36);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(250, 3);
+            this.panel4.Size = new System.Drawing.Size(709, 3);
             this.panel4.TabIndex = 116;
             // 
             // addressPanel
@@ -141,9 +119,9 @@
             this.addressPanel.Controls.Add(this.txtAddress);
             this.addressPanel.Controls.Add(this.txtContact);
             this.addressPanel.Enabled = false;
-            this.addressPanel.Location = new System.Drawing.Point(11, 386);
+            this.addressPanel.Location = new System.Drawing.Point(3, 356);
             this.addressPanel.Name = "addressPanel";
-            this.addressPanel.Size = new System.Drawing.Size(712, 173);
+            this.addressPanel.Size = new System.Drawing.Size(725, 173);
             this.addressPanel.TabIndex = 114;
             // 
             // label8
@@ -195,7 +173,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(506, 364);
+            this.label15.Location = new System.Drawing.Point(504, 336);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(208, 17);
             this.label15.TabIndex = 113;
@@ -205,7 +183,7 @@
             // 
             this.chkBankOrCash.AutoSize = true;
             this.chkBankOrCash.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.chkBankOrCash.Location = new System.Drawing.Point(174, 232);
+            this.chkBankOrCash.Location = new System.Drawing.Point(174, 208);
             this.chkBankOrCash.Name = "chkBankOrCash";
             this.chkBankOrCash.Size = new System.Drawing.Size(189, 24);
             this.chkBankOrCash.TabIndex = 4;
@@ -219,7 +197,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label6.Location = new System.Drawing.Point(171, 259);
+            this.label6.Location = new System.Drawing.Point(171, 235);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(383, 17);
             this.label6.TabIndex = 107;
@@ -230,7 +208,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label4.Location = new System.Drawing.Point(171, 189);
+            this.label4.Location = new System.Drawing.Point(171, 164);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(389, 34);
             this.label4.TabIndex = 106;
@@ -273,7 +251,7 @@
             this.cmbParentGroup.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.cmbParentGroup.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.cmbParentGroup.FormattingEnabled = true;
-            this.cmbParentGroup.Location = new System.Drawing.Point(174, 113);
+            this.cmbParentGroup.Location = new System.Drawing.Point(174, 101);
             this.cmbParentGroup.Name = "cmbParentGroup";
             this.cmbParentGroup.Size = new System.Drawing.Size(540, 28);
             this.cmbParentGroup.TabIndex = 1;
@@ -284,10 +262,10 @@
             // txtOpeningBal
             // 
             this.txtOpeningBal.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.txtOpeningBal.Location = new System.Drawing.Point(245, 160);
+            this.txtOpeningBal.Location = new System.Drawing.Point(245, 135);
             this.txtOpeningBal.MaxLength = 13;
             this.txtOpeningBal.Name = "txtOpeningBal";
-            this.txtOpeningBal.Size = new System.Drawing.Size(289, 26);
+            this.txtOpeningBal.Size = new System.Drawing.Size(309, 26);
             this.txtOpeningBal.TabIndex = 3;
             this.txtOpeningBal.Enter += new System.EventHandler(this.txtOpeningBal_Enter);
             this.txtOpeningBal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtOpeningBal_KeyDown);
@@ -296,7 +274,7 @@
             // txtNotes
             // 
             this.txtNotes.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.txtNotes.Location = new System.Drawing.Point(170, 292);
+            this.txtNotes.Location = new System.Drawing.Point(168, 264);
             this.txtNotes.MaxLength = 200;
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
@@ -313,7 +291,7 @@
             this.cmbDRCR.Items.AddRange(new object[] {
             "Dr",
             "Cr"});
-            this.cmbDRCR.Location = new System.Drawing.Point(174, 160);
+            this.cmbDRCR.Location = new System.Drawing.Point(174, 135);
             this.cmbDRCR.Name = "cmbDRCR";
             this.cmbDRCR.Size = new System.Drawing.Size(65, 25);
             this.cmbDRCR.TabIndex = 2;
@@ -349,7 +327,7 @@
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreate.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreate.ForeColor = System.Drawing.Color.White;
-            this.btnCreate.Location = new System.Drawing.Point(538, 566);
+            this.btnCreate.Location = new System.Drawing.Point(549, 535);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(85, 32);
             this.btnCreate.TabIndex = 6;
@@ -374,7 +352,7 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(629, 566);
+            this.btnClear.Location = new System.Drawing.Point(640, 535);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(85, 32);
             this.btnClear.TabIndex = 7;
@@ -387,7 +365,7 @@
             this.panel3.BackColor = System.Drawing.Color.Pink;
             this.panel3.Controls.Add(this.lblError);
             this.panel3.Font = new System.Drawing.Font("Microsoft YaHei UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(3, 565);
+            this.panel3.Location = new System.Drawing.Point(8, 534);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(533, 32);
             this.panel3.TabIndex = 111;
@@ -429,9 +407,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(735, 612);
+            this.ClientSize = new System.Drawing.Size(735, 576);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AccountLedger";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AccountLedger";
@@ -478,7 +456,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Panel panel4;
     }
 }

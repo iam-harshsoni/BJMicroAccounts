@@ -32,7 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesMaster));
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtKRate = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -74,7 +73,6 @@
             this.cmbUnit = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
-            this.button13 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -98,6 +96,7 @@
             this.SidePanel2 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.panel7 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSalesItem)).BeginInit();
             this.panel3.SuspendLayout();
@@ -107,7 +106,6 @@
             // 
             // panel1
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.txtKRate);
             this.panel1.Controls.Add(this.label20);
             this.panel1.Controls.Add(this.btnPrint);
@@ -138,7 +136,7 @@
             this.panel1.Controls.Add(this.cmbUnit);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.button13);
+            this.panel1.Controls.Add(this.panel7);
             this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel4);
@@ -191,7 +189,7 @@
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.ForeColor = System.Drawing.Color.White;
-            this.btnPrint.Location = new System.Drawing.Point(626, 610);
+            this.btnPrint.Location = new System.Drawing.Point(11, 610);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(85, 32);
             this.btnPrint.TabIndex = 15;
@@ -265,7 +263,7 @@
             this.lblBtnError.AutoSize = true;
             this.lblBtnError.Font = new System.Drawing.Font("Century Gothic", 8.25F);
             this.lblBtnError.ForeColor = System.Drawing.Color.Red;
-            this.lblBtnError.Location = new System.Drawing.Point(705, 639);
+            this.lblBtnError.Location = new System.Drawing.Point(517, 620);
             this.lblBtnError.Name = "lblBtnError";
             this.lblBtnError.Size = new System.Drawing.Size(199, 16);
             this.lblBtnError.TabIndex = 0;
@@ -287,10 +285,10 @@
             // txtRemark
             // 
             this.txtRemark.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.txtRemark.Location = new System.Drawing.Point(17, 556);
+            this.txtRemark.Location = new System.Drawing.Point(17, 546);
             this.txtRemark.Multiline = true;
             this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(502, 48);
+            this.txtRemark.Size = new System.Drawing.Size(599, 38);
             this.txtRemark.TabIndex = 14;
             // 
             // txtAmtInWords
@@ -300,7 +298,7 @@
             this.txtAmtInWords.Location = new System.Drawing.Point(17, 454);
             this.txtAmtInWords.Multiline = true;
             this.txtAmtInWords.Name = "txtAmtInWords";
-            this.txtAmtInWords.Size = new System.Drawing.Size(502, 70);
+            this.txtAmtInWords.Size = new System.Drawing.Size(599, 52);
             this.txtAmtInWords.TabIndex = 13;
             // 
             // txtTotalRate
@@ -339,7 +337,7 @@
             // txtTotalKarat
             // 
             this.txtTotalKarat.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.txtTotalKarat.Location = new System.Drawing.Point(386, 527);
+            this.txtTotalKarat.Location = new System.Drawing.Point(512, 512);
             this.txtTotalKarat.MaxLength = 15;
             this.txtTotalKarat.Name = "txtTotalKarat";
             this.txtTotalKarat.Size = new System.Drawing.Size(104, 26);
@@ -447,7 +445,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 9.25F);
-            this.label11.Location = new System.Drawing.Point(264, 530);
+            this.label11.Location = new System.Drawing.Point(390, 515);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(90, 17);
             this.label11.TabIndex = 122;
@@ -463,7 +461,7 @@
             this.dgSalesItem.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgSalesItem.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Goldenrod;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -490,10 +488,11 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgSalesItem.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgSalesItem.Location = new System.Drawing.Point(17, 227);
+            this.dgSalesItem.EnableHeadersVisualStyles = false;
+            this.dgSalesItem.Location = new System.Drawing.Point(0, 227);
             this.dgSalesItem.Name = "dgSalesItem";
             this.dgSalesItem.ReadOnly = true;
-            this.dgSalesItem.Size = new System.Drawing.Size(880, 178);
+            this.dgSalesItem.Size = new System.Drawing.Size(913, 178);
             this.dgSalesItem.TabIndex = 121;
             this.dgSalesItem.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSalesItem_CellContentClick);
             this.dgSalesItem.DoubleClick += new System.EventHandler(this.dgSalesItem_DoubleClick);
@@ -593,7 +592,7 @@
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(665, 64);
+            this.dateTimePicker1.Location = new System.Drawing.Point(776, 6);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(121, 26);
             this.dateTimePicker1.TabIndex = 1;
@@ -608,24 +607,6 @@
             this.label10.Size = new System.Drawing.Size(64, 25);
             this.label10.TabIndex = 117;
             this.label10.Text = "Sales";
-            // 
-            // button13
-            // 
-            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button13.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button13.FlatAppearance.BorderSize = 0;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.ForeColor = System.Drawing.Color.White;
-            this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
-            this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button13.Location = new System.Drawing.Point(877, 3);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(32, 35);
-            this.button13.TabIndex = 115;
-            this.button13.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // panel6
             // 
@@ -648,9 +629,9 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Goldenrod;
-            this.panel4.Location = new System.Drawing.Point(11, 36);
+            this.panel4.Location = new System.Drawing.Point(11, 37);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(140, 2);
+            this.panel4.Size = new System.Drawing.Size(887, 3);
             this.panel4.TabIndex = 116;
             // 
             // label6
@@ -707,7 +688,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 9.25F);
-            this.label14.Location = new System.Drawing.Point(13, 536);
+            this.label14.Location = new System.Drawing.Point(13, 526);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(74, 17);
             this.label14.TabIndex = 108;
@@ -747,7 +728,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label2.Location = new System.Drawing.Point(602, 69);
+            this.label2.Location = new System.Drawing.Point(713, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 20);
             this.label2.TabIndex = 108;
@@ -767,7 +748,7 @@
             // 
             this.lblBalance.AutoSize = true;
             this.lblBalance.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBalance.Location = new System.Drawing.Point(623, 107);
+            this.lblBalance.Location = new System.Drawing.Point(632, 108);
             this.lblBalance.Name = "lblBalance";
             this.lblBalance.Size = new System.Drawing.Size(36, 18);
             this.lblBalance.TabIndex = 108;
@@ -817,9 +798,9 @@
             this.panel3.BackColor = System.Drawing.Color.Pink;
             this.panel3.Controls.Add(this.lblError);
             this.panel3.Font = new System.Drawing.Font("Microsoft YaHei UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(17, 610);
+            this.panel3.Location = new System.Drawing.Point(102, 610);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(502, 32);
+            this.panel3.Size = new System.Drawing.Size(410, 32);
             this.panel3.TabIndex = 111;
             this.panel3.Visible = false;
             // 
@@ -854,6 +835,15 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.DarkSalmon;
+            this.panel7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel7.Location = new System.Drawing.Point(14, 597);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(880, 1);
+            this.panel7.TabIndex = 116;
+            // 
             // SalesMaster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -861,7 +851,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(920, 669);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "SalesMaster";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SalesMaster";
@@ -904,7 +894,6 @@
         private System.Windows.Forms.ComboBox cmbUnit;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
@@ -944,5 +933,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn UpdateDate;
         private System.Windows.Forms.DataGridViewImageColumn Delete;
+        private System.Windows.Forms.Panel panel7;
     }
 }

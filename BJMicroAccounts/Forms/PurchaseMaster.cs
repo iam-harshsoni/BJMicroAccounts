@@ -532,7 +532,6 @@ namespace MicroAccounts.Forms
             try
             {
                 _entities = new MicroAccountsEntities1();
-
                 if (txtLedgerName.Text != string.Empty)
                 {
                     var checkLedgername = _entities.tbl_AccLedger.Where(x => x.ledgerName == txtLedgerName.Text.Trim().ToString()).FirstOrDefault();
@@ -554,10 +553,10 @@ namespace MicroAccounts.Forms
                         }
                     }
 
-
                     decimal drLedgerId = Convert.ToDecimal(checkLedgername.Id);
 
                     CrDrDifference crdrDiff = new CrDrDifference();
+
                     string valueAmt = crdrDiff.DifferenceCrDr(Convert.ToInt32(drLedgerId), 0);
 
                     lblBalance.Text = valueAmt;
@@ -817,6 +816,11 @@ namespace MicroAccounts.Forms
             {
 
             }
+        }
+
+        private void txtLedgerName_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void txtTotalPurchMelting_KeyDown(object sender, KeyEventArgs e)

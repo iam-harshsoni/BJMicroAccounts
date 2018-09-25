@@ -32,7 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Group));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -56,14 +55,14 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button13 = new System.Windows.Forms.Button();
             this.lblHiddenId = new System.Windows.Forms.Label();
             this.lblhiddenGName = new System.Windows.Forms.Label();
             this.lblTotalRows = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dtGroupList)).BeginInit();
             this.panel3.SuspendLayout();
             this.SidePanel2.SuspendLayout();
@@ -75,7 +74,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label1.Location = new System.Drawing.Point(16, 72);
+            this.label1.Location = new System.Drawing.Point(20, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 20);
             this.label1.TabIndex = 30;
@@ -85,7 +84,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label2.Location = new System.Drawing.Point(16, 116);
+            this.label2.Location = new System.Drawing.Point(16, 90);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(120, 20);
             this.label2.TabIndex = 29;
@@ -94,9 +93,9 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Goldenrod;
-            this.panel4.Location = new System.Drawing.Point(10, 40);
+            this.panel4.Location = new System.Drawing.Point(10, 39);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(250, 3);
+            this.panel4.Size = new System.Drawing.Size(734, 3);
             this.panel4.TabIndex = 35;
             // 
             // label3
@@ -140,10 +139,10 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtGroupList.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dtGroupList.Location = new System.Drawing.Point(23, 219);
+            this.dtGroupList.Location = new System.Drawing.Point(8, 219);
             this.dtGroupList.Name = "dtGroupList";
             this.dtGroupList.ReadOnly = true;
-            this.dtGroupList.Size = new System.Drawing.Size(707, 320);
+            this.dtGroupList.Size = new System.Drawing.Size(742, 343);
             this.dtGroupList.TabIndex = 37;
             this.dtGroupList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGroupList_CellContentClick);
             this.dtGroupList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGroupList_CellDoubleClick);
@@ -218,7 +217,7 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(643, 147);
+            this.btnClear.Location = new System.Drawing.Point(645, 121);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(85, 32);
             this.btnClear.TabIndex = 3;
@@ -232,7 +231,7 @@
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreate.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreate.ForeColor = System.Drawing.Color.White;
-            this.btnCreate.Location = new System.Drawing.Point(552, 147);
+            this.btnCreate.Location = new System.Drawing.Point(554, 121);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(85, 32);
             this.btnCreate.TabIndex = 2;
@@ -254,7 +253,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Pink;
             this.panel3.Controls.Add(this.lblError);
-            this.panel3.Location = new System.Drawing.Point(149, 147);
+            this.panel3.Location = new System.Drawing.Point(149, 121);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(397, 32);
             this.panel3.TabIndex = 40;
@@ -263,7 +262,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Goldenrod;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, -18);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(5, 34);
             this.panel1.TabIndex = 24;
@@ -272,7 +271,7 @@
             // 
             this.SidePanel2.BackColor = System.Drawing.Color.Goldenrod;
             this.SidePanel2.Controls.Add(this.panel1);
-            this.SidePanel2.Location = new System.Drawing.Point(4, 65);
+            this.SidePanel2.Location = new System.Drawing.Point(4, 50);
             this.SidePanel2.Name = "SidePanel2";
             this.SidePanel2.Size = new System.Drawing.Size(5, 34);
             this.SidePanel2.TabIndex = 31;
@@ -282,7 +281,7 @@
             this.txtGroupName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtGroupName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtGroupName.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.txtGroupName.Location = new System.Drawing.Point(149, 73);
+            this.txtGroupName.Location = new System.Drawing.Point(149, 55);
             this.txtGroupName.MaxLength = 50;
             this.txtGroupName.Name = "txtGroupName";
             this.txtGroupName.Size = new System.Drawing.Size(579, 26);
@@ -298,7 +297,7 @@
             this.cmbParentGroup.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.cmbParentGroup.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.cmbParentGroup.FormattingEnabled = true;
-            this.cmbParentGroup.Location = new System.Drawing.Point(149, 113);
+            this.cmbParentGroup.Location = new System.Drawing.Point(149, 87);
             this.cmbParentGroup.Name = "cmbParentGroup";
             this.cmbParentGroup.Size = new System.Drawing.Size(579, 28);
             this.cmbParentGroup.TabIndex = 1;
@@ -308,11 +307,9 @@
             // 
             // panel2
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.button13);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.btnCreate);
@@ -325,8 +322,9 @@
             this.panel2.Controls.Add(this.SidePanel2);
             this.panel2.Controls.Add(this.dtGroupList);
             this.panel2.Controls.Add(this.txtGroupName);
-            this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.cmbParentGroup);
+            this.panel2.Controls.Add(this.panel5);
+            this.panel2.Controls.Add(this.panel6);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Location = new System.Drawing.Point(4, 2);
             this.panel2.Name = "panel2";
@@ -339,7 +337,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(10, 545);
+            this.label15.Location = new System.Drawing.Point(10, 565);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(270, 17);
             this.label15.TabIndex = 44;
@@ -349,36 +347,18 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(15, 182);
+            this.label4.Location = new System.Drawing.Point(15, 174);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(205, 25);
             this.label4.TabIndex = 36;
             this.label4.Text = "Account Group List";
-            // 
-            // button13
-            // 
-            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button13.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button13.FlatAppearance.BorderSize = 0;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.ForeColor = System.Drawing.Color.White;
-            this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
-            this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button13.Location = new System.Drawing.Point(721, 3);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(32, 35);
-            this.button13.TabIndex = 34;
-            this.button13.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // lblHiddenId
             // 
             this.lblHiddenId.AutoSize = true;
             this.lblHiddenId.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.lblHiddenId.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lblHiddenId.Location = new System.Drawing.Point(181, 562);
+            this.lblHiddenId.Location = new System.Drawing.Point(605, 565);
             this.lblHiddenId.Name = "lblHiddenId";
             this.lblHiddenId.Size = new System.Drawing.Size(139, 20);
             this.lblHiddenId.TabIndex = 29;
@@ -390,7 +370,7 @@
             this.lblhiddenGName.AutoSize = true;
             this.lblhiddenGName.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.lblhiddenGName.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lblhiddenGName.Location = new System.Drawing.Point(19, 562);
+            this.lblhiddenGName.Location = new System.Drawing.Point(443, 565);
             this.lblhiddenGName.Name = "lblhiddenGName";
             this.lblhiddenGName.Size = new System.Drawing.Size(168, 20);
             this.lblhiddenGName.TabIndex = 29;
@@ -400,30 +380,22 @@
             // lblTotalRows
             // 
             this.lblTotalRows.AutoSize = true;
-            this.lblTotalRows.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalRows.Location = new System.Drawing.Point(668, 543);
+            this.lblTotalRows.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalRows.Location = new System.Drawing.Point(655, 178);
             this.lblTotalRows.Name = "lblTotalRows";
-            this.lblTotalRows.Size = new System.Drawing.Size(15, 16);
+            this.lblTotalRows.Size = new System.Drawing.Size(18, 19);
             this.lblTotalRows.TabIndex = 29;
             this.lblTotalRows.Text = "0";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(586, 542);
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(550, 178);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 16);
+            this.label5.Size = new System.Drawing.Size(99, 19);
             this.label5.TabIndex = 29;
             this.label5.Text = "Total Rows : ";
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.Goldenrod;
-            this.panel5.Location = new System.Drawing.Point(23, 210);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(250, 3);
-            this.panel5.TabIndex = 35;
             // 
             // errorProvider1
             // 
@@ -436,6 +408,22 @@
             this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.Goldenrod;
+            this.panel6.Location = new System.Drawing.Point(13, 164);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(734, 3);
+            this.panel6.TabIndex = 35;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.Goldenrod;
+            this.panel5.Location = new System.Drawing.Point(13, 206);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(734, 3);
+            this.panel5.TabIndex = 35;
+            // 
             // Group
             // 
             this.AcceptButton = this.btnCreate;
@@ -445,7 +433,7 @@
             this.CancelButton = this.btnClear;
             this.ClientSize = new System.Drawing.Size(766, 596);
             this.Controls.Add(this.panel2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Group";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Group";
@@ -465,7 +453,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dtGroupList;
@@ -479,7 +466,6 @@
         private System.Windows.Forms.ComboBox cmbParentGroup;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label lblhiddenGName;
@@ -494,5 +480,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreatedDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn UpdateDate;
         private System.Windows.Forms.DataGridViewImageColumn Delete;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel6;
     }
 }

@@ -69,6 +69,8 @@
             this.SidePanel2 = new System.Windows.Forms.Panel();
             this.lblTotalRows = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPaymentDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -78,7 +80,7 @@
             // 
             this.lblLedgerDr.AutoSize = true;
             this.lblLedgerDr.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.lblLedgerDr.Location = new System.Drawing.Point(23, 19);
+            this.lblLedgerDr.Location = new System.Drawing.Point(22, 54);
             this.lblLedgerDr.Name = "lblLedgerDr";
             this.lblLedgerDr.Size = new System.Drawing.Size(103, 20);
             this.lblLedgerDr.TabIndex = 25;
@@ -86,16 +88,18 @@
             // 
             // cmbLedgerDR
             // 
+            this.cmbLedgerDR.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbLedgerDR.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbLedgerDR.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.cmbLedgerDR.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.cmbLedgerDR.FormattingEnabled = true;
             this.cmbLedgerDR.Items.AddRange(new object[] {
             "--Select--"});
-            this.cmbLedgerDR.Location = new System.Drawing.Point(133, 15);
+            this.cmbLedgerDR.Location = new System.Drawing.Point(133, 51);
             this.cmbLedgerDR.MaxLength = 50;
             this.cmbLedgerDR.Name = "cmbLedgerDR";
-            this.cmbLedgerDR.Size = new System.Drawing.Size(519, 28);
+            this.cmbLedgerDR.Size = new System.Drawing.Size(668, 28);
             this.cmbLedgerDR.TabIndex = 0;
             this.cmbLedgerDR.SelectedIndexChanged += new System.EventHandler(this.cmbLedgerDR_SelectedIndexChanged);
             this.cmbLedgerDR.Enter += new System.EventHandler(this.cmbLedgerDR_Enter);
@@ -107,7 +111,7 @@
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(888, 23);
+            this.dateTimePicker1.Location = new System.Drawing.Point(131, 21);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(116, 26);
             this.dateTimePicker1.TabIndex = 109;
@@ -116,7 +120,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label1.Location = new System.Drawing.Point(825, 25);
+            this.label1.Location = new System.Drawing.Point(69, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 20);
             this.label1.TabIndex = 110;
@@ -125,9 +129,10 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(658, 23);
+            this.label3.Location = new System.Drawing.Point(805, 55);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 18);
             this.label3.TabIndex = 110;
@@ -136,9 +141,10 @@
             // 
             // lblDrBal
             // 
+            this.lblDrBal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDrBal.AutoSize = true;
             this.lblDrBal.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDrBal.Location = new System.Drawing.Point(711, 23);
+            this.lblDrBal.Location = new System.Drawing.Point(858, 55);
             this.lblDrBal.Name = "lblDrBal";
             this.lblDrBal.Size = new System.Drawing.Size(36, 18);
             this.lblDrBal.TabIndex = 110;
@@ -149,7 +155,7 @@
             // 
             this.lblLedgerCR.AutoSize = true;
             this.lblLedgerCR.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.lblLedgerCR.Location = new System.Drawing.Point(22, 55);
+            this.lblLedgerCR.Location = new System.Drawing.Point(21, 88);
             this.lblLedgerCR.Name = "lblLedgerCR";
             this.lblLedgerCR.Size = new System.Drawing.Size(104, 20);
             this.lblLedgerCR.TabIndex = 25;
@@ -157,15 +163,17 @@
             // 
             // cmbLedgerCR
             // 
+            this.cmbLedgerCR.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbLedgerCR.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbLedgerCR.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.cmbLedgerCR.Enabled = false;
             this.cmbLedgerCR.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.cmbLedgerCR.FormattingEnabled = true;
-            this.cmbLedgerCR.Location = new System.Drawing.Point(133, 52);
+            this.cmbLedgerCR.Location = new System.Drawing.Point(131, 85);
             this.cmbLedgerCR.MaxLength = 50;
             this.cmbLedgerCR.Name = "cmbLedgerCR";
-            this.cmbLedgerCR.Size = new System.Drawing.Size(519, 28);
+            this.cmbLedgerCR.Size = new System.Drawing.Size(668, 28);
             this.cmbLedgerCR.TabIndex = 1;
             this.cmbLedgerCR.SelectedIndexChanged += new System.EventHandler(this.cmbLedgerCR_SelectedIndexChanged);
             this.cmbLedgerCR.Enter += new System.EventHandler(this.cmbLedgerCR_Enter);
@@ -175,9 +183,10 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(658, 61);
+            this.label5.Location = new System.Drawing.Point(805, 85);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 18);
             this.label5.TabIndex = 110;
@@ -186,9 +195,10 @@
             // 
             // lblCrBal
             // 
+            this.lblCrBal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCrBal.AutoSize = true;
             this.lblCrBal.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCrBal.Location = new System.Drawing.Point(711, 61);
+            this.lblCrBal.Location = new System.Drawing.Point(858, 85);
             this.lblCrBal.Name = "lblCrBal";
             this.lblCrBal.Size = new System.Drawing.Size(36, 18);
             this.lblCrBal.TabIndex = 110;
@@ -199,7 +209,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label7.Location = new System.Drawing.Point(24, 94);
+            this.label7.Location = new System.Drawing.Point(48, 122);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(78, 20);
             this.label7.TabIndex = 25;
@@ -207,10 +217,12 @@
             // 
             // txtAmt
             // 
+            this.txtAmt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAmt.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.txtAmt.Location = new System.Drawing.Point(133, 92);
+            this.txtAmt.Location = new System.Drawing.Point(131, 119);
             this.txtAmt.Name = "txtAmt";
-            this.txtAmt.Size = new System.Drawing.Size(115, 26);
+            this.txtAmt.Size = new System.Drawing.Size(245, 26);
             this.txtAmt.TabIndex = 2;
             this.txtAmt.Text = "0.00";
             this.txtAmt.TextChanged += new System.EventHandler(this.txtAmt_TextChanged);
@@ -221,9 +233,10 @@
             // 
             // label16
             // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label16.Location = new System.Drawing.Point(258, 100);
+            this.label16.Location = new System.Drawing.Point(382, 122);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(36, 20);
             this.label16.TabIndex = 126;
@@ -231,11 +244,12 @@
             // 
             // btnCreate
             // 
+            this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCreate.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreate.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreate.ForeColor = System.Drawing.Color.White;
-            this.btnCreate.Location = new System.Drawing.Point(476, 181);
+            this.btnCreate.Location = new System.Drawing.Point(815, 207);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(85, 32);
             this.btnCreate.TabIndex = 4;
@@ -245,12 +259,13 @@
             // 
             // btnClear
             // 
+            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClear.BackColor = System.Drawing.Color.Crimson;
             this.btnClear.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(567, 181);
+            this.btnClear.Location = new System.Drawing.Point(906, 207);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(85, 32);
             this.btnClear.TabIndex = 5;
@@ -263,7 +278,7 @@
             this.panel3.BackColor = System.Drawing.Color.Pink;
             this.panel3.Controls.Add(this.lblError);
             this.panel3.Font = new System.Drawing.Font("Microsoft YaHei UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(133, 181);
+            this.panel3.Location = new System.Drawing.Point(131, 209);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(331, 30);
             this.panel3.TabIndex = 125;
@@ -281,11 +296,13 @@
             // 
             // txtRemark
             // 
+            this.txtRemark.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRemark.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.txtRemark.Location = new System.Drawing.Point(133, 132);
+            this.txtRemark.Location = new System.Drawing.Point(131, 151);
             this.txtRemark.Multiline = true;
             this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(519, 39);
+            this.txtRemark.Size = new System.Drawing.Size(668, 39);
             this.txtRemark.TabIndex = 3;
             this.txtRemark.Enter += new System.EventHandler(this.txtRemark_Enter);
             this.txtRemark.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRemark_KeyDown);
@@ -294,7 +311,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.label14.Location = new System.Drawing.Point(24, 135);
+            this.label14.Location = new System.Drawing.Point(43, 154);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(82, 20);
             this.label14.TabIndex = 129;
@@ -302,17 +319,19 @@
             // 
             // panel4
             // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.Goldenrod;
-            this.panel4.Location = new System.Drawing.Point(25, 253);
+            this.panel4.Location = new System.Drawing.Point(4, 292);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(259, 3);
+            this.panel4.Size = new System.Drawing.Size(1018, 2);
             this.panel4.TabIndex = 131;
             // 
             // lblDetailsGrid
             // 
             this.lblDetailsGrid.AutoSize = true;
             this.lblDetailsGrid.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetailsGrid.Location = new System.Drawing.Point(19, 217);
+            this.lblDetailsGrid.Location = new System.Drawing.Point(19, 253);
             this.lblDetailsGrid.Name = "lblDetailsGrid";
             this.lblDetailsGrid.Size = new System.Drawing.Size(229, 33);
             this.lblDetailsGrid.TabIndex = 130;
@@ -324,10 +343,13 @@
             this.dgPaymentDetails.AllowUserToDeleteRows = false;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgPaymentDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgPaymentDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgPaymentDetails.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgPaymentDetails.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Goldenrod;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -351,7 +373,8 @@
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgPaymentDetails.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dgPaymentDetails.Location = new System.Drawing.Point(21, 262);
+            this.dgPaymentDetails.EnableHeadersVisualStyles = false;
+            this.dgPaymentDetails.Location = new System.Drawing.Point(3, 300);
             this.dgPaymentDetails.Name = "dgPaymentDetails";
             this.dgPaymentDetails.ReadOnly = true;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -362,7 +385,7 @@
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgPaymentDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgPaymentDetails.Size = new System.Drawing.Size(983, 325);
+            this.dgPaymentDetails.Size = new System.Drawing.Size(1017, 287);
             this.dgPaymentDetails.TabIndex = 132;
             this.dgPaymentDetails.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPaymentDetails_CellContentClick);
             this.dgPaymentDetails.DoubleClick += new System.EventHandler(this.dgPaymentDetails_DoubleClick);
@@ -452,10 +475,11 @@
             // 
             // lblNoteForAmt
             // 
+            this.lblNoteForAmt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNoteForAmt.AutoSize = true;
             this.lblNoteForAmt.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNoteForAmt.ForeColor = System.Drawing.Color.Red;
-            this.lblNoteForAmt.Location = new System.Drawing.Point(300, 101);
+            this.lblNoteForAmt.Location = new System.Drawing.Point(439, 121);
             this.lblNoteForAmt.Name = "lblNoteForAmt";
             this.lblNoteForAmt.Size = new System.Drawing.Size(455, 17);
             this.lblNoteForAmt.TabIndex = 138;
@@ -471,23 +495,45 @@
             // 
             // lblTotalRows
             // 
+            this.lblTotalRows.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalRows.AutoSize = true;
-            this.lblTotalRows.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalRows.Location = new System.Drawing.Point(928, 591);
+            this.lblTotalRows.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalRows.Location = new System.Drawing.Point(922, 264);
             this.lblTotalRows.Name = "lblTotalRows";
-            this.lblTotalRows.Size = new System.Drawing.Size(15, 16);
+            this.lblTotalRows.Size = new System.Drawing.Size(18, 19);
             this.lblTotalRows.TabIndex = 140;
             this.lblTotalRows.Text = "0";
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(846, 590);
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(817, 264);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 16);
+            this.label2.Size = new System.Drawing.Size(99, 19);
             this.label2.TabIndex = 141;
             this.label2.Text = "Total Rows : ";
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.Goldenrod;
+            this.panel1.Location = new System.Drawing.Point(2, 250);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1018, 2);
+            this.panel1.TabIndex = 131;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.Goldenrod;
+            this.panel2.Location = new System.Drawing.Point(26, 199);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(965, 2);
+            this.panel2.TabIndex = 131;
             // 
             // Payment
             // 
@@ -499,6 +545,8 @@
             this.Controls.Add(this.lblNoteForAmt);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.dgPaymentDetails);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.lblDetailsGrid);
             this.Controls.Add(this.label14);
@@ -569,5 +617,7 @@
         private System.Windows.Forms.Panel SidePanel2;
         private System.Windows.Forms.Label lblTotalRows;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
     }
 }

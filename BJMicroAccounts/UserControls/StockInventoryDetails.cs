@@ -53,7 +53,6 @@ namespace MicroAccounts.UserControls
                 catList.Add(model);
             }
 
-
             cmbCategory.DataSource = catList;
             cmbCategory.DisplayMember = "cName";
             cmbCategory.ValueMember = "cId";
@@ -395,6 +394,11 @@ namespace MicroAccounts.UserControls
             cmbKarat.SelectedIndex = 0;
             cmbCategory.SelectedIndex = 0;
             dataGridBind();
+        }
+
+        private void txtLedgerName_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)

@@ -59,8 +59,8 @@ namespace MicroAccounts
             SidePanel.Top = button2.Top;
             //  mySecondCustomControl1.BringToFront();
             StockInventoryDetails db = new StockInventoryDetails();
-            db.Dock = DockStyle.Fill;
             MainWindow.Controls.Add(db);
+            db.Dock = DockStyle.Fill;
             db.Show();
 
             entriesButtonHide();
@@ -170,7 +170,7 @@ namespace MicroAccounts
             ss.Dock = DockStyle.Fill;
             MainWindow.Controls.Add(ss);
             ss.Show();
- 
+
             entriesButtonHide();
         }
 

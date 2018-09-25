@@ -13,7 +13,6 @@ using System.Data.SqlClient;
 using Microsoft.Reporting.WinForms;
 using System.IO;
 using BJMicroAccounts.App_Code;
-using Gmail;
 using System.Net.Mail;
 using MicroAccounts.ViewModel;
 
