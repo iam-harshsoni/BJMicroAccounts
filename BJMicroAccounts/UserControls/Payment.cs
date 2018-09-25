@@ -411,7 +411,7 @@ namespace MicroAccounts.UserControls
                     var crLedger = _entities.tbl_AccLedger.Where(x => x.Id == item.crId).FirstOrDefault().ledgerName.ToString();
 
                     model.drcrLedger = "Dr. " + drLedger + " / " + "Cr. " + crLedger;
-                    model.amt =Convert.ToDecimal( amtFormat.comma( item.amt));
+                    model.amt = Convert.ToDecimal(amtFormat.comma(item.amt));
                     model.date = Convert.ToDateTime(item.date).ToString("dd-MM-yyyy");
                     modelList.Add(model);
                     rowNo++;
@@ -448,7 +448,7 @@ namespace MicroAccounts.UserControls
         {
             try
             {
-                if (cmbLedgerDR.Text == string.Empty)
+                if (cmbLedgerDR.Text == string.Empty || cmbLedgerDR.SelectedIndex == 0)
                 {
                     errorProvider1.Clear();
                     errorProvider1.SetError(cmbLedgerDR, "Enter Dr Ledger");
@@ -457,7 +457,7 @@ namespace MicroAccounts.UserControls
                     lblError.Text = "Enter Dr Ledger.";
                 }
 
-                else if (cmbLedgerCR.Text == string.Empty)
+                else if (cmbLedgerCR.Text == string.Empty || cmbLedgerCR.SelectedIndex == 0)
                 {
                     errorProvider1.Clear();
                     errorProvider1.SetError(cmbLedgerCR, "Enter Cr Ledger");
@@ -731,7 +731,7 @@ namespace MicroAccounts.UserControls
 
                 updateVouId = data.voucherRefNo;
 
-                txtAmt.Text =amtFormat.comma( data.amt).ToString();
+                txtAmt.Text = amtFormat.comma(data.amt).ToString();
                 txtRemark.Text = data.remarks;
 
                 btnCreate.Text = "Update";
@@ -741,7 +741,7 @@ namespace MicroAccounts.UserControls
 
         private void txtAmt_Leave(object sender, EventArgs e)
         {
-            if (txtAmt.Text != "0.00" && cmbLedgerDR.SelectedIndex > 0 && (passedVoucherType == 1 || passedVoucherType == 2))
+            if (txtAmt.Text != "0.00" && cmbLedgerDR.SelectedIndex > 0 && cmbLedgerCR.SelectedIndex > 0 && (passedVoucherType == 1 || passedVoucherType == 2))
             {
                 tbl_Entry vNoTable;
                 long vNo;
@@ -782,7 +782,7 @@ namespace MicroAccounts.UserControls
         {
             _entities = new MicroAccountsEntities1();
 
-            if (cmbLedgerDR.Text != string.Empty)
+            if (cmbLedgerDR.Text != string.Empty && cmbLedgerDR.SelectedIndex > 0)
             {
                 var checkLedgername = _entities.tbl_AccLedger.Where(x => x.ledgerName == cmbLedgerDR.Text.Trim().ToString()).FirstOrDefault();
 
@@ -810,7 +810,7 @@ namespace MicroAccounts.UserControls
         {
             _entities = new MicroAccountsEntities1();
 
-            if (cmbLedgerCR.Text != string.Empty)
+            if (cmbLedgerCR.Text != string.Empty && cmbLedgerCR.SelectedIndex > 0)
             {
                 var checkLedgername = _entities.tbl_AccLedger.Where(x => x.ledgerName == cmbLedgerCR.Text.Trim().ToString()).FirstOrDefault();
 

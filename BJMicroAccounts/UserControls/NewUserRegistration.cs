@@ -190,9 +190,11 @@ namespace MicroAccounts.UserControls
                         //encryption of password by calling method of the class called EncryptionDecryption
                         enc = new EncryptionDecription();
 
-                        var encPass = enc.Encrypt(txtNewPass.Text.Trim().ToString());
+                      //  var encPass = enc.Encrypt(txtNewPass.Text.Trim().ToString(), "sblw-3hn8-sqoy19");
 
-                        userlogin.password = encPass;
+                       // var encPass = enc.Encrypt(txtNewPass.Text.Trim().ToString());
+
+                        userlogin.password = txtNewPass.Text.Trim().ToString();
                         userlogin.userId = _entities.tbl_UserProfile.Where(x => x.firstName == txtF_name.Text && x.email == txtEmail.Text).FirstOrDefault().userId;
                         userlogin.createdDate = DateTime.Now;
                         userlogin.updateDate = DateTime.Now;
@@ -220,6 +222,7 @@ namespace MicroAccounts.UserControls
                         foreach (var item in dataToUpdate.tbl_UserLogiln)
                         {
                             item.loginId = txtUserName.Text.Trim().ToString();
+                            //  item.password = enc.Encrypt(txtNewPass.Text.ToString(), "sblw-3hn8-sqoy19");
                             item.password = enc.Encrypt(txtNewPass.Text.ToString());
                             item.updateDate = DateTime.Now;
 
@@ -367,7 +370,9 @@ namespace MicroAccounts.UserControls
                 txtF_name.Text = userJoinData.a.firstName;
                 txtL_name.Text = userJoinData.a.lastName;
                 txtMobileNo.Text = userJoinData.a.mobile.ToString();
-                txtNewPass.Text = enc.Decrypt(userJoinData.b.password).ToString();
+                //txtNewPass.Text = enc.Decrypt(userJoinData.b.password, "sblw-3hn8-sqoy19").ToString();
+                //txtNewPass.Text = enc.Decrypt(userJoinData.b.password).ToString();
+                txtNewPass.Text = userJoinData.b.password.Trim().ToString();
                 txtUserName.Text = userJoinData.b.loginId.ToString();
                 hiddenUID.Text = userJoinData.a.userId.ToString();
 

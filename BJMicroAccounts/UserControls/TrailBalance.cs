@@ -78,7 +78,7 @@ namespace BJMicroAccounts.UserControls
 
                     lb = new Label();
                     this.Controls.Add(lb);
-                    lb.Text = toCurr.toCurrenc("C", dr);
+                    lb.Text = toCurr.toCurrenc("C", cr);
                     //lb.Top = assetsLabelTop + 50;
                     lb.Top = top + 25;
                     lb.Left = 651;
@@ -110,7 +110,7 @@ namespace BJMicroAccounts.UserControls
 
                     lb = new Label();
                     this.Controls.Add(lb);
-                    lb.Text = toCurr.toCurrenc("C", dr);
+                    lb.Text = toCurr.toCurrenc("C", cr);
                     //lb.Top = assetsLabelTop + 50;
                     lb.Top = top + 25;
                     lb.Left = 651;

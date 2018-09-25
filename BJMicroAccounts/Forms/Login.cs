@@ -37,8 +37,15 @@ namespace MicroAccounts
         }
         public void StartForm()
         {
-            
+            try
+            { 
+
                 Application.Run(new SplashScreen());
+            }
+            catch(Exception x)
+            {
+
+            }
            
         }
 
@@ -139,9 +146,11 @@ namespace MicroAccounts
 
                     foreach (var item in getUserData)
                     {
-                        var decPass = enc.Decrypt(item.password.ToString());
+                        //var decPass = enc.Decrypt(item.password.ToString(), "sblw-3hn8-sqoy19");
 
-                        if (item.loginId ==  txtUserName.Text.Trim().ToString() && decPass == txtPassword.Text.Trim().ToString())
+                        //var decPass = enc.Decrypt(item.password.ToString());
+
+                        if (item.loginId ==  txtUserName.Text.Trim().ToString() && item.password.ToString() == txtPassword.Text.Trim().ToString())
                         {
                             _entities = new MicroAccountsEntities1();
 
