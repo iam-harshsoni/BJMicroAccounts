@@ -42,7 +42,7 @@ namespace BJMicroAccounts.Reports
             var data = _entities.tbl_PurchaseMaster.Where(x => x.pId == passedId).ToList();
 
             List<PurchaseMasterVM> listVm = new List<PurchaseMasterVM>();
-
+            List<LedgerDetailsVM> LedgerlistVm = new List<LedgerDetailsVM>();
             foreach (var item in data)
             {
                 PurchaseMasterVM vm = new PurchaseMasterVM();
@@ -53,6 +53,7 @@ namespace BJMicroAccounts.Reports
                 vm.pId = item.pId;
                 vm.refNo = item.refNo;
                 vm.remarks = item.remarks;
+                vm.totalFine = item.totalFine;
 
                 vm.totalMaking = item.totalMaking;
                 vm.totalMelting = item.totalMelting;
@@ -64,11 +65,21 @@ namespace BJMicroAccounts.Reports
                 ConvertNoToWord toWord = new ConvertNoToWord(); 
                 vm.amtinWord = toWord.ConvertNumbertoWords(Convert.ToInt32(item.totalAmt));
                 listVm.Add(vm);
+
+                LedgerDetailsVM ll = new LedgerDetailsVM();
+                ll.contact = _entities.tbl_LedgerDetails.Where(x => x.ledgerId == item.ledgerId).FirstOrDefault().contact;
+                ll.address = _entities.tbl_LedgerDetails.Where(x => x.ledgerId == item.ledgerId).FirstOrDefault().address.Trim();
+
+                LedgerlistVm.Add(ll);
             }
 
             ReportDataSource datasource = new ReportDataSource("DataSet1", listVm);
 
             this.reportViewer1.LocalReport.DataSources.Clear();
+            this.reportViewer1.LocalReport.DataSources.Add(datasource);
+
+            datasource = new ReportDataSource("DataSet3", LedgerlistVm);
+
             this.reportViewer1.LocalReport.DataSources.Add(datasource);
         }
 
@@ -90,6 +101,10 @@ namespace BJMicroAccounts.Reports
                 vm.weight = item.weight;
                 vm.unit = item.unit;
                 vm.rate = item.rate;
+                vm.karat = item.karat;
+                vm.kRate = item.kRate;
+                vm.purchaseMelting = item.purchaseMelting;
+                
 
                 DetailslistVm.Add(vm);
             }
