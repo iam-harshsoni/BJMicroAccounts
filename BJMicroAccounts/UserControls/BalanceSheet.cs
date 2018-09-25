@@ -58,6 +58,7 @@ namespace MicroAccounts.UserControls
 
 
         private Label[] labels;
+        private Panel[] panel;
         private void BalanceSheet_Load(object sender, EventArgs e)
         {
             try
@@ -181,7 +182,7 @@ namespace MicroAccounts.UserControls
             //  dataGridView2.DataSource = dmList; 
 
             labels = new Label[dmList.Count + 1];
-
+            panel = new Panel[dmList.Count + 1];
             int k = 35;
             // create array elements in a loop
             for (int i = 0; i < dmList.Count; i++)
@@ -193,7 +194,7 @@ namespace MicroAccounts.UserControls
                 labels[i].Top = k * (i + 1);
                 labels[i].Left = 546;
                 labels[i].Font = FNT;
-                labels[i].Size = new Size(200, 19);
+                labels[i].Size = new Size(200, 18);
 
                 if (dmList[i].ledger == "1")
                 {
@@ -207,12 +208,23 @@ namespace MicroAccounts.UserControls
                 }
 
                 assetsLabelTop = k * (i + 1);
+
+                //Panel
+
+                panel[i] = new Panel();
+
+                panel[i].Top = assetsLabelTop +27;
+                panel[i].Left = 551;
+                panel[i].BackColor = Color.LightGray;
+                panel[i].Size = new Size(350, 1);
             }
 
             this.Controls.AddRange(labels);
+            this.Controls.AddRange(panel);
 
             labels = new Label[dmList.Count + 1];
-            k = 36;
+
+            k = 35;
             for (int i = 0; i < dmList.Count; i++)
             {
                 Font FNT = new Font("Century Gothic", 10.0f, FontStyle.Bold);
@@ -255,6 +267,7 @@ namespace MicroAccounts.UserControls
 
             k = 35;
             labels = new Label[dmList.Count + 1];
+            panel = new Panel[dmList.Count + 1];
             // create array elements in a loop
             for (int i = 0; i < dmList.Count; i++)
             {
@@ -280,10 +293,18 @@ namespace MicroAccounts.UserControls
                 }
 
                 libLabelTop = k * (i + 1);
+
+                panel[i] = new Panel();
+
+                panel[i].Top = libLabelTop + 27;
+                panel[i].Left =45;
+                panel[i].BackColor = Color.LightGray;
+                panel[i].Size = new Size(350, 1);
             }
             this.Controls.AddRange(labels);
+            this.Controls.AddRange(panel);
 
-            k = 36;
+            k = 35;
             labels = new Label[dmList.Count + 1];
             for (int i = 0; i < dmList.Count; i++)
             {
