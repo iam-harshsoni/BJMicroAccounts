@@ -27,9 +27,22 @@ namespace MicroAccounts.UserControls
 
         }
 
+        private void itemNameAutoComplete()
+        {
+            _entities = new MicroAccountsEntities1();
+            var itemCodeAutoComplete = _entities.tbl_ItemMaster;
+            txtLedgerName.AutoCompleteCustomSource.Clear();
+            foreach (var item in itemCodeAutoComplete)
+            {
+                txtLedgerName.AutoCompleteCustomSource.Add(item.itemCode.ToString());
+            }
+
+        }
+
         private void StockInventoryDetails_Load(object sender, EventArgs e)
         {
             dataGridBind();
+            itemNameAutoComplete();
 
             cmbKarat.SelectedIndex = 0;
 
@@ -89,7 +102,12 @@ namespace MicroAccounts.UserControls
                     model.qty = Convert.ToInt32(itemDetail.qty);
                     model.melting = itemDetail.melting;
                     model.createdDate = Convert.ToDateTime(item.createdDate).ToString("dd-MM-yyyy  hh:mm tt");
-                    model.updatedDate = Convert.ToDateTime(item.updateDate).ToString("dd-MM-yyyy  hh:mm tt");
+
+                    if (item.updateDate == null)
+                        model.updatedDate = "--";
+                    else
+                        model.updatedDate = Convert.ToDateTime(item.updateDate).ToString("dd-MM-yyyy  hh:mm tt");
+
 
                     modelList.Add(model);
                     rowNos++;

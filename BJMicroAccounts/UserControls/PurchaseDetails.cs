@@ -25,8 +25,24 @@ namespace MicroAccounts.UserControls
             InitializeComponent();
         }
 
+        private void ledgerNameAutoComplete()
+        {
+            _entities = new MicroAccountsEntities1();
+
+            var gId = _entities.tbl_AccGroup.Where(x => x.groupName == "Sundry Creditors").FirstOrDefault().groupId;
+
+            var ledgerNameAutoComplete = _entities.tbl_AccLedger.Where(x => x.groupId == gId);
+            txtSearch.AutoCompleteCustomSource.Clear();
+            foreach (var item in ledgerNameAutoComplete)
+            {
+                txtSearch.AutoCompleteCustomSource.Add(item.ledgerName.ToString());
+            }
+        }
+
         private void PurchaseDetails_Load(object sender, EventArgs e)
         {
+            ledgerNameAutoComplete();
+
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "dd-MM-yyyy";
 
@@ -68,7 +84,11 @@ namespace MicroAccounts.UserControls
                     model.totalAmt = Convert.ToDecimal(amtFormat.comma(item.totalAmt));
                     model.totalMelting = item.totalMelting;
                     model.createdDate = Convert.ToDateTime(item.createdDate).ToString("dd-MM-yyyy  hh:mm tt");
-                    model.updateDate = Convert.ToDateTime(item.updateDate).ToString("dd-MM-yyyy  hh:mm tt");
+
+                    if (item.updateDate == null)
+                        model.updateDate = "--";
+                    else
+                        model.updateDate = Convert.ToDateTime(item.updateDate).ToString("dd-MM-yyyy  hh:mm tt");
 
                     modelList.Add(model);
 
@@ -80,7 +100,7 @@ namespace MicroAccounts.UserControls
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.ToString());
+                MessageBox.Show("Something went wrong. Contact your system administrator");
             }
         }
         private void dgPurchaseDetails_DoubleClick(object sender, EventArgs e)
@@ -98,7 +118,7 @@ namespace MicroAccounts.UserControls
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.ToString());
+                MessageBox.Show("Something went wrong. Contact your system administrator");
             }
         }
 
@@ -274,6 +294,31 @@ namespace MicroAccounts.UserControls
             dateTimePicker2.Text = DateTime.Now.Date.ToString();
             txtSearch.Text = "";
             dataGridBind();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

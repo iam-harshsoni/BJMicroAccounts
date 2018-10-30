@@ -203,7 +203,7 @@ namespace MicroAccounts.Forms
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.ToString());
+                MessageBox.Show("Something went wrong. Contact your system administrator");
             }
         }
 
@@ -276,7 +276,7 @@ namespace MicroAccounts.Forms
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.ToString());
+                MessageBox.Show("Something went wrong. Contact your system administrator");
             }
         }
 

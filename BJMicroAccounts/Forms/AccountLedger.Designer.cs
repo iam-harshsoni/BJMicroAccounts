@@ -147,11 +147,11 @@
             // txtAddress
             // 
             this.txtAddress.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.txtAddress.Location = new System.Drawing.Point(157, 63);
+            this.txtAddress.Location = new System.Drawing.Point(165, 63);
             this.txtAddress.MaxLength = 200;
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(548, 82);
+            this.txtAddress.Size = new System.Drawing.Size(546, 82);
             this.txtAddress.TabIndex = 1;
             this.txtAddress.Enter += new System.EventHandler(this.txtAddress_Enter);
             this.txtAddress.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAddress_KeyDown);
@@ -159,10 +159,10 @@
             // txtContact
             // 
             this.txtContact.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.txtContact.Location = new System.Drawing.Point(157, 27);
+            this.txtContact.Location = new System.Drawing.Point(165, 27);
             this.txtContact.MaxLength = 50;
             this.txtContact.Name = "txtContact";
-            this.txtContact.Size = new System.Drawing.Size(548, 26);
+            this.txtContact.Size = new System.Drawing.Size(544, 26);
             this.txtContact.TabIndex = 0;
             this.txtContact.Enter += new System.EventHandler(this.txtContact_Enter);
             this.txtContact.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtContact_KeyDown);

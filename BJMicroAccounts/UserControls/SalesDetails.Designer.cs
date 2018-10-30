@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgSalesDetails = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,21 +66,21 @@
             // 
             this.dgSalesDetails.AllowUserToAddRows = false;
             this.dgSalesDetails.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgSalesDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgSalesDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgSalesDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgSalesDetails.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgSalesDetails.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Goldenrod;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgSalesDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Goldenrod;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgSalesDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgSalesDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSalesDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -93,26 +93,26 @@
             this.Column9,
             this.Column10,
             this.Delete});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgSalesDetails.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgSalesDetails.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgSalesDetails.EnableHeadersVisualStyles = false;
-            this.dgSalesDetails.Location = new System.Drawing.Point(3, 127);
+            this.dgSalesDetails.Location = new System.Drawing.Point(3, 134);
             this.dgSalesDetails.Name = "dgSalesDetails";
             this.dgSalesDetails.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgSalesDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgSalesDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgSalesDetails.Size = new System.Drawing.Size(1024, 482);
             this.dgSalesDetails.TabIndex = 139;
             this.dgSalesDetails.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSalesDetails_CellContentClick);
@@ -204,7 +204,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 10.25F);
-            this.label1.Location = new System.Drawing.Point(22, 50);
+            this.label1.Location = new System.Drawing.Point(22, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 19);
             this.label1.TabIndex = 134;
@@ -217,10 +217,10 @@
             this.txtSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtSearch.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.txtSearch.Location = new System.Drawing.Point(26, 72);
-            this.txtSearch.MaxLength = 13;
+            this.txtSearch.Location = new System.Drawing.Point(26, 77);
+            this.txtSearch.MaxLength = 50;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(284, 26);
+            this.txtSearch.Size = new System.Drawing.Size(305, 26);
             this.txtSearch.TabIndex = 127;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtLedgerName_TextChanged);
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLedgerName_KeyPress);
@@ -231,7 +231,7 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.Goldenrod;
-            this.panel2.Location = new System.Drawing.Point(10, 44);
+            this.panel2.Location = new System.Drawing.Point(27, 44);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1010, 2);
             this.panel2.TabIndex = 133;
@@ -243,9 +243,9 @@
             this.btnPurchaseEntry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPurchaseEntry.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPurchaseEntry.ForeColor = System.Drawing.Color.Black;
-            this.btnPurchaseEntry.Location = new System.Drawing.Point(751, 64);
+            this.btnPurchaseEntry.Location = new System.Drawing.Point(753, 73);
             this.btnPurchaseEntry.Name = "btnPurchaseEntry";
-            this.btnPurchaseEntry.Size = new System.Drawing.Size(144, 32);
+            this.btnPurchaseEntry.Size = new System.Drawing.Size(171, 32);
             this.btnPurchaseEntry.TabIndex = 132;
             this.btnPurchaseEntry.Text = "New Sales Entry";
             this.btnPurchaseEntry.UseVisualStyleBackColor = false;
@@ -265,7 +265,7 @@
             this.lblBtnError.AutoSize = true;
             this.lblBtnError.Font = new System.Drawing.Font("Century Gothic", 8.25F);
             this.lblBtnError.ForeColor = System.Drawing.Color.Red;
-            this.lblBtnError.Location = new System.Drawing.Point(23, 99);
+            this.lblBtnError.Location = new System.Drawing.Point(23, 105);
             this.lblBtnError.Name = "lblBtnError";
             this.lblBtnError.Size = new System.Drawing.Size(237, 16);
             this.lblBtnError.TabIndex = 140;
@@ -280,9 +280,9 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.Color.Black;
-            this.btnClear.Location = new System.Drawing.Point(901, 64);
+            this.btnClear.Location = new System.Drawing.Point(930, 73);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(108, 32);
+            this.btnClear.Size = new System.Drawing.Size(75, 32);
             this.btnClear.TabIndex = 148;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
@@ -293,7 +293,7 @@
             this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(490, 72);
+            this.dateTimePicker2.Location = new System.Drawing.Point(510, 79);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(130, 26);
             this.dateTimePicker2.TabIndex = 142;
@@ -303,7 +303,7 @@
             this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker1.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(335, 72);
+            this.dateTimePicker1.Location = new System.Drawing.Point(355, 79);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(121, 26);
             this.dateTimePicker1.TabIndex = 141;
@@ -313,7 +313,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 10.25F);
-            this.label3.Location = new System.Drawing.Point(462, 77);
+            this.label3.Location = new System.Drawing.Point(482, 84);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(23, 19);
             this.label3.TabIndex = 146;
@@ -321,9 +321,10 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 10.25F);
-            this.label4.Location = new System.Drawing.Point(331, 49);
+            this.label4.Location = new System.Drawing.Point(351, 56);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 19);
             this.label4.TabIndex = 147;
@@ -333,7 +334,7 @@
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.Goldenrod;
-            this.panel4.Location = new System.Drawing.Point(322, 56);
+            this.panel4.Location = new System.Drawing.Point(342, 63);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(2, 50);
             this.panel4.TabIndex = 145;
@@ -342,7 +343,7 @@
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.Goldenrod;
-            this.panel3.Location = new System.Drawing.Point(633, 56);
+            this.panel3.Location = new System.Drawing.Point(653, 63);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(2, 50);
             this.panel3.TabIndex = 144;
@@ -354,9 +355,9 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(649, 64);
+            this.button1.Location = new System.Drawing.Point(668, 73);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 32);
+            this.button1.Size = new System.Drawing.Size(79, 32);
             this.button1.TabIndex = 143;
             this.button1.Text = "Search";
             this.button1.UseVisualStyleBackColor = false;
@@ -405,6 +406,7 @@
             this.Name = "SalesDetails";
             this.Size = new System.Drawing.Size(1030, 612);
             this.Load += new System.EventHandler(this.SalesDetails_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SalesDetails_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgSalesDetails)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

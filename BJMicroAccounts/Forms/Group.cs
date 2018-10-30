@@ -154,7 +154,7 @@ namespace MicroAccounts
             }
             catch (Exception c)
             {
-                MessageBox.Show(c.ToString());
+                MessageBox.Show("Something went wrong. Contact your system administrator");
             }
         }
 
@@ -182,7 +182,11 @@ namespace MicroAccounts
                 }
                
                 accVM.createdDate = Convert.ToDateTime(item.createdDate).ToString("dd-MM-yyyy  hh:mm tt");
-                accVM.updateDate = Convert.ToDateTime(item.updateDate).ToString("dd-MM-yyyy  hh:mm tt");
+
+                if (item.updateDate == null)
+                    accVM.updateDate = "--";
+                else
+                    accVM.updateDate = Convert.ToDateTime(item.updateDate).ToString("dd-MM-yyyy  hh:mm tt");
 
 
                 accList.Add(accVM);

@@ -26,5 +26,10 @@ namespace MicroAccounts
         {
 
         }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

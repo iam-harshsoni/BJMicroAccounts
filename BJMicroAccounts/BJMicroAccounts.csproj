@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -47,7 +47,37 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>unnamed.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AForge">
+      <HintPath>C:\Users\Sonih\Downloads\C# Use Webcam Application - csharpens.com\C# Use Webcam Application - csharpens.com\Player\bin\Debug\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Controls">
+      <HintPath>C:\Users\Sonih\Downloads\C# Use Webcam Application - csharpens.com\C# Use Webcam Application - csharpens.com\Player\bin\Debug\AForge.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Imaging">
+      <HintPath>C:\Users\Sonih\Downloads\C# Use Webcam Application - csharpens.com\C# Use Webcam Application - csharpens.com\Player\bin\Debug\AForge.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Imaging.Formats">
+      <HintPath>C:\Users\Sonih\Downloads\C# Use Webcam Application - csharpens.com\C# Use Webcam Application - csharpens.com\Player\bin\Debug\AForge.Imaging.Formats.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Math">
+      <HintPath>C:\Users\Sonih\Downloads\C# Use Webcam Application - csharpens.com\C# Use Webcam Application - csharpens.com\Player\bin\Debug\AForge.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video">
+      <HintPath>C:\Users\Sonih\Downloads\C# Use Webcam Application - csharpens.com\C# Use Webcam Application - csharpens.com\Player\bin\Debug\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow">
+      <HintPath>C:\Users\Sonih\Downloads\C# Use Webcam Application - csharpens.com\C# Use Webcam Application - csharpens.com\Player\bin\Debug\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.FFMPEG">
+      <HintPath>C:\Users\Sonih\Downloads\C# Use Webcam Application - csharpens.com\C# Use Webcam Application - csharpens.com\Player\bin\Debug\AForge.Video.FFMPEG.dll</HintPath>
+    </Reference>
+    <Reference Include="DarrenLee.Media">
+      <HintPath>C:\Users\Sonih\Downloads\DarrenLee.Media.dll</HintPath>
+    </Reference>
     <Reference Include="Emgu.CV">
       <HintPath>C:\Users\Sonih\Downloads\CameraCapture\CameraCapture\CameraCapture\Emgu.CV.dll</HintPath>
     </Reference>
@@ -520,9 +550,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app.ico" />
+    <Content Include="App_Data\MicroAccounts.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\MicroAccounts_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>MicroAccounts.mdf</DependentUpon>
+    </Content>
     <Content Include="Data\MicroAccounts.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MicroAccounts.edmx</DependentUpon>
@@ -579,9 +619,12 @@
     <Content Include="Resources\il_570xN.1441337834_mvp3.jpg" />
     <Content Include="Resources\loader-1.gif" />
     <Content Include="Resources\lock-512.png" />
+    <Content Include="unnamed.ico" />
     <None Include="Resources\LogosBJ.png" />
     <Content Include="Resources\search.png" />
     <Content Include="Resources\search_small_search_659160.png" />
+    <None Include="Resources\unnamed1.png" />
+    <None Include="Resources\unnamed2.png" />
     <Content Include="Resources\_username_login_1172579.png" />
   </ItemGroup>
   <ItemGroup>
@@ -597,6 +640,11 @@
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SqlServer.SqlLocalDB.11.1">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2012 Express LocalDB</ProductName>
+      <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>

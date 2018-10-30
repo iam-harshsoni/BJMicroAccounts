@@ -162,8 +162,8 @@ namespace MicroAccounts.UserControls
 
         private void btnEnterRates_Click(object sender, EventArgs e)
         {
-            DailyGoldRates dr = new DailyGoldRates(passedUname,0);
-
+            DailyGoldRates dr = new DailyGoldRates(passedUname,0,1);
+            dr.ShowDialog();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -171,6 +171,35 @@ namespace MicroAccounts.UserControls
             dateTimePicker1.Text = DateTime.Now.Date.ToString();
             dateTimePicker2.Text = DateTime.Now.Date.ToString();
             dataGridBind();
+        }
+
+        private void dgDailyRateReport_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgDailyRateReport.CurrentRow.Index != -1 && dgDailyRateReport.CurrentRow.Cells[1].Value != null)
+                {
+                    var lID = Convert.ToInt32(dgDailyRateReport.CurrentRow.Cells[0].Value);
+
+                    DailyGoldRates acc = new DailyGoldRates(passedUname,lID,1);
+                    acc.ShowDialog();
+                    dataGridBind();
+                }
+            }
+            catch(Exception x)
+            {
+
+            }
+        }
+
+        private void lblFine_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblHallMark_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

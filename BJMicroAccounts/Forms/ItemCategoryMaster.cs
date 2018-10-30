@@ -141,7 +141,7 @@ namespace MicroAccounts.Forms
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.ToString());
+                MessageBox.Show("Something went wrong. Contact your system administrator");
             }
         }
 
@@ -164,7 +164,12 @@ namespace MicroAccounts.Forms
                 model.prefix = item.prefix;
 
                 model.createdDate = Convert.ToDateTime(item.createdDate).ToString("dd-MM-yyyy  hh:mm tt");
-                model.updatedDate = Convert.ToDateTime(item.updatedDate).ToString("dd-MM-yyyy  hh:mm tt");
+
+                if (item.updatedDate == null)
+                    model.updatedDate = "--";
+                else
+                    model.updatedDate = Convert.ToDateTime(item.updatedDate).ToString("dd-MM-yyyy  hh:mm tt");
+
 
                 modelList.Add(model);
 

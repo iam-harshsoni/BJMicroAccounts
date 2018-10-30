@@ -16,19 +16,27 @@ namespace MicroAccounts.Forms
     {
         string userName;
         MicroAccountsEntities1 _entities;
-        int passedId;
-        public DailyGoldRates(string loginName, int id)
+        int passedId,types;
+        public DailyGoldRates(string loginName, int id,int type)
         {
             InitializeComponent();
             userName = loginName;
             passedId = id;
+            types = type;
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
-            MainDashboard mm = new MainDashboard(userName);
-            mm.Show();
-            this.Close();
+            if (types == 0)
+            {
+                MainDashboard mm = new MainDashboard(userName);
+                mm.Show();
+                this.Close();
+            }
+            else 
+            {
+                this.Close();
+            }
         }
 
         private void txt999_KeyDown(object sender, KeyEventArgs e)
@@ -314,6 +322,12 @@ namespace MicroAccounts.Forms
                 {
                     btnCreate.Text = "Update";
                     txt999.Text = datas.fineGold.ToString();
+                    txtSilver.Text = datas.silver.ToString();
+                    txtHallMark.Text = datas.hallmark.ToString();
+                    txt22c.Text = datas.twentyTwoC.ToString();
+                    txt23c.Text = datas.twentyThreeC.ToString();
+                    txtBuyBack.Text = datas.hallmarkBuyBack.ToString();
+                    txt18c.Text = datas.eighteenC.ToString();
                 }
                 if (passedId > 0)
                 {

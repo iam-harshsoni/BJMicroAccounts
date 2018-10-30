@@ -38,6 +38,15 @@
             this.SidePanel = new System.Windows.Forms.Panel();
             this.lblAdmin = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.MainWindow = new System.Windows.Forms.Panel();
+            this.btnPayment = new System.Windows.Forms.Button();
+            this.btnContra = new System.Windows.Forms.Button();
+            this.btnReceipt = new System.Windows.Forms.Button();
+            this.btnJournal = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
@@ -53,16 +62,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.MainWindow = new System.Windows.Forms.Panel();
-            this.btnPayment = new System.Windows.Forms.Button();
-            this.btnContra = new System.Windows.Forms.Button();
-            this.btnReceipt = new System.Windows.Forms.Button();
-            this.btnJournal = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -73,7 +73,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(22, 103);
+            this.label3.Location = new System.Drawing.Point(22, 115);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 17);
             this.label3.TabIndex = 3;
@@ -84,7 +84,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(-3, 84);
+            this.label2.Location = new System.Drawing.Point(-3, 96);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(118, 19);
             this.label2.TabIndex = 3;
@@ -184,6 +184,146 @@
             this.label4.Size = new System.Drawing.Size(87, 19);
             this.label4.TabIndex = 22;
             this.label4.Text = "Welcome,";
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Goldenrod;
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.pictureBox1);
+            this.panel3.Location = new System.Drawing.Point(243, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(111, 143);
+            this.panel3.TabIndex = 10;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Goldenrod;
+            this.panel4.Location = new System.Drawing.Point(367, 55);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(249, 3);
+            this.panel4.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(360, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(160, 32);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Dashboard";
+            // 
+            // MainWindow
+            // 
+            this.MainWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MainWindow.BackColor = System.Drawing.Color.Transparent;
+            this.MainWindow.Location = new System.Drawing.Point(219, 149);
+            this.MainWindow.Name = "MainWindow";
+            this.MainWindow.Size = new System.Drawing.Size(871, 544);
+            this.MainWindow.TabIndex = 25;
+            this.MainWindow.Paint += new System.Windows.Forms.PaintEventHandler(this.MainWindow_Paint);
+            // 
+            // btnPayment
+            // 
+            this.btnPayment.BackColor = System.Drawing.Color.Black;
+            this.btnPayment.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPayment.FlatAppearance.BorderSize = 0;
+            this.btnPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPayment.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPayment.ForeColor = System.Drawing.Color.White;
+            this.btnPayment.Image = ((System.Drawing.Image)(resources.GetObject("btnPayment.Image")));
+            this.btnPayment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPayment.Location = new System.Drawing.Point(367, 67);
+            this.btnPayment.Name = "btnPayment";
+            this.btnPayment.Size = new System.Drawing.Size(134, 35);
+            this.btnPayment.TabIndex = 9;
+            this.btnPayment.Text = "   Payment";
+            this.btnPayment.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPayment.UseVisualStyleBackColor = false;
+            this.btnPayment.Visible = false;
+            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
+            // 
+            // btnContra
+            // 
+            this.btnContra.BackColor = System.Drawing.Color.Black;
+            this.btnContra.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnContra.FlatAppearance.BorderSize = 0;
+            this.btnContra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContra.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnContra.ForeColor = System.Drawing.Color.White;
+            this.btnContra.Image = ((System.Drawing.Image)(resources.GetObject("btnContra.Image")));
+            this.btnContra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnContra.Location = new System.Drawing.Point(785, 67);
+            this.btnContra.Name = "btnContra";
+            this.btnContra.Size = new System.Drawing.Size(133, 36);
+            this.btnContra.TabIndex = 7;
+            this.btnContra.Text = "   Contra";
+            this.btnContra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnContra.UseVisualStyleBackColor = false;
+            this.btnContra.Visible = false;
+            this.btnContra.Click += new System.EventHandler(this.btnContra_Click);
+            // 
+            // btnReceipt
+            // 
+            this.btnReceipt.BackColor = System.Drawing.Color.Black;
+            this.btnReceipt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReceipt.FlatAppearance.BorderSize = 0;
+            this.btnReceipt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReceipt.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReceipt.ForeColor = System.Drawing.Color.White;
+            this.btnReceipt.Image = ((System.Drawing.Image)(resources.GetObject("btnReceipt.Image")));
+            this.btnReceipt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReceipt.Location = new System.Drawing.Point(507, 67);
+            this.btnReceipt.Name = "btnReceipt";
+            this.btnReceipt.Size = new System.Drawing.Size(133, 36);
+            this.btnReceipt.TabIndex = 8;
+            this.btnReceipt.Text = "   Receipt";
+            this.btnReceipt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReceipt.UseVisualStyleBackColor = false;
+            this.btnReceipt.Visible = false;
+            this.btnReceipt.Click += new System.EventHandler(this.btnReceipt_Click);
+            // 
+            // btnJournal
+            // 
+            this.btnJournal.BackColor = System.Drawing.Color.Black;
+            this.btnJournal.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJournal.FlatAppearance.BorderSize = 0;
+            this.btnJournal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnJournal.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJournal.ForeColor = System.Drawing.Color.White;
+            this.btnJournal.Image = ((System.Drawing.Image)(resources.GetObject("btnJournal.Image")));
+            this.btnJournal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnJournal.Location = new System.Drawing.Point(646, 67);
+            this.btnJournal.Name = "btnJournal";
+            this.btnJournal.Size = new System.Drawing.Size(133, 36);
+            this.btnJournal.TabIndex = 6;
+            this.btnJournal.Text = "   Journal";
+            this.btnJournal.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnJournal.UseVisualStyleBackColor = false;
+            this.btnJournal.Visible = false;
+            this.btnJournal.Click += new System.EventHandler(this.btnJournal_Click);
+            // 
+            // button13
+            // 
+            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button13.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button13.FlatAppearance.BorderSize = 0;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button13.ForeColor = System.Drawing.Color.White;
+            this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
+            this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button13.Location = new System.Drawing.Point(1049, 19);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(32, 35);
+            this.button13.TabIndex = 12;
+            this.button13.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // button9
             // 
@@ -455,154 +595,15 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Goldenrod;
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Location = new System.Drawing.Point(243, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(111, 143);
-            this.panel3.TabIndex = 10;
-            // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::BJMicroAccounts.Properties.Resources.LogosBJ;
-            this.pictureBox1.Location = new System.Drawing.Point(23, 17);
+            this.pictureBox1.Image = global::BJMicroAccounts.Properties.Resources.unnamed;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(67, 63);
+            this.pictureBox1.Size = new System.Drawing.Size(105, 83);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.Goldenrod;
-            this.panel4.Location = new System.Drawing.Point(367, 55);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(249, 3);
-            this.panel4.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(360, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 32);
-            this.label1.TabIndex = 22;
-            this.label1.Text = "Dashboard";
-            // 
-            // MainWindow
-            // 
-            this.MainWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MainWindow.BackColor = System.Drawing.Color.Transparent;
-            this.MainWindow.Location = new System.Drawing.Point(219, 149);
-            this.MainWindow.Name = "MainWindow";
-            this.MainWindow.Size = new System.Drawing.Size(871, 544);
-            this.MainWindow.TabIndex = 25;
-            this.MainWindow.Paint += new System.Windows.Forms.PaintEventHandler(this.MainWindow_Paint);
-            // 
-            // btnPayment
-            // 
-            this.btnPayment.BackColor = System.Drawing.Color.Black;
-            this.btnPayment.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPayment.FlatAppearance.BorderSize = 0;
-            this.btnPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPayment.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPayment.ForeColor = System.Drawing.Color.White;
-            this.btnPayment.Image = ((System.Drawing.Image)(resources.GetObject("btnPayment.Image")));
-            this.btnPayment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPayment.Location = new System.Drawing.Point(367, 67);
-            this.btnPayment.Name = "btnPayment";
-            this.btnPayment.Size = new System.Drawing.Size(134, 35);
-            this.btnPayment.TabIndex = 9;
-            this.btnPayment.Text = "   Payment";
-            this.btnPayment.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPayment.UseVisualStyleBackColor = false;
-            this.btnPayment.Visible = false;
-            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
-            // 
-            // btnContra
-            // 
-            this.btnContra.BackColor = System.Drawing.Color.Black;
-            this.btnContra.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnContra.FlatAppearance.BorderSize = 0;
-            this.btnContra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnContra.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnContra.ForeColor = System.Drawing.Color.White;
-            this.btnContra.Image = ((System.Drawing.Image)(resources.GetObject("btnContra.Image")));
-            this.btnContra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnContra.Location = new System.Drawing.Point(785, 67);
-            this.btnContra.Name = "btnContra";
-            this.btnContra.Size = new System.Drawing.Size(133, 36);
-            this.btnContra.TabIndex = 7;
-            this.btnContra.Text = "   Contra";
-            this.btnContra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnContra.UseVisualStyleBackColor = false;
-            this.btnContra.Visible = false;
-            this.btnContra.Click += new System.EventHandler(this.btnContra_Click);
-            // 
-            // btnReceipt
-            // 
-            this.btnReceipt.BackColor = System.Drawing.Color.Black;
-            this.btnReceipt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReceipt.FlatAppearance.BorderSize = 0;
-            this.btnReceipt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReceipt.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReceipt.ForeColor = System.Drawing.Color.White;
-            this.btnReceipt.Image = ((System.Drawing.Image)(resources.GetObject("btnReceipt.Image")));
-            this.btnReceipt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReceipt.Location = new System.Drawing.Point(507, 67);
-            this.btnReceipt.Name = "btnReceipt";
-            this.btnReceipt.Size = new System.Drawing.Size(133, 36);
-            this.btnReceipt.TabIndex = 8;
-            this.btnReceipt.Text = "   Receipt";
-            this.btnReceipt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnReceipt.UseVisualStyleBackColor = false;
-            this.btnReceipt.Visible = false;
-            this.btnReceipt.Click += new System.EventHandler(this.btnReceipt_Click);
-            // 
-            // btnJournal
-            // 
-            this.btnJournal.BackColor = System.Drawing.Color.Black;
-            this.btnJournal.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnJournal.FlatAppearance.BorderSize = 0;
-            this.btnJournal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnJournal.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnJournal.ForeColor = System.Drawing.Color.White;
-            this.btnJournal.Image = ((System.Drawing.Image)(resources.GetObject("btnJournal.Image")));
-            this.btnJournal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnJournal.Location = new System.Drawing.Point(646, 67);
-            this.btnJournal.Name = "btnJournal";
-            this.btnJournal.Size = new System.Drawing.Size(133, 36);
-            this.btnJournal.TabIndex = 6;
-            this.btnJournal.Text = "   Journal";
-            this.btnJournal.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnJournal.UseVisualStyleBackColor = false;
-            this.btnJournal.Visible = false;
-            this.btnJournal.Click += new System.EventHandler(this.btnJournal_Click);
-            // 
-            // button13
-            // 
-            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button13.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button13.FlatAppearance.BorderSize = 0;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.ForeColor = System.Drawing.Color.White;
-            this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
-            this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button13.Location = new System.Drawing.Point(1049, 19);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(32, 35);
-            this.button13.TabIndex = 12;
-            this.button13.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // MainDashboard
             // 

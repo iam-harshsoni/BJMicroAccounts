@@ -54,6 +54,12 @@ namespace MicroAccounts.UserControls
                 dateTimePicker1.Format = DateTimePickerFormat.Custom;
                 dateTimePicker1.CustomFormat = "dd-MM-yyyy";
 
+                dateTimePicker2.Format = DateTimePickerFormat.Custom;
+                dateTimePicker2.CustomFormat = "dd-MM-yyyy";
+
+                dateTimePicker3.Format = DateTimePickerFormat.Custom;
+                dateTimePicker3.CustomFormat = "dd-MM-yyyy";
+
                 if (passedVoucherType == 1) //Payment
                 {
                     lblLedgerDr.Text = "Ledger (Dr)";
@@ -381,10 +387,13 @@ namespace MicroAccounts.UserControls
             lblDrBal.Text = "0.00";
             updateVouId = 0;
             btnCreate.Text = "Create";
-
+            dateTimePicker1.Text = DateTime.Now.ToString();
+            dateTimePicker2.Text = DateTime.Now.ToString();
+            dateTimePicker3.Text = DateTime.Now.ToString();
         }
         private void btnClear_Click(object sender, EventArgs e)
         {
+            datagridBind();
             clear();
         }
 
@@ -603,7 +612,7 @@ namespace MicroAccounts.UserControls
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.ToString());
+                MessageBox.Show("Something went wrong. Contact your system administrator");
             }
         }
 
@@ -905,6 +914,45 @@ namespace MicroAccounts.UserControls
             TextBoxValidation val = new TextBoxValidation();
 
             val.onlyNumber(sender, e);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            #region Payment Details in Grid with dates
+            int rowNo = 1;
+            List<EntryVM> modelList = new List<EntryVM>();
+
+            DateTime fromdate = DateTime.ParseExact(dateTimePicker2.Text, "dd-MM-yyyy", null);
+            DateTime todate = DateTime.ParseExact(dateTimePicker3.Text, "dd-MM-yyyy", null);
+
+            if (fromdate > todate)
+            {
+                MessageBox.Show("Invalid date entered. Select valid dates");
+                return;
+            }
+            else
+            {
+                var data = _entities.tbl_Entry.OrderByDescending(x => x.voucherRefNo).Where(x => x.entryType == passedVoucherType && (x.date >= fromdate && x.date <= todate)).ToList();
+
+                foreach (var item in data)
+                {
+                    EntryVM model = new EntryVM();
+                    model.rowNo = rowNo;
+                    model.voucherRefNo = item.voucherRefNo;
+                    var drLedger = _entities.tbl_AccLedger.Where(x => x.Id == item.drId).FirstOrDefault().ledgerName.ToString();
+                    var crLedger = _entities.tbl_AccLedger.Where(x => x.Id == item.crId).FirstOrDefault().ledgerName.ToString();
+
+                    model.drcrLedger = "Dr. " + drLedger + " / " + "Cr. " + crLedger;
+                    model.amt = Convert.ToDecimal(amtFormat.comma(item.amt));
+                    model.date = Convert.ToDateTime(item.date).ToString("dd-MM-yyyy");
+                    modelList.Add(model);
+                    rowNo++;
+                }
+
+                dgPaymentDetails.DataSource = modelList;
+                lblTotalRows.Text = modelList.Count.ToString();
+                #endregion
+            }
         }
     }
 }

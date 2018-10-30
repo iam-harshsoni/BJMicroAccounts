@@ -22,7 +22,7 @@ namespace BJMicroAccounts
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ReportSales(7));
+            Application.Run(new Login());
         }
     }
 }

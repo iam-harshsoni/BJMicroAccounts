@@ -111,7 +111,7 @@ namespace MicroAccounts
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-
+            txtUserName.Focus();
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
@@ -162,7 +162,7 @@ namespace MicroAccounts
                             string uName = item.tbl_UserProfile.firstName;
 
                             panel9.Visible = false;
-                            DailyGoldRates mm = new DailyGoldRates(uName, 0);
+                            DailyGoldRates mm = new DailyGoldRates(uName, 0,0);
                             mm.Show();
                             this.Hide();
                             return;
@@ -189,13 +189,18 @@ namespace MicroAccounts
             }
             catch (Exception xe)
             {
-                MessageBox.Show(xe.ToString());
+                MessageBox.Show("Something went wrong. Contact your system administrator");
             }
         }
 
         private void button13_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

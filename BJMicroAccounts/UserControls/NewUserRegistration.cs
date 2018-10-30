@@ -240,7 +240,7 @@ namespace MicroAccounts.UserControls
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Something went wrong. Contact your system administrator");
             }
 
         }
@@ -290,7 +290,12 @@ namespace MicroAccounts.UserControls
                 model.email = item.email;
                 model.userId = item.userId;
                 model.createdDate = Convert.ToDateTime(item.createdDate).ToString("dd-MM-yyyy  hh:mm tt");
-                model.updateDate = Convert.ToDateTime(item.updateDate).ToString("dd-MM-yyyy  hh:mm tt");
+               
+                if (item.updateDate == null)
+                    model.updateDate = "--";
+                else
+                    model.updateDate = Convert.ToDateTime(item.updateDate).ToString("dd-MM-yyyy  hh:mm tt");
+
 
                 modelList.Add(model);
                 rowNo++;

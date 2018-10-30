@@ -98,6 +98,76 @@ namespace MicroAccounts.Forms
             }
 
         }
+        private void showAvailableData()
+        {
+            clear();
+            clearDetails();
+
+            btnCreate.Text = "Update";
+            _entities = new MicroAccountsEntities1();
+
+            var data = _entities.tbl_PurchaseMaster.Where(x => x.pId == passedPid).FirstOrDefault();
+
+            txtRefNo.Text = data.refNo;
+            dateTimePicker1.Text = data.date.ToString();
+            txtLedgerName.Text = _entities.tbl_AccLedger.Where(x => x.Id == data.ledgerId).FirstOrDefault().ledgerName;
+
+            txtTotalMelting.Text = data.totalMelting.ToString();
+            txtTotalMaking.Text = data.totalMaking.ToString();
+            txtTotalAmt.Text = amtFormat.comma(data.totalAmt).ToString();
+            txtTotalWeight.Text = data.totalWeight.ToString();
+            txtTotalFine.Text = data.totalFine.ToString();
+            txtTotalPurchMelting.Text = data.totalPurchaseMelting.ToString();
+
+
+            ttlWeight = Convert.ToDecimal(txtTotalWeight.Text) * 1000;
+            ttlMelting = Convert.ToDecimal(txtTotalMelting.Text);
+            ttlRate = Convert.ToDecimal(txtTotalAmt.Text);
+            ttlMaking = Convert.ToDecimal(txtTotalMaking.Text);
+            ttlFine = Convert.ToDecimal(txtTotalFine.Text);
+            ttlPurchaseMelting = Convert.ToDecimal(txtTotalPurchMelting.Text);
+
+
+            txtAmtInWords.Text = "";
+            ConvertNoToWord convertToWord = new ConvertNoToWord();
+            //int totalRate = Convert.ToInt32(txtTotalRate.Text);
+            txtAmtInWords.Text = convertToWord.ConvertNumbertoWords(Convert.ToInt32(data.totalAmt)).ToLower();
+
+            _entities = new MicroAccountsEntities1();
+
+            var purchaseDetailsData = _entities.tbl_PurchaseDetail.Where(x => x.purchaseID == passedPid).ToList();
+
+            id = 1;
+            foreach (var item in purchaseDetailsData)
+            {
+                var itemCode = _entities.tbl_ItemMaster.Where(x => x.id == item.productID).FirstOrDefault().itemCode;
+
+                dgPurchaseItem.Rows.Add(
+                    id.ToString(),
+                    itemCode,
+                    item.qty,
+                   item.weight,
+                    item.unit,
+                    item.karat,
+                    item.kRate,
+                    item.melting,
+                    item.purchaseMelting,
+                    item.fine,
+                    item.making,
+                    item.rate);
+
+                id = id + 1;
+            }
+
+            var checkLedgername = _entities.tbl_AccLedger.Where(x => x.ledgerName == txtLedgerName.Text.Trim().ToString()).FirstOrDefault();
+
+            decimal drLedgerId = Convert.ToDecimal(checkLedgername.Id);
+
+            CrDrDifference crdrDiff = new CrDrDifference();
+            string valueAmt = crdrDiff.DifferenceCrDr(Convert.ToInt32(drLedgerId), 0);
+
+            lblBalance.Text = valueAmt;
+        }
         private void PurchaseMaster_Load(object sender, EventArgs e)
         {
             try
@@ -116,78 +186,12 @@ namespace MicroAccounts.Forms
 
                 if (passedPid != 0)
                 {
-                    clear();
-                    clearDetails();
-
-                    btnCreate.Text = "Update";
-                    _entities = new MicroAccountsEntities1();
-
-                    var data = _entities.tbl_PurchaseMaster.Where(x => x.pId == passedPid).FirstOrDefault();
-
-                    txtRefNo.Text = data.refNo;
-                    dateTimePicker1.Text = data.date.ToString();
-                    txtLedgerName.Text = _entities.tbl_AccLedger.Where(x => x.Id == data.ledgerId).FirstOrDefault().ledgerName;
-
-                    txtTotalMelting.Text = data.totalMelting.ToString();
-                    txtTotalMaking.Text = data.totalMaking.ToString();
-                    txtTotalAmt.Text = amtFormat.comma(data.totalAmt).ToString();
-                    txtTotalWeight.Text = data.totalWeight.ToString();
-                    txtTotalFine.Text = data.totalFine.ToString();
-                    txtTotalPurchMelting.Text = data.totalPurchaseMelting.ToString();
-
-
-                    ttlWeight = Convert.ToDecimal(txtTotalWeight.Text) * 1000;
-                    ttlMelting = Convert.ToDecimal(txtTotalMelting.Text);
-                    ttlRate = Convert.ToDecimal(txtTotalAmt.Text);
-                    ttlMaking = Convert.ToDecimal(txtTotalMaking.Text);
-                    ttlFine = Convert.ToDecimal(txtTotalFine.Text);
-                    ttlPurchaseMelting = Convert.ToDecimal(txtTotalPurchMelting.Text);
-
-
-                    txtAmtInWords.Text = "";
-                    ConvertNoToWord convertToWord = new ConvertNoToWord();
-                    //int totalRate = Convert.ToInt32(txtTotalRate.Text);
-                    txtAmtInWords.Text = convertToWord.ConvertNumbertoWords(Convert.ToInt32(data.totalAmt)).ToLower();
-
-                    _entities = new MicroAccountsEntities1();
-
-                    var purchaseDetailsData = _entities.tbl_PurchaseDetail.Where(x => x.purchaseID == passedPid).ToList();
-
-                    id = 1;
-                    foreach (var item in purchaseDetailsData)
-                    {
-                        var itemCode = _entities.tbl_ItemMaster.Where(x => x.id == item.productID).FirstOrDefault().itemCode;
-
-                        dgPurchaseItem.Rows.Add(
-                            id.ToString(),
-                            itemCode,
-                            item.qty,
-                           item.weight,
-                            item.unit,
-                            item.karat,
-                            item.kRate,
-                            item.melting,
-                            item.purchaseMelting,
-                            item.fine,
-                            item.making,
-                            item.rate);
-
-                        id = id + 1;
-                    }
-
-                    var checkLedgername = _entities.tbl_AccLedger.Where(x => x.ledgerName == txtLedgerName.Text.Trim().ToString()).FirstOrDefault();
-
-                    decimal drLedgerId = Convert.ToDecimal(checkLedgername.Id);
-
-                    CrDrDifference crdrDiff = new CrDrDifference();
-                    string valueAmt = crdrDiff.DifferenceCrDr(Convert.ToInt32(drLedgerId), 0);
-
-                    lblBalance.Text = valueAmt;
+                    showAvailableData();
                 }
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.ToString());
+                MessageBox.Show("Something went wrong. Contact your system administrator");
             }
 
         }
@@ -381,7 +385,7 @@ namespace MicroAccounts.Forms
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.ToString());
+                MessageBox.Show("Something went wrong. Contact your system administrator");
             }
         }
 
@@ -457,7 +461,7 @@ namespace MicroAccounts.Forms
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.ToString());
+                MessageBox.Show("Something went wrong. Contact your system administrator");
             }
         }
 
@@ -518,7 +522,7 @@ namespace MicroAccounts.Forms
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.ToString());
+                MessageBox.Show("Something went wrong. Contact your system administrator");
             }
         }
 
@@ -594,12 +598,12 @@ namespace MicroAccounts.Forms
 
             }
         }
-
+        int count = 0;
         private void txtRefNo_Leave(object sender, EventArgs e)
         {
             try
             {
-                if (passedPid == 0)
+                if (passedPid == 0 && count == 0)
                 {
                     _entities = new MicroAccountsEntities1();
 
@@ -607,8 +611,15 @@ namespace MicroAccounts.Forms
 
                     if (id != null)
                     {
+                        passedPid = Convert.ToInt32(id.pId);
+                        showAvailableData();
                         MessageBox.Show("Record of this Bill No./Ref No. already exists. Enter another ref. No. ");
                         txtRefNo.Focus();
+                        count++;
+                    }
+                    else
+                    {
+                         
                     }
                 }
             }
@@ -823,6 +834,11 @@ namespace MicroAccounts.Forms
 
         }
 
+        private void txtItemCode_ImeModeChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void txtTotalPurchMelting_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -1018,12 +1034,13 @@ namespace MicroAccounts.Forms
                     }
                     clear();
                     clearDetails();
-
+                    count = 0;
+                    passedPid = 0;
                 }
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.ToString());
+                MessageBox.Show("Something went wrong. Contact your system administrator");
             }
         }
 

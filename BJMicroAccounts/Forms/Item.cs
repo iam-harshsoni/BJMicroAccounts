@@ -15,6 +15,7 @@ using System.IO;
 using BJMicroAccounts.Data;
 using MicroAccounts.App_Code;
 using MicroAccounts.ViewModel;
+using DarrenLee.Media;
 
 namespace MicroAccounts.Forms
 {
@@ -25,11 +26,44 @@ namespace MicroAccounts.Forms
         private bool captureInProgress;
         private int itemIDGlobal, itemIdPassed = 0;
 
+        int count = 0;
+        Camera MyCamera = new Camera();
+
         public Item(int id)
         {
             this.itemIdPassed = this.itemIDGlobal = id;
 
             InitializeComponent();
+
+            GetInfo();
+            MyCamera.OnFrameArrived += MyCamera_OnFrameArrived;
+        }
+
+        private void GetInfo()
+        {
+
+            var cameraDevices = MyCamera.GetCameraSources();
+            var cameraRedol = MyCamera.GetSupportedResolutions();
+
+            foreach (var item in cameraDevices)
+            {
+                comboBox1.Items.Add(item);
+            }
+
+            foreach (var item in cameraRedol)
+            {
+                comboBox2.Items.Add(item);
+            }
+
+            comboBox1.SelectedIndex = 0;
+            comboBox2.SelectedIndex = 0;
+        }
+
+
+        private void MyCamera_OnFrameArrived(Object source, FrameArrivedEventArgs e)
+        {
+            Image img = e.GetFrame();
+            pictureBox1.Image = img;
         }
 
         private void ReleaseData()
@@ -241,7 +275,7 @@ namespace MicroAccounts.Forms
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.ToString());
+                MessageBox.Show("Something went wrong. Contact your system administrator");
             }
         }
 
@@ -249,9 +283,13 @@ namespace MicroAccounts.Forms
         {
             try
             {
+                MyCamera.Start();
+
+                comboBox2.SelectedIndex = 1;
+
                 comboBoxBind();
                 clear();
-                startImage();
+              //  startImage();
 
                 if (itemIdPassed > 0)
                 {
@@ -302,7 +340,7 @@ namespace MicroAccounts.Forms
                     }
                     catch (NullReferenceException excpt)
                     {
-                        MessageBox.Show(excpt.Message);
+                        MessageBox.Show("Something went wrong. Contact your system administrator");
                     }
                 }
                 #endregion
@@ -339,7 +377,10 @@ namespace MicroAccounts.Forms
         {
             try
             {
-                Bitmap bitmap = new Bitmap(CamImgBoxs.Image.Bitmap);
+                //Bitmap bitmap = new Bitmap(CamImgBoxs.Image.Bitmap);
+                //CaptureBox.Image = bitmap;
+
+                Bitmap bitmap = new Bitmap(pictureBox1.Image);
                 CaptureBox.Image = bitmap;
             }
             catch (Exception x)
@@ -485,6 +526,23 @@ namespace MicroAccounts.Forms
             SidePanel2.Top = cmbKarat.Top;
         }
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MyCamera.ChangeCamera(comboBox1.SelectedIndex);
+            MyCamera.Start();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MyCamera.Start(comboBox2.SelectedIndex);
+           // MyCamera.Start();
+        }
+
+        private void Item_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MyCamera.Stop();
+        }
+
         private void cmbItemCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -518,7 +576,7 @@ namespace MicroAccounts.Forms
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.ToString());
+                MessageBox.Show("Something went wrong. Contact your system administrator");
             }
         }
     }

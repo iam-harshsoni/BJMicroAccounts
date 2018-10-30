@@ -25,8 +25,21 @@ namespace MicroAccounts.UserControls
         private void LedgerDetails_Load(object sender, EventArgs e)
         {
             dataGridBind();
+            ledgerNameAutoComplete();
         }
+        private void ledgerNameAutoComplete()
+        {
+            _entities = new MicroAccountsEntities1();
 
+            var gId = _entities.tbl_AccGroup.FirstOrDefault().groupId;
+
+            var ledgerNameAutoComplete = _entities.tbl_AccLedger.Where(x => x.groupId == gId);
+            txtLedgerName.AutoCompleteCustomSource.Clear();
+            foreach (var item in ledgerNameAutoComplete)
+            {
+                txtLedgerName.AutoCompleteCustomSource.Add(item.ledgerName.ToString());
+            }
+        }
         void dataGridBind()
         {
             try
@@ -151,7 +164,7 @@ namespace MicroAccounts.UserControls
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.ToString());
+                MessageBox.Show("Something went wrong. Contact your system administrator");
             }
         }
 

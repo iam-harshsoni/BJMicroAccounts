@@ -193,7 +193,7 @@
             this.txtLedgerName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtLedgerName.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.txtLedgerName.Location = new System.Drawing.Point(10, 29);
-            this.txtLedgerName.MaxLength = 13;
+            this.txtLedgerName.MaxLength = 50;
             this.txtLedgerName.Name = "txtLedgerName";
             this.txtLedgerName.Size = new System.Drawing.Size(707, 26);
             this.txtLedgerName.TabIndex = 128;

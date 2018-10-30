@@ -52,7 +52,10 @@
             this.txtMelting = new System.Windows.Forms.TextBox();
             this.txtWeight = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CaptureBox = new System.Windows.Forms.PictureBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.cmbUnit = new System.Windows.Forms.ComboBox();
             this.cmbItemCategory = new System.Windows.Forms.ComboBox();
             this.btnCapture = new System.Windows.Forms.Button();
@@ -68,6 +71,7 @@
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CamImgBoxs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CaptureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -229,7 +233,10 @@
             this.panel2.Controls.Add(this.txtMelting);
             this.panel2.Controls.Add(this.txtWeight);
             this.panel2.Controls.Add(this.panel5);
+            this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.CaptureBox);
+            this.panel2.Controls.Add(this.comboBox2);
+            this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.cmbUnit);
             this.panel2.Controls.Add(this.cmbItemCategory);
             this.panel2.Controls.Add(this.label3);
@@ -286,11 +293,12 @@
             // 
             // CamImgBoxs
             // 
-            this.CamImgBoxs.Location = new System.Drawing.Point(478, 57);
+            this.CamImgBoxs.Location = new System.Drawing.Point(245, 14);
             this.CamImgBoxs.Name = "CamImgBoxs";
-            this.CamImgBoxs.Size = new System.Drawing.Size(165, 127);
+            this.CamImgBoxs.Size = new System.Drawing.Size(145, 43);
             this.CamImgBoxs.TabIndex = 2;
             this.CamImgBoxs.TabStop = false;
+            this.CamImgBoxs.Visible = false;
             // 
             // txtRemarks
             // 
@@ -350,14 +358,49 @@
             this.panel5.Size = new System.Drawing.Size(2, 338);
             this.panel5.TabIndex = 24;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(477, 109);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(165, 125);
+            this.pictureBox1.TabIndex = 42;
+            this.pictureBox1.TabStop = false;
+            // 
             // CaptureBox
             // 
             this.CaptureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CaptureBox.Location = new System.Drawing.Point(478, 245);
+            this.CaptureBox.Location = new System.Drawing.Point(477, 295);
             this.CaptureBox.Name = "CaptureBox";
             this.CaptureBox.Size = new System.Drawing.Size(165, 125);
             this.CaptureBox.TabIndex = 42;
             this.CaptureBox.TabStop = false;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(473, 63);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(174, 28);
+            this.comboBox2.TabIndex = 2;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.comboBox2.Enter += new System.EventHandler(this.cmbUnit_Enter);
+            this.comboBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbUnit_KeyDown);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(473, 29);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(174, 28);
+            this.comboBox1.TabIndex = 2;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox1.Enter += new System.EventHandler(this.cmbUnit_Enter);
+            this.comboBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbUnit_KeyDown);
             // 
             // cmbUnit
             // 
@@ -392,7 +435,7 @@
             this.btnCapture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCapture.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCapture.ForeColor = System.Drawing.Color.White;
-            this.btnCapture.Location = new System.Drawing.Point(478, 199);
+            this.btnCapture.Location = new System.Drawing.Point(477, 249);
             this.btnCapture.Name = "btnCapture";
             this.btnCapture.Size = new System.Drawing.Size(165, 32);
             this.btnCapture.TabIndex = 7;
@@ -475,6 +518,7 @@
             this.Name = "Item";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Item";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Item_FormClosing);
             this.Load += new System.EventHandler(this.Item_Load);
             this.SidePanel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -482,6 +526,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CamImgBoxs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CaptureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
@@ -526,5 +571,8 @@
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.ComboBox cmbKarat;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

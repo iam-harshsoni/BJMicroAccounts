@@ -21,8 +21,24 @@ namespace MicroAccounts.UserControls
         }
         MicroAccountsEntities1 _entities;
         AmtFormatting amtFormat = new AmtFormatting();
+
+        private void ledgerNameAutoComplete()
+        {
+            _entities = new MicroAccountsEntities1();
+
+            var gId = _entities.tbl_AccGroup.Where(x => x.groupName == "Sundry Debtors").FirstOrDefault().groupId;
+
+            var ledgerNameAutoComplete = _entities.tbl_AccLedger.Where(x => x.groupId == gId);
+            txtLedgerName.AutoCompleteCustomSource.Clear();
+            foreach (var item in ledgerNameAutoComplete)
+            {
+                txtLedgerName.AutoCompleteCustomSource.Add(item.ledgerName.ToString());
+            }
+        }
+
         private void PayableAmt_Load(object sender, EventArgs e)
         {
+            ledgerNameAutoComplete();
             datagridBind();
         }
 

@@ -64,11 +64,23 @@ namespace MicroAccounts.UserControls
             dgSupplierDetials.DataSource = ledgerDetailsListVM;
             lblTotalRows.Text = ledgerDetailsListVM.Count.ToString();
         }
+        private void ledgerNameAutoComplete()
+        {
+            _entities = new MicroAccountsEntities1();
 
+            var gId = _entities.tbl_AccGroup.Where(x => x.groupName == "Sundry Creditors").FirstOrDefault().groupId;
+
+            var ledgerNameAutoComplete = _entities.tbl_AccLedger.Where(x => x.groupId == gId);
+            txtLedgerName.AutoCompleteCustomSource.Clear();
+            foreach (var item in ledgerNameAutoComplete)
+            {
+                txtLedgerName.AutoCompleteCustomSource.Add(item.ledgerName.ToString());
+            }
+        }
         private void SupplierDetails_Load(object sender, EventArgs e)
         {
             dataGridBind();
-             
+            ledgerNameAutoComplete();
         }
 
         private void advancedDataGridView1_SortStringChanged(object sender, EventArgs e)

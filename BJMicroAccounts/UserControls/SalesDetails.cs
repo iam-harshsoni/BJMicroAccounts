@@ -110,7 +110,11 @@ namespace MicroAccounts.UserControls
                     model.totalAmt = Convert.ToDecimal(amtFormat.comma(item.totalAmt));
 
                     model.createdDate = Convert.ToDateTime(item.createdDate).ToString("dd-MM-yyyy  hh:mm tt");
-                    model.updateDate = Convert.ToDateTime(item.updateDate).ToString("dd-MM-yyyy  hh:mm tt");
+
+                    if (item.updateDate == null)
+                        model.updateDate = "--";
+                    else
+                        model.updateDate = Convert.ToDateTime(item.updateDate).ToString("dd-MM-yyyy  hh:mm tt");
 
 
                     modelList.Add(model);
@@ -126,9 +130,23 @@ namespace MicroAccounts.UserControls
                 MessageBox.Show(x.ToString());
             }
         }
+        private void ledgerNameAutoComplete()
+        {
+            _entities = new MicroAccountsEntities1();
 
+            var gId = _entities.tbl_AccGroup.Where(x => x.groupName == "Sundry Debtors").FirstOrDefault().groupId;
+
+            var ledgerNameAutoComplete = _entities.tbl_AccLedger.Where(x => x.groupId == gId);
+            txtSearch.AutoCompleteCustomSource.Clear();
+            foreach (var item in ledgerNameAutoComplete)
+            {
+                txtSearch.AutoCompleteCustomSource.Add(item.ledgerName.ToString());
+            }
+        }
         private void SalesDetails_Load(object sender, EventArgs e)
         {
+            ledgerNameAutoComplete();
+
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "dd-MM-yyyy";
 
@@ -160,7 +178,7 @@ namespace MicroAccounts.UserControls
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.ToString());
+                MessageBox.Show("Something went wrong. Contact your system administrator");
             }
         }
         string s = "";
@@ -211,7 +229,7 @@ namespace MicroAccounts.UserControls
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.ToString());
+                MessageBox.Show("Something went wrong. Contact your system administrator");
             }
 
 
@@ -275,6 +293,21 @@ namespace MicroAccounts.UserControls
             }
             catch (Exception x)
             {
+            }
+        }
+
+        private void SalesDetails_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Control == true && e.KeyCode == Keys.N)
+                {
+                    btnPurchaseEntry.PerformClick();
+                }
+            }
+            catch(Exception x)
+            {
+              
             }
         }
     }

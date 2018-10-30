@@ -114,17 +114,18 @@
             this.button13.TabIndex = 28;
             this.button13.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Mistral", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.DarkGray;
+            this.label3.ForeColor = System.Drawing.Color.Gray;
             this.label3.Location = new System.Drawing.Point(2, 293);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(149, 16);
+            this.label3.Size = new System.Drawing.Size(107, 16);
             this.label3.TabIndex = 27;
-            this.label3.Text = "By SquareDrop Technologies 2018.";
+            this.label3.Text = "By H2MSolution 2018.";
             // 
             // label2
             // 
@@ -139,7 +140,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::BJMicroAccounts.Properties.Resources.LogosBJ;
+            this.pictureBox1.Image = global::BJMicroAccounts.Properties.Resources.unnamed1;
             this.pictureBox1.Location = new System.Drawing.Point(105, 62);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(156, 118);

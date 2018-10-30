@@ -176,7 +176,7 @@ namespace MicroAccounts
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Something went wrong. Contact your system administrator");
             }
         }
 
