@@ -33,15 +33,15 @@ namespace BJMicroAccounts.Data
         public virtual DbSet<tbl_EntryDetails> tbl_EntryDetails { get; set; }
         public virtual DbSet<tbl_ItemMaster> tbl_ItemMaster { get; set; }
         public virtual DbSet<tbl_LedgerDetails> tbl_LedgerDetails { get; set; }
+        public virtual DbSet<tbl_PurchaseDetail> tbl_PurchaseDetail { get; set; }
+        public virtual DbSet<tbl_PurchaseMaster> tbl_PurchaseMaster { get; set; }
         public virtual DbSet<tbl_SalesDetails> tbl_SalesDetails { get; set; }
         public virtual DbSet<tbl_SalesMaster> tbl_SalesMaster { get; set; }
         public virtual DbSet<tbl_StockItemDetails> tbl_StockItemDetails { get; set; }
+        public virtual DbSet<tbl_TaxDetail> tbl_TaxDetail { get; set; }
+        public virtual DbSet<tbl_TaxMaster> tbl_TaxMaster { get; set; }
         public virtual DbSet<tbl_TransactionMaster> tbl_TransactionMaster { get; set; }
         public virtual DbSet<tbl_UserLogiln> tbl_UserLogiln { get; set; }
         public virtual DbSet<tbl_UserProfile> tbl_UserProfile { get; set; }
-        public virtual DbSet<tbl_TaxDetail> tbl_TaxDetail { get; set; }
-        public virtual DbSet<tbl_TaxMaster> tbl_TaxMaster { get; set; }
-        public virtual DbSet<tbl_PurchaseDetail> tbl_PurchaseDetail { get; set; }
-        public virtual DbSet<tbl_PurchaseMaster> tbl_PurchaseMaster { get; set; }
     }
 }

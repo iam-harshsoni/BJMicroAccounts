@@ -11,7 +11,7 @@ using BJMicroAccounts.Data;
 using MicroAccounts.ViewModel;
 using Microsoft.Reporting.WinForms;
 using MicroAccounts.AccountsModuleClasses;
-using MicroAccounts;
+using MicroAccounts; 
 
 namespace BJMicroAccounts.Reports
 {

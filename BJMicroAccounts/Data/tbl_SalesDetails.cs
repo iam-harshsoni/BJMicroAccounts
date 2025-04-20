@@ -21,11 +21,11 @@ namespace BJMicroAccounts.Data
         public Nullable<decimal> weight { get; set; }
         public string unit { get; set; }
         public Nullable<decimal> karat { get; set; }
+        public Nullable<decimal> kRate { get; set; }
         public Nullable<decimal> making { get; set; }
         public Nullable<decimal> rate { get; set; }
         public Nullable<System.DateTime> createdDate { get; set; }
         public Nullable<System.DateTime> updateDate { get; set; }
-        public Nullable<decimal> kRate { get; set; }
     
         public virtual tbl_ItemMaster tbl_ItemMaster { get; set; }
         public virtual tbl_SalesMaster tbl_SalesMaster { get; set; }

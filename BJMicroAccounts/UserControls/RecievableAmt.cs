@@ -32,15 +32,52 @@ namespace MicroAccounts.UserControls
         }
         private void ledgerNameAutoComplete()
         {
-            _entities = new MicroAccountsEntities1();
+            //_entities = new MicroAccountsEntities1();
 
-            var gId = _entities.tbl_AccGroup.Where(x => x.groupName == "Sundry Debtors").FirstOrDefault().groupId;
+            //var gId = _entities.tbl_AccGroup.Where(x => x.groupName == "Sundry Debtors").FirstOrDefault().groupId;
 
-            var ledgerNameAutoComplete = _entities.tbl_AccLedger.Where(x => x.groupId == gId);
-            txtLedgerName.AutoCompleteCustomSource.Clear();
-            foreach (var item in ledgerNameAutoComplete)
+            //var ledgerNameAutoComplete = _entities.tbl_AccLedger.Where(x => x.groupId == gId);
+            //txtLedgerName.AutoCompleteCustomSource.Clear();
+            //foreach (var item in ledgerNameAutoComplete)
+            //{
+            //    txtLedgerName.AutoCompleteCustomSource.Add(item.ledgerName.ToString());
+            //}
+            try
             {
-                txtLedgerName.AutoCompleteCustomSource.Add(item.ledgerName.ToString());
+                using (var entities = new MicroAccountsEntities1())
+                {
+                    // Query with null check
+                    var gid = entities.tbl_AccGroup
+                        .Where(x => x.groupName == "Sundry Creditors")
+                        .FirstOrDefault()?.groupId;
+
+                    // Check if gid is null
+                    if (gid == null)
+                    {
+                        // Handle the case where no data is found
+                        txtLedgerName.AutoCompleteCustomSource.Clear();
+                        MessageBox.Show("No data found for 'Sundry Creditors' in the database.",
+                            "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
+                    // Proceed with autocomplete if data is found
+                    var ledgerNameAutoComplete = entities.tbl_AccLedger
+                        .Where(x => x.groupId == gid)
+                        .Select(x => x.ledgerName)
+                        .ToList();
+
+                    txtLedgerName.AutoCompleteCustomSource.Clear();
+                    foreach (var item in ledgerNameAutoComplete)
+                    {
+                        txtLedgerName.AutoCompleteCustomSource.Add(item);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception if needed (e.g., using a logging framework like log4net)
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void RecievableAmt_Load(object sender, EventArgs e)

@@ -20,10 +20,10 @@ namespace BJMicroAccounts.Data
         public Nullable<decimal> hallmarkBuyBack { get; set; }
         public Nullable<decimal> twentyTwoC { get; set; }
         public Nullable<decimal> twentyThreeC { get; set; }
+        public Nullable<decimal> eighteenC { get; set; }
         public Nullable<decimal> silver { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<System.DateTime> createdDate { get; set; }
         public Nullable<System.DateTime> updatedDate { get; set; }
-        public Nullable<decimal> eighteenC { get; set; }
     }
 }

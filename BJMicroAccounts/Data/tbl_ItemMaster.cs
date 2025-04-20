@@ -17,9 +17,9 @@ namespace BJMicroAccounts.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbl_ItemMaster()
         {
+            this.tbl_PurchaseDetail = new HashSet<tbl_PurchaseDetail>();
             this.tbl_SalesDetails = new HashSet<tbl_SalesDetails>();
             this.tbl_StockItemDetails = new HashSet<tbl_StockItemDetails>();
-            this.tbl_PurchaseDetail = new HashSet<tbl_PurchaseDetail>();
         }
     
         public long id { get; set; }
@@ -31,10 +31,10 @@ namespace BJMicroAccounts.Data
     
         public virtual tbl_CategoryMaster tbl_CategoryMaster { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PurchaseDetail> tbl_PurchaseDetail { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_SalesDetails> tbl_SalesDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_StockItemDetails> tbl_StockItemDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_PurchaseDetail> tbl_PurchaseDetail { get; set; }
     }
 }

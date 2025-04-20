@@ -17,9 +17,9 @@ namespace BJMicroAccounts.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbl_AccLedger()
         {
+            this.tbl_PurchaseMaster = new HashSet<tbl_PurchaseMaster>();
             this.tbl_SalesMaster = new HashSet<tbl_SalesMaster>();
             this.tbl_LedgerDetails = new HashSet<tbl_LedgerDetails>();
-            this.tbl_PurchaseMaster = new HashSet<tbl_PurchaseMaster>();
         }
     
         public long Id { get; set; }
@@ -36,10 +36,10 @@ namespace BJMicroAccounts.Data
     
         public virtual tbl_AccGroup tbl_AccGroup { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PurchaseMaster> tbl_PurchaseMaster { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_SalesMaster> tbl_SalesMaster { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_LedgerDetails> tbl_LedgerDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_PurchaseMaster> tbl_PurchaseMaster { get; set; }
     }
 }

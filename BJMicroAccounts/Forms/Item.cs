@@ -22,7 +22,7 @@ namespace MicroAccounts.Forms
     public partial class Item : Form
     {
         MicroAccountsEntities1 _entities;
-        private Capture capture;        //takes images from camera as image frames
+        private VideoCapture capture;        //takes images from camera as image frames
         private bool captureInProgress;
         private int itemIDGlobal, itemIdPassed = 0;
 
@@ -83,8 +83,13 @@ namespace MicroAccounts.Forms
         {
             try
             {
-                Image<Bgr, Byte> ImageFrame = capture.QuerySmallFrame();
-                CamImgBoxs.Image = ImageFrame;
+                //Image<Bgr, Byte> ImageFrame = capture.QuerySmallFrame();
+                //CamImgBoxs.Image = ImageFrame;
+
+                Mat frame = capture.QuerySmallFrame(); // Get the frame as a Mat
+                Image<Bgr, Byte> imageFrame = frame.ToImage<Bgr, Byte>(); // Convert Mat to Image
+                CamImgBoxs.Image = imageFrame;
+
             }
             catch (Exception x)
             {
@@ -334,9 +339,13 @@ namespace MicroAccounts.Forms
                 {
                     try
                     {
-                        capture = new Capture();
-                        capture.SetCaptureProperty(Emgu.CV.CvEnum.CAP_PROP.CV_CAP_PROP_FRAME_WIDTH, 300);
-                        capture.SetCaptureProperty(Emgu.CV.CvEnum.CAP_PROP.CV_CAP_PROP_FRAME_HEIGHT, 250);
+                        capture = new VideoCapture();
+                        capture.Set(CapProp.FrameWidth, 300);
+                        capture.Set(CapProp.FrameHeight, 250);
+
+                        //capture = new Capture();
+                        //capture.SetCaptureProperty(Emgu.CV.CvEnum.CAP_PROP.CV_CAP_PROP_FRAME_WIDTH, 300);
+                        //capture.SetCaptureProperty(Emgu.CV.CvEnum.CAP_PROP.CV_CAP_PROP_FRAME_HEIGHT, 250);
                     }
                     catch (NullReferenceException excpt)
                     {
@@ -394,13 +403,17 @@ namespace MicroAccounts.Forms
             try
             {
 
-                capture.Dispose(); //To stop and call Garbage Collector
-                this.Close();
+                if (capture != null)
+                {
+                    capture.Dispose(); // To stop and call Garbage Collector
+                    capture = null; // Optional: Reset to null after disposal
+                }
+                this.Close(); // Close the form
             }
             catch (Exception x)
-
             {
-
+                MessageBox.Show($"An error occurred while stopping capture: {x.Message}",
+            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
