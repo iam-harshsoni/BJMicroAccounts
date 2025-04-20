@@ -410,10 +410,12 @@
             this.ClientSize = new System.Drawing.Size(735, 576);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.KeyPreview = true;
             this.Name = "AccountLedger";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AccountLedger";
             this.Load += new System.EventHandler(this.AccountLedger_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AccountLedger_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.addressPanel.ResumeLayout(false);

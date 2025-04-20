@@ -435,5 +435,14 @@ namespace MicroAccounts
 
             val.textOnly(sender, e);
         }
+
+        private void AccountLedger_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close(); // Closes the form when the ESC key is pressed
+            }
+        }
     }
 }

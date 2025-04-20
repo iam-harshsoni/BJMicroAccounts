@@ -550,10 +550,12 @@ namespace MicroAccounts.Forms
                             ledger.ShowDialog();
                             ledgerNameAutoComplete();
                             txtLedgerName.Focus();
+                            return;
                         }
                         else
                         {
                             txtLedgerName.Focus();
+                            return;
                         }
                     }
 

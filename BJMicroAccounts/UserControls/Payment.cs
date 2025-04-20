@@ -151,7 +151,7 @@ namespace MicroAccounts.UserControls
                 cmbLedgerCR.Text = "";
                 cmbLedgerCR.SelectedIndex = 0;
                 #endregion
-            }
+            } 
 
             else if (passedVoucherType == 3) //Journal
             {
@@ -404,8 +404,8 @@ namespace MicroAccounts.UserControls
             int rowNo = 1;
             _entities = new MicroAccountsEntities1();
 
-            // if (passedVoucherType == 1)
-            {
+             //if (passedVoucherType == 1)
+            //{
                 #region Payment Details in Grid
 
                 List<EntryVM> modelList = new List<EntryVM>();
@@ -429,9 +429,9 @@ namespace MicroAccounts.UserControls
                 dgPaymentDetails.DataSource = modelList;
                 lblTotalRows.Text = modelList.Count.ToString();
                 #endregion  
-            }
+            //}
 
-            // else if (passedVoucherType == 2)
+            //else if (passedVoucherType == 2)
             {
                 #region Receipt Details in Grid
 
