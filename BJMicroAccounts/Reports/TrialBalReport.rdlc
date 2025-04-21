@@ -680,6 +680,9 @@
           <Height>0.40279in</Height>
           <Width>3.53638in</Width>
           <ZIndex>2</ZIndex>
+          <Visibility>
+            <Hidden>true</Hidden>
+          </Visibility>
           <Style>
             <Border />
             <VerticalAlign>Middle</VerticalAlign>
@@ -727,6 +730,9 @@
           <Height>0.26389in</Height>
           <Width>2.5in</Width>
           <ZIndex>4</ZIndex>
+          <Visibility>
+            <Hidden>true</Hidden>
+          </Visibility>
           <Style>
             <Border />
             <VerticalAlign>Middle</VerticalAlign>
@@ -744,6 +750,9 @@
           <Height>1.09945in</Height>
           <Width>1.14657in</Width>
           <ZIndex>5</ZIndex>
+          <Visibility>
+            <Hidden>true</Hidden>
+          </Visibility>
           <Style>
             <Border>
               <Style>None</Style>
