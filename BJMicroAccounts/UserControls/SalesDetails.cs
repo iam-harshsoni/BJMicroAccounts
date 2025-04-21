@@ -25,67 +25,59 @@ namespace MicroAccounts.UserControls
         }
 
         private void dgSalesDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
+        {  
+            if (dgSalesDetails.Columns[e.ColumnIndex].Name == "Delete")
             {
-                if (dgSalesDetails.Columns[e.ColumnIndex].Name == "Delete")
+                DialogResult myResult;
+                myResult = MessageBox.Show("Are you really delete the item?", "Delete Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (myResult == DialogResult.OK)
                 {
-                    DialogResult myResult;
-                    myResult = MessageBox.Show("Are you really delete the item?", "Delete Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                    if (myResult == DialogResult.OK)
+
+                    using (var _entities = new MicroAccountsEntities1())
                     {
-                        _entities = new MicroAccountsEntities1();
-
-                        var cellId = Convert.ToInt32(dgSalesDetails.CurrentRow.Cells[0].Value);
-
-                        #region delete From TransactionTable
-
-                        var selectedData3 = _entities.tbl_TransactionMaster.Where(x => x.voucherRefNo == cellId).ToList();
-
-                        foreach (var item1 in selectedData3)
+                        using (var transaction = _entities.Database.BeginTransaction())
                         {
-                            _entities.tbl_TransactionMaster.Remove(item1);
-                            _entities.SaveChanges();
-                        }
-                        #endregion
+                            try
+                            {
+                                var cellId = Convert.ToInt32(dgSalesDetails.CurrentRow.Cells[0].Value);
 
-                        var selectedData1 = _entities.tbl_SalesDetails.Where(x => x.salesId == cellId).FirstOrDefault();
-                        var selectedData2 = _entities.tbl_SalesMaster.Where(x => x.sId == cellId).FirstOrDefault();
+                                // Delete from Transaction Table
+                                var transactionRecords = _entities.tbl_TransactionMaster
+                                     .Where(x => x.voucherRefNo == cellId)
+                                     .ToList();
+                                if (transactionRecords.Any())
+                                    _entities.tbl_TransactionMaster.RemoveRange(transactionRecords);
 
-                        if (selectedData1 != null)
-                        {
-                            _entities.tbl_SalesDetails.Remove(selectedData1);
+                                // Delete from Sales Detail
+                                var salesDetails = _entities.tbl_SalesDetails
+                                    .Where(x => x.salesId == cellId)
+                                    .ToList();
+                                if (salesDetails != null)
+                                    _entities.tbl_SalesDetails.RemoveRange(salesDetails);
+
+                                // Delete from Sales Master Table
+                                var salesMaster = _entities.tbl_SalesMaster
+                                    .FirstOrDefault(x => x.sId == cellId);
+                                if (salesMaster != null)
+                                    _entities.tbl_SalesMaster.Remove(salesMaster);
+
+                                _entities.SaveChanges();
+                                transaction.Commit(); // ✅ All good
+
+                                MessageBox.Show("Record deleted");
+                                dataGridBind();
+
+                            }
+                            catch (Exception ex)
+                            {
+                                transaction.Rollback(); // ❌ Something failed, undo changes
+                                MessageBox.Show("An error occurred: " + ex.Message);
+                            } 
                         }
-                        else
-                        {
-                            MessageBox.Show("Something went wrong. Record cannot be deleted.");
-                        }
-                        if (selectedData2 != null)
-                        {
-                            _entities.tbl_SalesMaster.Remove(selectedData2);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Something went wrong. Record cannot be deleted.");
-                        }
-                         
-                        _entities.SaveChanges();
-                        MessageBox.Show("Record deleted ");
-                        dataGridBind();
                     }
-                    else
-                    {
-                        //No delete
-                    }
-
                 }
             }
-            catch(Exception x)
-            {
-                MessageBox.Show("Record Cannot be deleted. Reference of this record is present in other entries");
-            }
-        }
-
+        } 
         void dataGridBind()
         {
             try
