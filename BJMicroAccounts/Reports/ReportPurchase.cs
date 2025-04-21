@@ -57,7 +57,8 @@ namespace BJMicroAccounts.Reports
 
                 vm.totalMaking = item.totalMaking;
                 vm.totalMelting = item.totalMelting;
-                vm.totalWeight = item.totalWeight;
+                //vm.totalWeight = item.totalWeight;
+                vm.totalWeight = (item.totalWeight.ToString() + " " + item.unit.ToString()).ToString();
                 vm.unit = item.unit;
 
                 vm.totalAmt = item.totalAmt;

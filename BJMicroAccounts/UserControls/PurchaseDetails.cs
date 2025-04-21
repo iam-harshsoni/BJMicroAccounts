@@ -119,7 +119,8 @@ namespace MicroAccounts.UserControls
                     model.refNo = item.refNo;
                     model.ledgerName = _entities.tbl_AccLedger.Where(x => x.Id == item.ledgerId).FirstOrDefault().ledgerName;
                     model.date = Convert.ToDateTime(item.date).ToString("dd-MM-yyyy");
-                    model.totalWeight = item.totalWeight;
+                    model.totalWeight = (item.totalWeight.ToString() + " " + item.unit.ToString()).ToString();
+                    // model.totalWeight = item.totalWeight;
                     model.totalAmt = Convert.ToDecimal(amtFormat.comma(item.totalAmt));
                     model.totalMelting = item.totalMelting;
                     model.createdDate = Convert.ToDateTime(item.createdDate).ToString("dd-MM-yyyy  hh:mm tt");
@@ -243,7 +244,8 @@ namespace MicroAccounts.UserControls
                     model.refNo = item.refNo;
                     model.ledgerName = _entities.tbl_AccLedger.Where(x => x.Id == item.ledgerId).FirstOrDefault().ledgerName;
                     model.date = Convert.ToDateTime(item.date).ToString("dd-MM-yyyy");
-                    model.totalWeight = item.totalWeight;
+                    //model.totalWeight = item.totalWeight;
+                    model.totalWeight = (item.totalWeight.ToString() + " " + item.unit.ToString()).ToString();
                     model.totalAmt = Convert.ToDecimal(amtFormat.comma(item.totalAmt));
                     model.totalMelting = item.totalMelting;
                     model.createdDate = Convert.ToDateTime(item.createdDate).ToString("dd-MM-yyyy  hh:mm tt");
@@ -304,12 +306,12 @@ namespace MicroAccounts.UserControls
                         model.refNo = item.refNo;
                         model.ledgerName = _entities.tbl_AccLedger.Where(x => x.Id == item.ledgerId).FirstOrDefault().ledgerName;
                         model.date = Convert.ToDateTime(item.date).ToString("dd-MM-yyyy");
-                        model.totalWeight = item.totalWeight;
+                        //model.totalWeight = item.totalWeight;
+                        model.totalWeight = (item.totalWeight.ToString() + " " + item.unit.ToString()).ToString();
                         model.totalAmt = item.totalAmt;
                         model.totalMelting = item.totalMelting;
                         model.createdDate = Convert.ToDateTime(item.createdDate).ToString("dd-MM-yyyy  hh:mm tt");
                         model.updateDate = Convert.ToDateTime(item.updateDate).ToString("dd-MM-yyyy  hh:mm tt");
-
 
                         purchaseMasterList.Add(model);
 

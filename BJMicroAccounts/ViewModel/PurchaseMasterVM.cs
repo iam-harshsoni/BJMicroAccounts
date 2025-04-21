@@ -19,7 +19,8 @@ namespace MicroAccounts.ViewModel
 
         public Nullable<long> ledgerId { get; set; }
         public string date { get; set; }
-        public Nullable<decimal> totalWeight { get; set; }
+        //public Nullable<decimal> totalWeight { get; set; }
+        public string totalWeight { get; set; }
         public string unit { get; set; }
         public Nullable<decimal> totalMelting { get; set; }
         public Nullable<decimal> totalPurchaseMelting { get; set; }

@@ -148,6 +148,7 @@ namespace MicroAccounts.UserControls
 
                 AccountLedger acc = new AccountLedger(lID, "");
                 acc.ShowDialog();
+                dataGridBind();
             }
         }
 
