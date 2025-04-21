@@ -85,12 +85,20 @@ namespace MicroAccounts.UserControls
                         model.rowNo = rowNo;
                         model.date = Convert.ToDateTime(item.date).Date.ToString("dd-MM-yyyy");
 
-                        model.fineGold = Convert.ToDecimal(amtFormat.comma(item.fineGold));
-                        model.twentyTwoC = Convert.ToDecimal(amtFormat.comma(item.twentyTwoC));
-                        model.twentyThreeC = Convert.ToDecimal(amtFormat.comma(item.twentyThreeC));
-                        model.silver = Convert.ToDecimal(amtFormat.comma(item.silver));
-                        model.hallmark = Convert.ToDecimal(amtFormat.comma(item.hallmark));
-                        model.hallmarkBuyBack = Convert.ToDecimal(amtFormat.comma(item.hallmarkBuyBack));
+                        model.fineGold = decimal.Parse(item.fineGold.ToString()); // Convert to decimal first
+                        model.twentyTwoC = decimal.Parse(item.twentyTwoC.ToString());
+                        model.twentyThreeC = decimal.Parse(item.twentyThreeC.ToString());
+                        model.silver = decimal.Parse(item.silver.ToString());
+                        model.hallmark = decimal.Parse(item.hallmark.ToString());
+                        model.hallmarkBuyBack = decimal.Parse(item.hallmarkBuyBack.ToString());
+
+                        model.fineGoldFormatted = amtFormat.comma(model.fineGold); // Then format for display
+                        model.twentyTwoCFormatted = amtFormat.comma(model.twentyTwoC);
+                        model.twentyThreeCFormatted = amtFormat.comma(model.twentyThreeC);
+                        model.silverFormatted = amtFormat.comma(model.silver);
+                        model.hallmarkFormatted = amtFormat.comma(model.hallmark);
+                        model.hallmarkBuyBackFormatted = amtFormat.comma(model.hallmarkBuyBack);
+
 
                         modelList.Add(model);
                         rowNo++;

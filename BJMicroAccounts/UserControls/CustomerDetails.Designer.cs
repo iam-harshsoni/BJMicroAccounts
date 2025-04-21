@@ -33,13 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgCustomerDetails = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txtLedgerName = new System.Windows.Forms.TextBox();
             this.btnCreate = new System.Windows.Forms.Button();
@@ -48,6 +41,13 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.lblTotalRows = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomerDetails)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,66 +103,6 @@
             this.dgCustomerDetails.TabIndex = 94;
             this.dgCustomerDetails.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomerDetails_CellContentClick);
             this.dgCustomerDetails.DoubleClick += new System.EventHandler(this.dgCustomerDetails_DoubleClick);
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column1.DataPropertyName = "Id";
-            this.Column1.HeaderText = "SrNo";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            this.Column1.Width = 50;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "rowNo";
-            this.Column8.HeaderText = "#";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Width = 50;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "ledgerName";
-            this.Column2.HeaderText = "Customer Name";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 250;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "address";
-            this.Column3.HeaderText = "Address";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 220;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "OpBalWithDC";
-            this.Column4.HeaderText = "Opening Balance";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 170;
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column6.DataPropertyName = "Contact";
-            this.Column6.HeaderText = "Contact";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Delete
-            // 
-            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Delete.HeaderText = "Actions";
-            this.Delete.Image = global::BJMicroAccounts.Properties.Resources.delete1;
-            this.Delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Delete.Name = "Delete";
-            this.Delete.ReadOnly = true;
-            this.Delete.Width = 57;
             // 
             // label1
             // 
@@ -258,6 +198,66 @@
             this.label5.TabIndex = 131;
             this.label5.Text = "Total Rows : ";
             // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column1.DataPropertyName = "Id";
+            this.Column1.HeaderText = "SrNo";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            this.Column1.Width = 50;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "rowNo";
+            this.Column8.HeaderText = "#";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Width = 50;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "ledgerName";
+            this.Column2.HeaderText = "Customer Name";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 250;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "address";
+            this.Column3.HeaderText = "Address";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 220;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "OpBalWithDC";
+            this.Column4.HeaderText = "Opening Balance";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 170;
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column6.DataPropertyName = "Contact";
+            this.Column6.HeaderText = "Contact";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // Delete
+            // 
+            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Delete.HeaderText = "Actions";
+            this.Delete.Image = global::BJMicroAccounts.Properties.Resources.delete1;
+            this.Delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Width = 56;
+            // 
             // CustomerDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,6 +287,8 @@
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Label lblTotalRows;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -294,7 +296,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewImageColumn Delete;
-        private System.Windows.Forms.Label lblTotalRows;
-        private System.Windows.Forms.Label label5;
     }
 }

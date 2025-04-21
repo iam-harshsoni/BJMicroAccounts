@@ -20,5 +20,14 @@ namespace MicroAccounts.ViewModel
         public string date { get; set; }
         public Nullable<System.DateTime> createdDate { get; set; }
         public Nullable<System.DateTime> updatedDate { get; set; }
+
+
+        // Add these properties for formatted display
+        public string fineGoldFormatted { get; set; }
+        public string twentyTwoCFormatted { get; set; }
+        public string twentyThreeCFormatted { get; set; }
+        public string silverFormatted { get; set; }
+        public string hallmarkFormatted { get; set; }
+        public string hallmarkBuyBackFormatted { get; set; }
     }
 }
