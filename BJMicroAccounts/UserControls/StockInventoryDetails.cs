@@ -141,46 +141,51 @@ namespace MicroAccounts.UserControls
 
         private void dgStockDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgStockDetails.Columns[e.ColumnIndex].Name == "Delete")
+            try
             {
-                DialogResult myResult;
-                myResult = MessageBox.Show("Are you really delete the item?", "Delete Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (myResult == DialogResult.OK)
+                if (dgStockDetails.Columns[e.ColumnIndex].Name == "Delete")
                 {
-                    _entities = new MicroAccountsEntities1();
-
-                    var cellId = Convert.ToInt32(dgStockDetails.CurrentRow.Cells[0].Value);
-                    var selectedData1 = _entities.tbl_StockItemDetails.Where(x => x.itemId == cellId).FirstOrDefault();
-                    var selectedData2 = _entities.tbl_ItemMaster.Where(x => x.id == cellId).FirstOrDefault();
-
-                    if (selectedData1 != null)
+                    DialogResult myResult;
+                    myResult = MessageBox.Show("Are you really delete the item?", "Delete Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (myResult == DialogResult.OK)
                     {
-                        _entities.tbl_StockItemDetails.Remove(selectedData1);
+                        _entities = new MicroAccountsEntities1();
+
+                        var cellId = Convert.ToInt32(dgStockDetails.CurrentRow.Cells[0].Value);
+                        var selectedData1 = _entities.tbl_StockItemDetails.Where(x => x.itemId == cellId).FirstOrDefault();
+                        var selectedData2 = _entities.tbl_ItemMaster.Where(x => x.id == cellId).FirstOrDefault();
+
+                        if (selectedData1 != null)
+                        {
+                            _entities.tbl_StockItemDetails.Remove(selectedData1);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Something went wrong. Record cannot be deleted.");
+                        }
+                        if (selectedData2 != null)
+                        {
+                            _entities.tbl_ItemMaster.Remove(selectedData2);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Something went wrong. Record cannot be deleted.");
+                        } 
+
+                        _entities.SaveChanges();
+                        MessageBox.Show("Record deleted ");
+                        dataGridBind();
                     }
                     else
                     {
-                        MessageBox.Show("Something went wrong. Record cannot be deleted.");
-                    }
-                    if (selectedData2 != null)
-                    {
-                        _entities.tbl_ItemMaster.Remove(selectedData2);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Something went wrong. Record cannot be deleted.");
-                    }
 
-                   
-                    
-
-                    _entities.SaveChanges();
-                    MessageBox.Show("Record deleted ");
-                    dataGridBind();
+                    }
                 }
-                else
-                {
 
-                }
+            }
+            catch (Exception x)
+            {
+
             }
         }
 
@@ -271,7 +276,7 @@ namespace MicroAccounts.UserControls
             }
             catch (Exception x)
             {
-
+                MessageBox.Show("Something went wrong. Contact your system administrator");
             }
         }
 

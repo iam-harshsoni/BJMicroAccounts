@@ -43,17 +43,20 @@ namespace MicroAccounts.UserControls
 
                 var data = _entities.DailyRates.Where(x => x.date == todayDate).FirstOrDefault();
 
+
                 if (data == null)
                     btnEnterRates.Enabled = true;
                 else
+                {
                     btnEnterRates.Enabled = false;
 
-                lblFine.Text = amtFormat.comma(data.fineGold).ToString();
-                lbl22C.Text = amtFormat.comma(data.twentyTwoC).ToString();
-                lbl23C.Text = amtFormat.comma(data.twentyThreeC).ToString();
-                lblhallMarkBuyBack.Text = amtFormat.comma(data.hallmarkBuyBack).ToString();
-                lblHallMark.Text = amtFormat.comma(data.hallmark).ToString();
-                lblSilver.Text = amtFormat.comma(data.silver).ToString();
+                    lblFine.Text = amtFormat.comma(data.fineGold).ToString();
+                    lbl22C.Text = amtFormat.comma(data.twentyTwoC).ToString();
+                    lbl23C.Text = amtFormat.comma(data.twentyThreeC).ToString();
+                    lblhallMarkBuyBack.Text = amtFormat.comma(data.hallmarkBuyBack).ToString();
+                    lblHallMark.Text = amtFormat.comma(data.hallmark).ToString();
+                    lblSilver.Text = amtFormat.comma(data.silver).ToString();
+                }
             }
             catch (Exception x)
             {

@@ -49,7 +49,7 @@ namespace MicroAccounts.UserControls
                 datagridBind();
                 bindDrCMB();
                 clear();
-                cmbLedgerCR.Enabled = false;
+               // cmbLedgerCR.Enabled = false;
 
                 dateTimePicker1.Format = DateTimePickerFormat.Custom;
                 dateTimePicker1.CustomFormat = "dd-MM-yyyy";
@@ -151,7 +151,7 @@ namespace MicroAccounts.UserControls
                 cmbLedgerCR.Text = "";
                 cmbLedgerCR.SelectedIndex = 0;
                 #endregion
-            } 
+            }
 
             else if (passedVoucherType == 3) //Journal
             {
@@ -404,31 +404,31 @@ namespace MicroAccounts.UserControls
             int rowNo = 1;
             _entities = new MicroAccountsEntities1();
 
-             //if (passedVoucherType == 1)
+            //if (passedVoucherType == 1)
             //{
-                #region Payment Details in Grid
+            #region Payment Details in Grid
 
-                List<EntryVM> modelList = new List<EntryVM>();
-                var data = _entities.tbl_Entry.OrderByDescending(x => x.voucherRefNo).Where(x => x.entryType == passedVoucherType).ToList();
+            List<EntryVM> modelList = new List<EntryVM>();
+            var data = _entities.tbl_Entry.OrderByDescending(x => x.voucherRefNo).Where(x => x.entryType == passedVoucherType).ToList();
 
-                foreach (var item in data)
-                {
-                    EntryVM model = new EntryVM();
-                    model.rowNo = rowNo;
-                    model.voucherRefNo = item.voucherRefNo;
-                    var drLedger = _entities.tbl_AccLedger.Where(x => x.Id == item.drId).FirstOrDefault().ledgerName.ToString();
-                    var crLedger = _entities.tbl_AccLedger.Where(x => x.Id == item.crId).FirstOrDefault().ledgerName.ToString();
+            foreach (var item in data)
+            {
+                EntryVM model = new EntryVM();
+                model.rowNo = rowNo;
+                model.voucherRefNo = item.voucherRefNo;
+                var drLedger = _entities.tbl_AccLedger.Where(x => x.Id == item.drId).FirstOrDefault().ledgerName.ToString();
+                var crLedger = _entities.tbl_AccLedger.Where(x => x.Id == item.crId).FirstOrDefault().ledgerName.ToString();
 
-                    model.drcrLedger = "Dr. " + drLedger + " / " + "Cr. " + crLedger;
-                    model.amt = Convert.ToDecimal(amtFormat.comma(item.amt));
-                    model.date = Convert.ToDateTime(item.date).ToString("dd-MM-yyyy");
-                    modelList.Add(model);
-                    rowNo++;
-                }
+                model.drcrLedger = "Dr. " + drLedger + " / " + "Cr. " + crLedger;
+                model.amt = Convert.ToDecimal(amtFormat.comma(item.amt));
+                model.date = Convert.ToDateTime(item.date).ToString("dd-MM-yyyy");
+                modelList.Add(model);
+                rowNo++;
+            }
 
-                dgPaymentDetails.DataSource = modelList;
-                lblTotalRows.Text = modelList.Count.ToString();
-                #endregion  
+            dgPaymentDetails.DataSource = modelList;
+            lblTotalRows.Text = modelList.Count.ToString();
+            #endregion
             //}
 
             //else if (passedVoucherType == 2)
@@ -508,25 +508,28 @@ namespace MicroAccounts.UserControls
                         }
 
                         //Condition to set the entry type 
+                        /*
+                            EntryType 1 = Payment
+                            EntryType 2 = Receipt
+                            EntryType 3 = Journal
+                            EntryType 4 = Contra
+                         */
 
-                        if (passedVoucherType == 1) //Payment
+                        // Mapping the entry type based on passedVoucherType
+                        pms.entryType = passedVoucherType;
+
+                        // Determine crId and drId based on the voucher type
+                        if (passedVoucherType == 1 || passedVoucherType == 3) // Payment or Journal
                         {
-                            pms.entryType = 1;
+                            pms.crId = _entities.tbl_AccLedger.FirstOrDefault(x => x.ledgerName == cmbLedgerCR.Text)?.Id;
+                            pms.drId = _entities.tbl_AccLedger.FirstOrDefault(x => x.ledgerName == cmbLedgerDR.Text)?.Id;
                         }
-                        else if (passedVoucherType == 2) //Receipt
+                        else if (passedVoucherType == 2 || passedVoucherType == 4) // Receipt or Contra
                         {
-                            pms.entryType = 2;
+                            pms.drId = _entities.tbl_AccLedger.FirstOrDefault(x => x.ledgerName == cmbLedgerCR.Text)?.Id;
+                            pms.crId = _entities.tbl_AccLedger.FirstOrDefault(x => x.ledgerName == cmbLedgerDR.Text)?.Id;
                         }
-                        else if (passedVoucherType == 3) //Journal
-                        {
-                            pms.entryType = 3;
-                        }
-                        else //Contra
-                        {
-                            pms.entryType = 4;
-                        }
-                        pms.crId = _entities.tbl_AccLedger.Where(x => x.ledgerName == cmbLedgerCR.Text).FirstOrDefault().Id;
-                        pms.drId = _entities.tbl_AccLedger.Where(x => x.ledgerName == cmbLedgerDR.Text).FirstOrDefault().Id;
+
                         pms.date = DateTime.Now.Date;
                         pms.amt = Convert.ToDecimal(txtAmt.Text);
                         pms.stringDate = dateTimePicker1.Text.ToString();
@@ -569,8 +572,20 @@ namespace MicroAccounts.UserControls
                         _entities = new MicroAccountsEntities1();
                         var data = _entities.tbl_Entry.Where(x => x.voucherRefNo == updateVouId).FirstOrDefault();
 
-                        data.crId = _entities.tbl_AccLedger.Where(x => x.ledgerName == cmbLedgerCR.Text).FirstOrDefault().Id;
-                        data.drId = _entities.tbl_AccLedger.Where(x => x.ledgerName == cmbLedgerDR.Text).FirstOrDefault().Id;
+                        // Mapping the entry type based on passedVoucherType
+                        
+                        // Determine crId and drId based on the voucher type
+                        if (passedVoucherType == 1 || passedVoucherType == 3) // Payment or Journal
+                        {
+                            data.crId = _entities.tbl_AccLedger.FirstOrDefault(x => x.ledgerName == cmbLedgerCR.Text)?.Id;
+                            data.drId = _entities.tbl_AccLedger.FirstOrDefault(x => x.ledgerName == cmbLedgerDR.Text)?.Id;
+                        }
+                        else if (passedVoucherType == 2 || passedVoucherType == 4) // Receipt or Contra
+                        {
+                            data.drId = _entities.tbl_AccLedger.FirstOrDefault(x => x.ledgerName == cmbLedgerCR.Text)?.Id;
+                            data.crId = _entities.tbl_AccLedger.FirstOrDefault(x => x.ledgerName == cmbLedgerDR.Text)?.Id;
+                        }
+                        
                         data.date = DateTime.Now.Date;
                         data.amt = Convert.ToDecimal(txtAmt.Text);
                         data.stringDate = dateTimePicker1.Text.ToString();
@@ -735,8 +750,20 @@ namespace MicroAccounts.UserControls
                 var data = _entities.tbl_Entry.Where(x => x.voucherRefNo == gID).FirstOrDefault();
                 // txtGroupName.Text = lblhiddenGName.Text = data.groupName;
 
-                cmbLedgerDR.SelectedValue = data.drId;
-                cmbLedgerCR.SelectedValue = data.crId;
+              
+                // Determine crId and drId based on the voucher type
+                if (passedVoucherType == 1 || passedVoucherType == 3) // Payment or Journal
+                {
+                    cmbLedgerDR.SelectedValue = data.drId;
+                    cmbLedgerCR.SelectedValue = data.crId;
+                }
+                else if (passedVoucherType == 2 || passedVoucherType == 4) // Receipt or Contra
+                {
+                    cmbLedgerCR.SelectedValue = data.drId;
+                    cmbLedgerDR.SelectedValue = data.crId;
+
+                    comboBox1.SelectedValue = data.crId;
+                }
 
                 updateVouId = data.voucherRefNo;
 

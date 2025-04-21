@@ -112,7 +112,9 @@ public class closing_balance
 
             DateTime sDate = Convert.ToDateTime(start_date);
 
-            ctotal = acc.tbl_TransactionMaster.Where(x => x.ledgerId == id && x.tDate >= sDate).Select(x => x.crAmt).Sum().ToString();
+            ctotal = acc.tbl_TransactionMaster.
+                Where(x => x.ledgerId == id && x.tDate >= sDate).
+                Select(x => x.crAmt).Sum().ToString();
 
         }
         if (end_date != "")
@@ -123,7 +125,9 @@ public class closing_balance
             //          select c_entryItems.amount).Sum().ToString();
             DateTime sDate = Convert.ToDateTime(start_date);
 
-            ctotal = acc.tbl_TransactionMaster.Where(x => x.ledgerId == id && x.tDate >= sDate).Select(x => x.crAmt).Sum().ToString();
+            ctotal = acc.tbl_TransactionMaster.
+                Where(x => x.ledgerId == id && x.tDate >= sDate).
+                Select(x => x.crAmt).Sum().ToString();
 
 
         }
@@ -147,6 +151,7 @@ public class closing_balance
                 cr_total = Convert.ToDecimal(ctotal);
             }
         }
+
         /* Add opening balance */
         if (op_total_dc == "D")
         {

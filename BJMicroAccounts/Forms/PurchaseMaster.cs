@@ -790,6 +790,7 @@ namespace MicroAccounts.Forms
 
                 if (cmbKarat.SelectedIndex == 0)
                 {
+
                     var rate = _entities.DailyRates.Where(x => x.date == dateToday).FirstOrDefault().eighteenC;
 
                     amtFormat = new AmtFormatting();
