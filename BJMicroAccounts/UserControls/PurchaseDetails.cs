@@ -176,38 +176,57 @@ namespace MicroAccounts.UserControls
 
                         var cellId = Convert.ToInt32(dgPurchaseDetails.CurrentRow.Cells[0].Value);
 
+                        // Delete from Transaction Table
                         #region delete From TransactionTable
 
-                        var selectedData3 = _entities.tbl_TransactionMaster.Where(x => x.voucherRefNo == cellId).ToList();
+                        var transactionRecords = _entities.tbl_TransactionMaster
+                            .Where(x => x.voucherRefNo == cellId)
+                            .ToList();
 
-                        foreach (var item1 in selectedData3)
+                        if (transactionRecords.Any())
                         {
-                            _entities.tbl_TransactionMaster.Remove(item1);
-                            _entities.SaveChanges();
+                            _entities.tbl_TransactionMaster.RemoveRange(transactionRecords);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No transaction records found!");
                         }
                         #endregion
 
-                        var selectedData1 = _entities.tbl_PurchaseDetail.Where(x => x.purchaseID == cellId).FirstOrDefault();
-                        var selectedData2 = _entities.tbl_PurchaseMaster.Where(x => x.pId == cellId).FirstOrDefault();
+                        // Delete from Purchase Detail
+                        #region Delete From Purchase Detail Table
+                        var purchaseDetails = _entities.tbl_PurchaseDetail
+                            .Where(x => x.purchaseID == cellId)
+                            .ToList();
 
-                        if (selectedData1 != null)
+                        if (purchaseDetails != null)
                         {
-                            _entities.tbl_PurchaseDetail.Remove(selectedData1);
+                            _entities.tbl_PurchaseDetail.RemoveRange(purchaseDetails);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No purchase detail records found!");
+                        }
+                        #endregion
+
+                        // Delete from Purchase Master
+                        #region Delete From Purchase Master Table
+                        var purchaseMaster = _entities.tbl_PurchaseMaster
+                            .FirstOrDefault(x => x.pId == cellId);
+
+                        if (purchaseMaster != null)
+                        {
+                            _entities.tbl_PurchaseMaster.Remove(purchaseMaster);
                         }
                         else
                         {
                             MessageBox.Show("Something went wrong. Record cannot be deleted.");
                         }
-                        if (selectedData2 != null)
-                        {
-                            _entities.tbl_PurchaseMaster.Remove(selectedData2);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Something went wrong. Record cannot be deleted.");
-                        }
+                        #endregion
 
+                        // Save all changes in one go
                         _entities.SaveChanges();
+
                         MessageBox.Show("Record deleted ");
                         dataGridBind();
                     }
@@ -218,7 +237,7 @@ namespace MicroAccounts.UserControls
 
                 }
             }
-            catch(Exception x)
+            catch (Exception x)
             {
                 MessageBox.Show("Record Cannot be deleted. Reference of this record is present in other entries");
             }
