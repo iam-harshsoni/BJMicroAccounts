@@ -163,83 +163,59 @@ namespace MicroAccounts.UserControls
         }
 
         private void dgPurchaseDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
+        { 
+            if (dgPurchaseDetails.Columns[e.ColumnIndex].Name == "Delete")
             {
-                if (dgPurchaseDetails.Columns[e.ColumnIndex].Name == "Delete")
+                DialogResult myResult;
+                myResult = MessageBox.Show("Are you really delete the item?", "Delete Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (myResult == DialogResult.OK)
                 {
-                    DialogResult myResult;
-                    myResult = MessageBox.Show("Are you really delete the item?", "Delete Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                    if (myResult == DialogResult.OK)
+
+                    using (var _entities = new MicroAccountsEntities1())
                     {
-                        _entities = new MicroAccountsEntities1();
-
-                        var cellId = Convert.ToInt32(dgPurchaseDetails.CurrentRow.Cells[0].Value);
-
-                        // Delete from Transaction Table
-                        #region delete From TransactionTable
-
-                        var transactionRecords = _entities.tbl_TransactionMaster
-                            .Where(x => x.voucherRefNo == cellId)
-                            .ToList();
-
-                        if (transactionRecords.Any())
+                        using (var transaction = _entities.Database.BeginTransaction())
                         {
-                            _entities.tbl_TransactionMaster.RemoveRange(transactionRecords);
-                        }
-                        else
-                        {
-                            MessageBox.Show("No transaction records found!");
-                        }
-                        #endregion
+                            try
+                            {
+                                var cellId = Convert.ToInt32(dgPurchaseDetails.CurrentRow.Cells[0].Value);
 
-                        // Delete from Purchase Detail
-                        #region Delete From Purchase Detail Table
-                        var purchaseDetails = _entities.tbl_PurchaseDetail
-                            .Where(x => x.purchaseID == cellId)
-                            .ToList();
 
-                        if (purchaseDetails != null)
-                        {
-                            _entities.tbl_PurchaseDetail.RemoveRange(purchaseDetails);
+                                // Delete from Transaction Table
+                                var transactionRecords = _entities.tbl_TransactionMaster
+                                     .Where(x => x.voucherRefNo == cellId)
+                                     .ToList();
+                                if (transactionRecords.Any())
+                                    _entities.tbl_TransactionMaster.RemoveRange(transactionRecords);
+
+                                // Delete from Purchase Detail
+                                var purchaseDetails = _entities.tbl_PurchaseDetail
+                                    .Where(x => x.purchaseID == cellId)
+                                    .ToList();
+                                if (purchaseDetails != null)
+                                    _entities.tbl_PurchaseDetail.RemoveRange(purchaseDetails);
+
+                                // Delete from Purchase Master Table
+                                var purchaseMaster = _entities.tbl_PurchaseMaster
+                                    .FirstOrDefault(x => x.pId == cellId);
+                                if (purchaseMaster != null)
+                                    _entities.tbl_PurchaseMaster.Remove(purchaseMaster);
+
+                                _entities.SaveChanges();
+                                transaction.Commit(); // ✅ All good
+
+                                MessageBox.Show("Record deleted");
+                                dataGridBind();
+
+                            }
+                            catch (Exception ex)
+                            {
+                                transaction.Rollback(); // ❌ Something failed, undo changes
+                                MessageBox.Show("An error occurred: " + ex.Message);
+                            }
+
                         }
-                        else
-                        {
-                            MessageBox.Show("No purchase detail records found!");
-                        }
-                        #endregion
-
-                        // Delete from Purchase Master
-                        #region Delete From Purchase Master Table
-                        var purchaseMaster = _entities.tbl_PurchaseMaster
-                            .FirstOrDefault(x => x.pId == cellId);
-
-                        if (purchaseMaster != null)
-                        {
-                            _entities.tbl_PurchaseMaster.Remove(purchaseMaster);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Something went wrong. Record cannot be deleted.");
-                        }
-                        #endregion
-
-                        // Save all changes in one go
-                        _entities.SaveChanges();
-
-                        MessageBox.Show("Record deleted ");
-                        dataGridBind();
                     }
-                    else
-                    {
-                        //No delete
-                    }
-
                 }
-            }
-            catch (Exception x)
-            {
-                MessageBox.Show("Record Cannot be deleted. Reference of this record is present in other entries");
             }
         }
 
