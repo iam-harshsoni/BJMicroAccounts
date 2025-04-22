@@ -202,15 +202,6 @@ namespace MicroAccounts.UserControls
 
             }
         }
-
-        private void lblFine_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblHallMark_Click(object sender, EventArgs e)
-        {
-
-        }
+ 
     }
 }

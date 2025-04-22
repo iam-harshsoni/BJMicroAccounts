@@ -355,7 +355,7 @@
             // 
             // Column2
             // 
-            this.Column2.DataPropertyName = "totalAmt";
+            this.Column2.DataPropertyName = "totalAmtFormatted";
             this.Column2.HeaderText = "Total Aount";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;

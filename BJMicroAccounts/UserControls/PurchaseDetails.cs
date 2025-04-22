@@ -109,7 +109,8 @@ namespace MicroAccounts.UserControls
                     model.date = item.date?.ToString("dd-MM-yyyy");
                     model.totalWeight = (item.totalWeight.ToString() + " " + item.unit.ToString()).ToString();
                     // model.totalWeight = item.totalWeight;
-                    model.totalAmt = Convert.ToDecimal(amtFormat.comma(item.totalAmt));
+                    model.totalAmt = decimal.Parse(item.totalAmt.ToString());
+                    model.totalAmtFormatted= amtFormat.comma(model.totalAmt);
                     model.totalMelting = item.totalMelting;
                     model.createdDate = Convert.ToDateTime(item.createdDate).ToString("dd-MM-yyyy  hh:mm tt");
 

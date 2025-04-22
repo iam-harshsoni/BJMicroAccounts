@@ -39,5 +39,9 @@ namespace MicroAccounts.ViewModel
         public virtual ICollection<PurchaseDetailsVM> tbl_PurchaseDetail { get; set; }
 
         public List<PurchaseDetailsVM> PurhaseDetailVM { get; set; }
+
+
+        // Formatted Properties
+        public string totalAmtFormatted { get; set; }
     }
 }
