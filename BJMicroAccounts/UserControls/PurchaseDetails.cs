@@ -17,8 +17,7 @@ namespace MicroAccounts.UserControls
     public partial class PurchaseDetails : UserControl
     {
         MicroAccountsEntities1 _entities;
-
-
+        AmtFormatting amtFormat = new AmtFormatting();
 
         public PurchaseDetails()
         {
@@ -27,18 +26,6 @@ namespace MicroAccounts.UserControls
 
         private void ledgerNameAutoComplete()
         {
-            //    _entities = new MicroAccountsEntities1();
-
-            //    var gId = _entities.tbl_AccGroup.Where(x => x.groupName == "Sundry Creditors").FirstOrDefault().groupId;
-
-            //    var ledgerNameAutoComplete = _entities.tbl_AccLedger.Where(x => x.groupId == gId);
-            //    txtSearch.AutoCompleteCustomSource.Clear();
-            //    foreach (var item in ledgerNameAutoComplete)
-            //    {
-            //        txtSearch.AutoCompleteCustomSource.Add(item.ledgerName.ToString());
-            //    }
-            //}
-
             try
             {
                 using (var entities = new MicroAccountsEntities1())
@@ -74,7 +61,7 @@ namespace MicroAccounts.UserControls
             catch (Exception ex)
             {
                 // Log the exception if needed (e.g., using a logging framework like log4net)
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                HandleError("Error in ledgerNameAutoComplete()", ex);
             }
         }
 
@@ -97,7 +84,8 @@ namespace MicroAccounts.UserControls
             pm.ShowDialog();
             dataGridBind();
         }
-        AmtFormatting amtFormat = new AmtFormatting();
+
+        
         void dataGridBind()
         {
             try
@@ -118,7 +106,7 @@ namespace MicroAccounts.UserControls
                     model.pId = item.pId;
                     model.refNo = item.refNo;
                     model.ledgerName = _entities.tbl_AccLedger.Where(x => x.Id == item.ledgerId).FirstOrDefault().ledgerName;
-                    model.date = Convert.ToDateTime(item.date).ToString("dd-MM-yyyy");
+                    model.date = item.date?.ToString("dd-MM-yyyy");
                     model.totalWeight = (item.totalWeight.ToString() + " " + item.unit.ToString()).ToString();
                     // model.totalWeight = item.totalWeight;
                     model.totalAmt = Convert.ToDecimal(amtFormat.comma(item.totalAmt));
@@ -138,9 +126,9 @@ namespace MicroAccounts.UserControls
                 dgPurchaseDetails.DataSource = modelList;
                 lblTotalRows.Text = modelList.Count.ToString();
             }
-            catch (Exception x)
+            catch (Exception ex)
             {
-                MessageBox.Show("Something went wrong. Contact your system administrator");
+                HandleError("Error in dataGridBind()", ex);
             }
         }
         private void dgPurchaseDetails_DoubleClick(object sender, EventArgs e)
@@ -156,14 +144,14 @@ namespace MicroAccounts.UserControls
                     dataGridBind();
                 }
             }
-            catch (Exception x)
+            catch (Exception ex)
             {
-                MessageBox.Show("Something went wrong. Contact your system administrator");
+                HandleError("Error in dgPurchaseDetails_DoubleClick()", ex);
             }
         }
 
         private void dgPurchaseDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        { 
+        {
             if (dgPurchaseDetails.Columns[e.ColumnIndex].Name == "Delete")
             {
                 DialogResult myResult;
@@ -210,7 +198,7 @@ namespace MicroAccounts.UserControls
                             catch (Exception ex)
                             {
                                 transaction.Rollback(); // ❌ Something failed, undo changes
-                                MessageBox.Show("An error occurred: " + ex.Message);
+                                HandleError("Something went wrong:", ex);
                             }
 
                         }
@@ -223,42 +211,38 @@ namespace MicroAccounts.UserControls
         {
             try
             {
-                int rowNo = 1;
                 dgPurchaseDetails.AutoGenerateColumns = false;
 
                 _entities = new MicroAccountsEntities1();
-                List<PurchaseMasterVM> modelList = new List<PurchaseMasterVM>();
 
-                var data = _entities.tbl_PurchaseMaster.Where(x => x.refNo.Contains(txtSearch.Text) || x.tbl_AccLedger.ledgerName.Contains(txtSearch.Text)).OrderByDescending(x => x.pId);
+                string searchText = txtSearch.Text.Trim();
+                const string dateFormat = "dd-MM-yyyy  hh:mm tt";
 
-                foreach (var item in data)
+                var data = _entities.tbl_PurchaseMaster
+                    .Where(p => p.refNo.Contains(searchText) || p.tbl_AccLedger.ledgerName.Contains(searchText))
+                    .OrderByDescending(p => p.pId)
+                    .AsEnumerable();
+
+                var modelList = data.Select((item, index) => new PurchaseMasterVM
                 {
-                    PurchaseMasterVM model = new PurchaseMasterVM();
-                    model.rowNo = rowNo;
-                    model.pId = item.pId;
-                    model.refNo = item.refNo;
-                    model.ledgerName = _entities.tbl_AccLedger.Where(x => x.Id == item.ledgerId).FirstOrDefault().ledgerName;
-                    model.date = Convert.ToDateTime(item.date).ToString("dd-MM-yyyy");
-                    //model.totalWeight = item.totalWeight;
-                    model.totalWeight = (item.totalWeight.ToString() + " " + item.unit.ToString()).ToString();
-                    model.totalAmt = Convert.ToDecimal(amtFormat.comma(item.totalAmt));
-                    model.totalMelting = item.totalMelting;
-                    model.createdDate = Convert.ToDateTime(item.createdDate).ToString("dd-MM-yyyy  hh:mm tt");
-                    model.updateDate = Convert.ToDateTime(item.updateDate).ToString("dd-MM-yyyy  hh:mm tt");
-
-
-                    modelList.Add(model);
-
-                    rowNo++;
-                }
+                    rowNo = index + 1,
+                    pId = item.pId,
+                    refNo = item.refNo,
+                    ledgerName = item.tbl_AccLedger?.ledgerName ?? "N/A",
+                    date = item.date?.ToString("dd-MM-yyyy"),
+                    totalWeight = $"{item.totalWeight} {item.unit}",
+                    totalAmt = Convert.ToDecimal(amtFormat.comma(item.totalAmt)), // or use item.totalAmt.ToString("N2")
+                    totalMelting = item.totalMelting,
+                    createdDate = item.createdDate?.ToString(dateFormat),
+                    updateDate = item.updateDate?.ToString(dateFormat)
+                }).ToList();
 
                 dgPurchaseDetails.DataSource = modelList;
                 lblTotalRows.Text = modelList.Count.ToString();
-
             }
-            catch (Exception x)
+            catch (Exception ex)
             {
-
+                HandleError("Something went wrong:", ex);
             }
         }
 
@@ -271,55 +255,56 @@ namespace MicroAccounts.UserControls
         {
             try
             {
-                int rowNo = 1;
                 dgPurchaseDetails.AutoGenerateColumns = false;
+
                 _entities = new MicroAccountsEntities1();
 
-                List<PurchaseMasterVM> purchaseMasterList = new List<PurchaseMasterVM>();
-                List<tbl_PurchaseMaster> data = new List<tbl_PurchaseMaster>();
+                DateTime fromDate = DateTime.ParseExact(dateTimePicker1.Text, "dd-MM-yyyy", null);
+                DateTime toDate = DateTime.ParseExact(dateTimePicker2.Text, "dd-MM-yyyy", null);
 
-                DateTime fromdate = DateTime.ParseExact(dateTimePicker1.Text, "dd-MM-yyyy", null);
-                DateTime todate = DateTime.ParseExact(dateTimePicker2.Text, "dd-MM-yyyy", null);
-
-                if (fromdate > todate)
+                if (fromDate > toDate)
                 {
                     MessageBox.Show("Invalid date entered. Select valid dates");
                     return;
                 }
-                else
+
+                string searchText = txtSearch.Text.Trim();
+
+                var query = _entities.tbl_PurchaseMaster
+                    .Where(x => x.date >= fromDate && x.date <= toDate);
+
+                if (!string.IsNullOrEmpty(searchText))
                 {
-                    if (txtSearch.Text == string.Empty)
-                        data = _entities.tbl_PurchaseMaster.Where(x => x.date >= fromdate && x.date <= todate).OrderByDescending(x => x.pId).ToList();
-                    else
-                        data = _entities.tbl_PurchaseMaster.Where(x => x.date >= fromdate && x.date <= todate && x.tbl_AccLedger.ledgerName.Contains(txtSearch.Text.Trim().ToString())).OrderByDescending(x => x.pId).ToList();
-
-                    foreach (var item in data)
-                    {
-                        PurchaseMasterVM model = new PurchaseMasterVM();
-                        model.rowNo = rowNo;
-                        model.pId = item.pId;
-                        model.refNo = item.refNo;
-                        model.ledgerName = _entities.tbl_AccLedger.Where(x => x.Id == item.ledgerId).FirstOrDefault().ledgerName;
-                        model.date = Convert.ToDateTime(item.date).ToString("dd-MM-yyyy");
-                        //model.totalWeight = item.totalWeight;
-                        model.totalWeight = (item.totalWeight.ToString() + " " + item.unit.ToString()).ToString();
-                        model.totalAmt = item.totalAmt;
-                        model.totalMelting = item.totalMelting;
-                        model.createdDate = Convert.ToDateTime(item.createdDate).ToString("dd-MM-yyyy  hh:mm tt");
-                        model.updateDate = Convert.ToDateTime(item.updateDate).ToString("dd-MM-yyyy  hh:mm tt");
-
-                        purchaseMasterList.Add(model);
-
-                        rowNo++;
-                    }
-
-                    dgPurchaseDetails.DataSource = purchaseMasterList;
-                    lblTotalRows.Text = purchaseMasterList.Count.ToString();
+                    query = query.Where(x => x.tbl_AccLedger.ledgerName.Contains(searchText));
                 }
-            }
-            catch (Exception x)
-            {
 
+                var rawData = query
+                    .OrderByDescending(x => x.pId)
+                    .ToList(); // now it's in memory, not SQL anymore
+
+                int rowNo = 1;
+
+                var purchaseMasterList = rawData.Select(item => new PurchaseMasterVM
+                {
+                    rowNo = rowNo++,  // auto-increment
+                    pId = item.pId,
+                    refNo = item.refNo,
+                    ledgerName = item.tbl_AccLedger.ledgerName,
+                    date = item.date?.ToString("dd-MM-yyyy"),
+                    totalWeight = $"{item.totalWeight} {item.unit}",
+                    totalAmt = item.totalAmt,
+                    totalMelting = item.totalMelting,
+                    createdDate = Convert.ToDateTime(item.createdDate).ToString("dd-MM-yyyy  hh:mm tt"),
+                    updateDate = Convert.ToDateTime(item.updateDate).ToString("dd-MM-yyyy  hh:mm tt")
+                }).ToList();
+
+                dgPurchaseDetails.DataSource = purchaseMasterList;
+                lblTotalRows.Text = purchaseMasterList.Count.ToString();
+
+            }
+            catch (Exception ex)
+            {
+                HandleError("Something went wrong:", ex);
             }
         }
 
@@ -330,6 +315,11 @@ namespace MicroAccounts.UserControls
             dateTimePicker2.Text = DateTime.Now.Date.ToString();
             txtSearch.Text = "";
             dataGridBind();
+        }
+
+        private void HandleError(string context, Exception ex)
+        {
+            MessageBox.Show($"{context}\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
