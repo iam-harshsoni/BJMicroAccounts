@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.SidePanel2 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -386,18 +386,18 @@
             // 
             this.dgPurchaseItem.AllowUserToAddRows = false;
             this.dgPurchaseItem.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.dgPurchaseItem.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.dgPurchaseItem.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgPurchaseItem.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgPurchaseItem.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Goldenrod;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgPurchaseItem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Goldenrod;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgPurchaseItem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgPurchaseItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPurchaseItem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SrNo,
@@ -531,7 +531,7 @@
             // 
             this.lblUnit.AutoSize = true;
             this.lblUnit.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.lblUnit.Location = new System.Drawing.Point(1046, 451);
+            this.lblUnit.Location = new System.Drawing.Point(1042, 419);
             this.lblUnit.Name = "lblUnit";
             this.lblUnit.Size = new System.Drawing.Size(28, 20);
             this.lblUnit.TabIndex = 122;
@@ -720,7 +720,7 @@
             this.lblBtnError.ForeColor = System.Drawing.Color.Red;
             this.lblBtnError.Location = new System.Drawing.Point(522, 623);
             this.lblBtnError.Name = "lblBtnError";
-            this.lblBtnError.Size = new System.Drawing.Size(199, 16);
+            this.lblBtnError.Size = new System.Drawing.Size(198, 16);
             this.lblBtnError.TabIndex = 0;
             this.lblBtnError.Text = "*Go to Rate textbox and enter tab";
             this.lblBtnError.Visible = false;
