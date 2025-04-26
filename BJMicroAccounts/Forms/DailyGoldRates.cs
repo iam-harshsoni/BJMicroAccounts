@@ -273,7 +273,6 @@ namespace MicroAccounts.Forms
                             {
                                 MainDashboard mm = new MainDashboard(userName);
                                 mm.Show();
-                                this.Close();
                             }
                         }
 
@@ -302,6 +301,7 @@ namespace MicroAccounts.Forms
                         MessageBox.Show("Record SuccessFully Updated!");
                         clear();
                     }
+                    this.Close();
                 }
             }
             catch (Exception c)

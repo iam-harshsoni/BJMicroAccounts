@@ -22,7 +22,8 @@ namespace BJMicroAccounts
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainDashboard("admin"));
+            //Application.Run(new Login());
+            Application.Run(new PurchaseMaster(0));
         }
     }
 }

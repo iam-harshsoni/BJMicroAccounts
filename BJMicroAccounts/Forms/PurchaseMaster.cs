@@ -11,6 +11,7 @@ using BJMicroAccounts.Data;
 using MicroAccounts.AccountsModuleClasses;
 using MicroAccounts.App_Code;
 using BJMicroAccounts.Reports;
+using BJMicroAccounts.Utils;
 
 namespace MicroAccounts.Forms
 {
@@ -393,7 +394,14 @@ namespace MicroAccounts.Forms
                 btnCreate.Enabled = true;
                 lblBtnError.Visible = false;
 
-                if (!ValidateInputs()) return;
+                if (!FormValidationHelper.ValidateRequiredField(txtItemCode, errorProvider1, lblError, panel3, "Enter item code.")) return;
+                if (!FormValidationHelper.ValidateRequiredField(txtQty, errorProvider1, lblError, panel3, "Enter Qty.")) return;
+                if (!FormValidationHelper.ValidateRequiredField(txtWeight, errorProvider1, lblError, panel3, "Enter item weight.")) return;
+                if (!FormValidationHelper.ValidateRequiredField(txtKRate, errorProvider1, lblError, panel3, "Enter karat rate.")) return;
+                if (!FormValidationHelper.ValidateRequiredField(txtMelting, errorProvider1, lblError, panel3, "Enter melting.")) return;
+                if (!FormValidationHelper.ValidateRequiredField(txtPurMelting, errorProvider1, lblError, panel3, "Enter purchase melting.")) return;
+                if (!FormValidationHelper.ValidateRequiredField(txtFine, errorProvider1, lblError, panel3, "Enter fine.")) return;
+                if (!FormValidationHelper.ValidateRequiredField(txtAmt, errorProvider1, lblError, panel3, "Enter rate.")) return;
 
                 string karat = cmbKarat.SelectedIndex == 0 ? "0" : cmbKarat.Text;
                 decimal qty = SafeDecimal(txtQty.Text);
@@ -403,6 +411,8 @@ namespace MicroAccounts.Forms
                 decimal fine = SafeDecimal(txtFine.Text);
                 decimal making = SafeDecimal(txtMaking.Text);
                 decimal rate = SafeDecimal(txtAmt.Text);
+
+                if (rate <= 0) return;
 
                 if (datagridEdit)
                 {
@@ -442,29 +452,6 @@ namespace MicroAccounts.Forms
 
         }
 
-        private bool ValidateInputs()
-        {
-            errorProvider1.Clear();
-
-            if (string.IsNullOrWhiteSpace(txtItemCode.Text))
-                return ShowError(txtItemCode, "Enter item code.");
-            if (string.IsNullOrWhiteSpace(txtQty.Text))
-                return ShowError(txtQty, "Enter Qty.");
-            if (string.IsNullOrWhiteSpace(txtWeight.Text))
-                return ShowError(txtWeight, "Enter item weight.");
-            if (string.IsNullOrWhiteSpace(txtKRate.Text))
-                return ShowError(txtKRate, "Enter karat rate.");
-            if (string.IsNullOrWhiteSpace(txtMelting.Text))
-                return ShowError(txtMelting, "Enter melting.");
-            if (string.IsNullOrWhiteSpace(txtPurMelting.Text))
-                return ShowError(txtPurMelting, "Enter purchase melting.");
-            if (string.IsNullOrWhiteSpace(txtFine.Text))
-                return ShowError(txtFine, "Enter fine.");
-            if (string.IsNullOrWhiteSpace(txtAmt.Text))
-                return ShowError(txtAmt, "Enter rate.");
-
-            return true;
-        }
         private bool ShowError(Control control, string message)
         {
             errorProvider1.SetError(control, message);
@@ -1004,157 +991,100 @@ namespace MicroAccounts.Forms
         {
             try
             {
-                if (txtRefNo.Text == string.Empty)
-                {
-                    errorProvider1.Clear();
-                    errorProvider1.SetError(txtRefNo, "Enter reference number.");
-                    txtRefNo.Focus();
-                    panel3.Visible = true;
-                    lblError.Text = "Enter reference number.";
-                }
-                else if (txtLedgerName.Text == string.Empty)
-                {
+                if (!FormValidationHelper.ValidateRequiredField(txtRefNo, errorProvider1, lblError, panel3, "Enter reference number.")) return;
+                if (!FormValidationHelper.ValidateRequiredField(txtLedgerName, errorProvider1, lblError, panel3, "Enter party name.")) return;
+                if (!FormValidationHelper.ValidateRequiredField(txtTotalWeight, errorProvider1, lblError, panel3, "Enter total weight.")) return;
+                if (!FormValidationHelper.ValidateRequiredField(txtTotalMelting, errorProvider1, lblError, panel3, "Enter total melting.")) return;
+                if (!FormValidationHelper.ValidateRequiredField(txtTotalPurchMelting, errorProvider1, lblError, panel3, "Enter total purchase melting.")) return;
+                if (!FormValidationHelper.ValidateRequiredField(txtTotalFine, errorProvider1, lblError, panel3, "Enter total fine.")) return;
+                if (!FormValidationHelper.ValidateRequiredField(txtTotalAmt, errorProvider1, lblError, panel3, "Enter total rate.")) return;
 
-                    errorProvider1.Clear();
-                    errorProvider1.SetError(txtLedgerName, "Enter party name.");
-                    txtLedgerName.Focus();
-                    panel3.Visible = true;
-                    lblError.Text = "Enter party name.";
-                }
-                else if (txtTotalWeight.Text == string.Empty)
-                {
+                _entities = new MicroAccountsEntities1();
 
-                    errorProvider1.Clear();
-                    errorProvider1.SetError(txtTotalWeight, "Enter total weight.");
-                    txtTotalWeight.Focus();
-                    panel3.Visible = true;
-                    lblError.Text = "Enter total weight.";
-                }
-                else if (txtTotalMelting.Text == string.Empty)
+                if (btnCreate.Text == "Create")
                 {
+                    //Save Code
 
-                    errorProvider1.Clear();
-                    errorProvider1.SetError(txtTotalMelting, "Enter total melting.");
-                    txtTotalMelting.Focus();
-                    panel3.Visible = true;
-                    lblError.Text = "Enter total melting.";
-                }
-                else if (txtTotalPurchMelting.Text == string.Empty)
-                {
+                    tbl_PurchaseMaster purchaseData = new tbl_PurchaseMaster();
+                    purchaseData.refNo = txtRefNo.Text.Trim().ToString();
+                    purchaseData.ledgerId = _entities.tbl_AccLedger.Where(x => x.ledgerName == txtLedgerName.Text.Trim().ToString()).FirstOrDefault().Id;
 
-                    errorProvider1.Clear();
-                    errorProvider1.SetError(txtTotalPurchMelting, "Enter total purchase melting.");
-                    txtTotalMelting.Focus();
-                    panel3.Visible = true;
-                    lblError.Text = "Enter total purchase melting.";
-                }
+                    DateTime date = DateTime.ParseExact(dateTimePicker1.Text, "dd-MM-yyyy", null);
 
-                else if (txtTotalFine.Text == string.Empty)
-                {
+                    purchaseData.date = Convert.ToDateTime(date);
+                    purchaseData.totalWeight = Convert.ToDecimal(txtTotalWeight.Text);
+                    purchaseData.unit = lblUnit.Text;
+                    purchaseData.totalMelting = Convert.ToDecimal(txtTotalMelting.Text);
+                    purchaseData.totalMaking = Convert.ToDecimal(txtTotalMaking.Text);
+                    purchaseData.totalPurchaseMelting = Convert.ToDecimal(txtTotalPurchMelting.Text);
+                    purchaseData.totalFine = Convert.ToDecimal(txtTotalFine.Text);
+                    purchaseData.totalAmt = Convert.ToDecimal(txtTotalAmt.Text);
+                    purchaseData.remarks = txtRemark.Text.ToString();
+                    purchaseData.createdDate = DateTime.Now;
+                    purchaseData.updateDate = DateTime.Now;
 
-                    errorProvider1.Clear();
-                    errorProvider1.SetError(txtTotalFine, "Enter total fine.");
-                    txtTotalFine.Focus();
-                    panel3.Visible = true;
-                    lblError.Text = "Enter total fine.";
-                }
-                else if (txtTotalAmt.Text == string.Empty)
-                {
-                    errorProvider1.Clear();
-                    errorProvider1.SetError(txtTotalAmt, "Enter total rate.");
-                    txtTotalAmt.Focus();
-                    panel3.Visible = true;
-                    lblError.Text = "Enter total rate.";
+                    _entities.tbl_PurchaseMaster.Add(purchaseData);
+                    _entities.SaveChanges();
+
+                    //add data to purchase detials
+                    addPurchaseDetailsData();
+
+                    //Add data to transaction table
+                    TransactionEntryClass tcs = new TransactionEntryClass();
+                    tcs.addRecord("Purchase", Convert.ToDecimal(txtTotalAmt.Text), txtLedgerName.Text, "Purchase Account");
+
+                    MessageBox.Show("Record Successfull Saved");
+
                 }
                 else
                 {
-                    if (btnCreate.Text == "Create")
+                    //Update Code
+
+                    _entities = new MicroAccountsEntities1();
+
+                    var purchaseDataUpdate = _entities.tbl_PurchaseMaster.Where(x => x.pId == passedPid).FirstOrDefault();
+
+                    purchaseDataUpdate.refNo = txtRefNo.Text.Trim().ToString();
+                    purchaseDataUpdate.ledgerId = _entities.tbl_AccLedger.Where(x => x.ledgerName == txtLedgerName.Text.Trim().ToString()).FirstOrDefault().Id;
+
+                    DateTime date = DateTime.ParseExact(dateTimePicker1.Text, "dd-MM-yyyy", null);
+
+                    purchaseDataUpdate.date = Convert.ToDateTime(date);
+
+                    purchaseDataUpdate.totalWeight = Convert.ToDecimal(txtTotalWeight.Text);
+                    purchaseDataUpdate.unit = lblUnit.Text;
+                    purchaseDataUpdate.totalMelting = Convert.ToDecimal(txtTotalMelting.Text);
+                    purchaseDataUpdate.totalMaking = Convert.ToDecimal(txtTotalMaking.Text);
+                    purchaseDataUpdate.totalPurchaseMelting = Convert.ToDecimal(txtTotalPurchMelting.Text);
+                    purchaseDataUpdate.totalFine = Convert.ToDecimal(txtTotalFine.Text);
+                    purchaseDataUpdate.totalAmt = Convert.ToDecimal(txtTotalAmt.Text);
+                    purchaseDataUpdate.remarks = txtRemark.Text.ToString();
+                    purchaseDataUpdate.updateDate = DateTime.Now;
+
+                    _entities.SaveChanges();
+
+                    var purchaseDetailsUpdate = _entities.tbl_PurchaseDetail.Where(x => x.purchaseID == passedPid).ToList();
+
+                    foreach (var item in purchaseDetailsUpdate)
                     {
-                        //Save Code
-
-                        _entities = new MicroAccountsEntities1();
-
-                        tbl_PurchaseMaster purchaseData = new tbl_PurchaseMaster();
-                        purchaseData.refNo = txtRefNo.Text.Trim().ToString();
-                        purchaseData.ledgerId = _entities.tbl_AccLedger.Where(x => x.ledgerName == txtLedgerName.Text.Trim().ToString()).FirstOrDefault().Id;
-
-                        DateTime date = DateTime.ParseExact(dateTimePicker1.Text, "dd-MM-yyyy", null);
-
-                        purchaseData.date = Convert.ToDateTime(date);
-                        purchaseData.totalWeight = Convert.ToDecimal(txtTotalWeight.Text);
-                        purchaseData.unit = lblUnit.Text;
-                        purchaseData.totalMelting = Convert.ToDecimal(txtTotalMelting.Text);
-                        purchaseData.totalMaking = Convert.ToDecimal(txtTotalMaking.Text);
-                        purchaseData.totalPurchaseMelting = Convert.ToDecimal(txtTotalPurchMelting.Text);
-                        purchaseData.totalFine = Convert.ToDecimal(txtTotalFine.Text);
-                        purchaseData.totalAmt = Convert.ToDecimal(txtTotalAmt.Text);
-                        purchaseData.remarks = txtRemark.Text.ToString();
-                        purchaseData.createdDate = DateTime.Now;
-                        purchaseData.updateDate = DateTime.Now;
-
-                        _entities.tbl_PurchaseMaster.Add(purchaseData);
+                        _entities.tbl_PurchaseDetail.Remove(item);
                         _entities.SaveChanges();
-
-                        //add data to purchase detials
-                        addPurchaseDetailsData();
-
-                        //Add data to transaction table
-                        TransactionEntryClass tcs = new TransactionEntryClass();
-                        tcs.addRecord("Purchase", Convert.ToDecimal(txtTotalAmt.Text), txtLedgerName.Text, "Purchase Account");
-
-                        MessageBox.Show("Record Successfull Saved");
-
                     }
-                    else
-                    {
-                        //Update Code
 
-                        _entities = new MicroAccountsEntities1();
+                    addPurchaseDetailsData();  //grid data entry in purchse details
 
-                        var purchaseDataUpdate = _entities.tbl_PurchaseMaster.Where(x => x.pId == passedPid).FirstOrDefault();
+                    //Update transaction
 
-                        purchaseDataUpdate.refNo = txtRefNo.Text.Trim().ToString();
-                        purchaseDataUpdate.ledgerId = _entities.tbl_AccLedger.Where(x => x.ledgerName == txtLedgerName.Text.Trim().ToString()).FirstOrDefault().Id;
-
-                        DateTime date = DateTime.ParseExact(dateTimePicker1.Text, "dd-MM-yyyy", null);
-
-                        purchaseDataUpdate.date = Convert.ToDateTime(date);
-
-                        purchaseDataUpdate.totalWeight = Convert.ToDecimal(txtTotalWeight.Text);
-                        purchaseDataUpdate.unit = lblUnit.Text;
-                        purchaseDataUpdate.totalMelting = Convert.ToDecimal(txtTotalMelting.Text);
-                        purchaseDataUpdate.totalMaking = Convert.ToDecimal(txtTotalMaking.Text);
-                        purchaseDataUpdate.totalPurchaseMelting = Convert.ToDecimal(txtTotalPurchMelting.Text);
-                        purchaseDataUpdate.totalFine = Convert.ToDecimal(txtTotalFine.Text);
-                        purchaseDataUpdate.totalAmt = Convert.ToDecimal(txtTotalAmt.Text);
-                        purchaseDataUpdate.remarks = txtRemark.Text.ToString();
-                        purchaseDataUpdate.updateDate = DateTime.Now;
-
-                        _entities.SaveChanges();
-
-                        var purchaseDetailsUpdate = _entities.tbl_PurchaseDetail.Where(x => x.purchaseID == passedPid).ToList();
-
-                        foreach (var item in purchaseDetailsUpdate)
-                        {
-                            _entities.tbl_PurchaseDetail.Remove(item);
-                            _entities.SaveChanges();
-                        }
-
-                        addPurchaseDetailsData();  //grid data entry in purchse details
-
-                        //Update transaction
-
-                        TransactionEntryClass tcs = new TransactionEntryClass();
-                        tcs.updateRecord(passedPid, "Purchase", Convert.ToDecimal(txtTotalAmt.Text), txtLedgerName.Text, "Purchase Account");
+                    TransactionEntryClass tcs = new TransactionEntryClass();
+                    tcs.updateRecord(passedPid, "Purchase", Convert.ToDecimal(txtTotalAmt.Text), txtLedgerName.Text, "Purchase Account");
 
 
-                        MessageBox.Show("Record Successfull Updated");
-                    }
-                    clear();
-                    clearDetails();
-                    count = 0;
-                    passedPid = 0;
+                    MessageBox.Show("Record Successfull Updated");
                 }
+                clear();
+                clearDetails();
+                count = 0;
+                passedPid = 0;
             }
             catch (Exception x)
             {

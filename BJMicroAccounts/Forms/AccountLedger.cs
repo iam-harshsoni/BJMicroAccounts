@@ -77,12 +77,12 @@ namespace MicroAccounts
 
                         if (cmbDRCR.SelectedItem.ToString() == "Dr")
                         {
-                            accLedgerData.opBalanceDC = "D";
+                            accLedgerData.opBalanceDC = "D".Trim();
 
                         }
                         else
                         {
-                            accLedgerData.opBalanceDC = "C";
+                            accLedgerData.opBalanceDC = "C".Trim();
                         }
 
                         accLedgerData.notes = txtNotes.Text.Trim().ToString();
@@ -142,12 +142,12 @@ namespace MicroAccounts
 
                         if (cmbDRCR.SelectedItem.ToString() == "Dr")
                         {
-                            data.opBalanceDC = "D";
+                            data.opBalanceDC = "D".Trim();
 
                         }
                         else
                         {
-                            data.opBalanceDC = "C";
+                            data.opBalanceDC = "C".Trim();
                         }
 
                         data.notes = txtNotes.Text.Trim().ToString();

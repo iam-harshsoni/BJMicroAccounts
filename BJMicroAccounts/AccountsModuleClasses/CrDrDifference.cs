@@ -15,8 +15,6 @@ namespace MicroAccounts.AccountsModuleClasses
             _entities = new MicroAccountsEntities1();
             decimal? drTotal = 0, crTotal = 0, crdrDiff = 0;
 
-            _entities = new MicroAccountsEntities1();
-
             var data = _entities.tbl_TransactionMaster.Where(x => x.ledgerId == ledgerId).ToList();
 
             foreach (var item in data)

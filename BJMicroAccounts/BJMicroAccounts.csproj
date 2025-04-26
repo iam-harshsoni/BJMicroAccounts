@@ -489,6 +489,7 @@
     <Compile Include="UserControls\TrailBalance.Designer.cs">
       <DependentUpon>TrailBalance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\FormValidationHelper.cs" />
     <Compile Include="ViewModel\AccGroupVM.cs" />
     <Compile Include="ViewModel\AccLedgerVm.cs" />
     <Compile Include="ViewModel\CategoryMasterVM.cs" />
